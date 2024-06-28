@@ -131,7 +131,7 @@ dist
 
 
 /server/venv/
-/.idea/
+.idea
 __pycache__
 .idea/Web-Shoppe.iml
 *.iml
