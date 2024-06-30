@@ -1,0 +1,83 @@
+.Header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 42px;
+    margin: 66px 96px 16px 96px;
+    position: relative;
+    z-index: 2;
+    top: 0;
+    overflow-y: hidden;
+
+    .Header_navigation {
+        display: flex;
+        flex-direction: row;
+        gap: 48px;
+
+        .Header_navigation_left {
+            display: flex;
+            flex-direction: row;
+            gap: 64px;
+
+            a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                color: black;
+                font-size: 18px;
+                font-weight: 400;
+
+                &::before {
+                    content: '';
+                    width: 0%;
+                    height: 3px;
+                    top: 30px;
+                    background-color: black;
+                    position: absolute;
+                    transition: 0.3s ease;
+                }
+
+                &:hover {
+                    &::before {
+                        width: 80%;
+                    }  
+                }
+            }
+        }
+
+        .Header_navigation_right {
+            display: flex;
+            flex-direction: row;
+            gap: 39px;
+
+            a {
+                transition: 0.3s ease;
+
+                &:hover {
+                    transform: translateY(-6px);
+                }
+            }
+        }
+
+    }
+
+    .Dropmenu_control {
+        display: none;
+        position: relative;
+        
+        .Dropmenu_Open {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .Dropmenu_Close {
+            cursor: pointer;
+        }
+
+    }
+}
+
+@import './components/Dropmenu';

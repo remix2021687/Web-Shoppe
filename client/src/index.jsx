@@ -4,6 +4,7 @@ import { App } from './App'
 import { BrowserRouter } from 'react-router-dom'
 import { Components } from './Components/Components'
 import { RoutesComponents } from './Routes/Routes'
+import './assets/css/index.min.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
