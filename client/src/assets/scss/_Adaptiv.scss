@@ -8,7 +8,7 @@ $Header_paddings: 30px;
     }
 }
 
-@media screen and (max-width: 792px) {
+@media screen and (max-width: 768px) {
     .Header {
         .Header_navigation {
             display: none;
@@ -16,6 +16,20 @@ $Header_paddings: 30px;
         
         .Dropmenu_control {
             display: block;
+        }
+    }
+
+    .Step_1 {
+        margin: 0 20px;
+
+        .swiper {
+            .swiper-slide {
+                .SwiperSlide_content {
+                    a {
+                        width: 35%;
+                    }
+                }
+            }
         }
     }
 }

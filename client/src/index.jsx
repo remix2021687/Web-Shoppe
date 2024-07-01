@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 import { Components } from './Components/Components'
 import { RoutesComponents } from './Routes/Routes'
 import './assets/css/index.min.css'
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>

@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'shopdb',
         'USER': 'ROOT',
         'PASSWORD': '2010665KE',
-        'HOST': '172.18.0.2',
+        'HOST': '172.18.0.3',
         'PORT': '5432',
     }
 }

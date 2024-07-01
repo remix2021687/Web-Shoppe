@@ -1,5 +1,9 @@
+import { Step_1 } from "./Step_1/Step_1"
+
 export const HomePage = () => {
     return (
-        <h2>HomePage</h2>
+        <>
+            <Step_1 />
+        </>
     )
 }

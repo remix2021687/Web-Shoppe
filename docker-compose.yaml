@@ -20,7 +20,7 @@ services:
     restart: always
 
     environment:
-      PGADMIN_DEFAULT_EMAIL: erominmaksim@gmail.com
+      PGADMIN_DEFAULT_EMAIL: info@gmail.com
       PGADMIN_DEFAULT_PASSWORD: 2010665KEEek
 
     ports:
