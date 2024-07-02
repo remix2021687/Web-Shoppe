@@ -1,13 +1,3 @@
-//var
-$Header_paddings: 30px;
-
-@media screen and (max-width: 900px) {
-    .Header {
-        margin-left: $Header_paddings;
-        margin-right: $Header_paddings;
-    }
-}
-
 @media screen and (max-width: 768px) {
     .Header {
 
