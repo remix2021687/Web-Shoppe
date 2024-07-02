@@ -10,6 +10,7 @@ $Header_paddings: 30px;
 
 @media screen and (max-width: 768px) {
     .Header {
+
         .Header_navigation {
             display: none;
         }
@@ -31,5 +32,20 @@ $Header_paddings: 30px;
                 }
             }
         }
+    }
+
+    .ProductBox {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    
+    .Step_2 {
+        margin: 0 20px;
+    }
+
+    .ProductBox {
+        width: 50%;
     }
 }

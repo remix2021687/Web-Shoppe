@@ -8,13 +8,14 @@ export const Step_1 = () => {
             <Swiper
                 modules={[Autoplay, Pagination]}
 
-                spaceBetween={0}
+                spaceBetween={10}
                 // centeredSlides={true}
                 pagination={{
                     enabled: true,
                     type: 'bullets',
                     bulletClass: 'BulletDef',
-                    bulletActiveClass: 'BulletDefActive'
+                    bulletActiveClass: 'BulletDefActive',
+                    clickable: true
                 }}
 
                 autoplay={{

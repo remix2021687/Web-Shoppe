@@ -3,11 +3,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    // width: 80%;
+    background-color: white;
     height: 42px;
     margin: 66px 96px 16px 96px;
-    position: relative;
+    // position: relative;
     z-index: 2;
-    top: 0;
+    top: 0px;
     overflow-y: hidden;
 
     .Header_navigation {

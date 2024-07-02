@@ -1,0 +1,28 @@
+.ProductBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 39px;
+    flex: 10%;
+    width: 20%;
+
+    // img {object-fit: cover;}
+
+    .ProductBox_content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: black;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: 400;
+            color: #A18A68;
+        }
+    }
+}

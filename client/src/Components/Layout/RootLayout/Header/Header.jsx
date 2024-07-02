@@ -56,7 +56,17 @@ export const Header = () => {
         <>
             <nav className="Header"
                 style={
-                    isOpne ? {position: 'sticky'} : {position: 'relative'}
+                    isOpne ? {
+                        position: 'sticky',
+                        margin: 0,
+                        padding: "0 20px 0 20px",
+                        } 
+                        : 
+                        {
+                            position: 'static',
+                            margin: "66px 96px 16px 96px;",
+                            padding: 0,
+                        }
                 }    
             >
                 <NavLink to={'/'}>
