@@ -27,6 +27,25 @@
     .ProductBox {
         width: 40%;
     }
+
+    .Footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+        .Footer_left {
+            align-items: center;
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .Footer {
+        .Footer_left {
+            ul {
+                flex-direction: column;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 375px) {
