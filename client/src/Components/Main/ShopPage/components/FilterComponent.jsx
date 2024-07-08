@@ -107,8 +107,8 @@ export const FilterComponent = () => {
                         </section>
                         
                         <section className='FilterComponent_Content_Switch'>
-                            <h4>On Sale</h4>
-                            <Switch />
+                            <h4>In stock</h4>
+                            <Switch />  
                         </section>
                     </section>
                 </ConfigProvider>

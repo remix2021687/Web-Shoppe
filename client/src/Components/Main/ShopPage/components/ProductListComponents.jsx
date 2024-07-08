@@ -20,7 +20,6 @@ export const ProductListComponents = () => {
             <ProductBox />
             <ProductBox />
             <ProductBox />
-            {/* <ProductBox /> */}
         </section>
     )
 }
