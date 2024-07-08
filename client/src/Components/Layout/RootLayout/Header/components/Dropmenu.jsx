@@ -43,8 +43,8 @@ export const Dropmenu = () => {
         </label>
 
         <section className="Dropmenu_navigation">
-            <NavLink>Home</NavLink>
-            <NavLink>Shop</NavLink>
+            <NavLink to={'/'}>Home</NavLink>
+            <NavLink to={'/shop'}>Shop</NavLink>
             <NavLink>About</NavLink>
             <NavLink>Blog</NavLink>
             <NavLink>Help</NavLink>

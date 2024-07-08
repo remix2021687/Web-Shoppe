@@ -74,7 +74,7 @@ export const Header = () => {
 
                 <section className="Header_navigation">
                     <section className="Header_navigation_left">
-                        <NavLink>Shop</NavLink>
+                        <NavLink to={'/shop'}>Shop</NavLink>
                         <NavLink>Blog</NavLink>
                         <NavLink>Our Story</NavLink>
                     </section>

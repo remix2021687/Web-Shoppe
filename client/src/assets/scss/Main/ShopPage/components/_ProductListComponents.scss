@@ -1,0 +1,13 @@
+.ProductListComponents {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 24px;
+
+    .ProductBox {
+        width: 30%;
+        flex: none;
+    }
+}

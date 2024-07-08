@@ -1,0 +1,22 @@
+.ShopPage {
+    display: flex;
+    flex-direction: column;
+    margin: 96px 96px 0 96px;
+
+    h1  {
+        font-size: 33px;
+        font-weight: 500;
+    }
+
+    .ShopPage_content {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 35px;
+        overflow: clip;
+    }
+}
+
+@import './components/FilterComponent';
+
+@import './components/ProductListComponents';
