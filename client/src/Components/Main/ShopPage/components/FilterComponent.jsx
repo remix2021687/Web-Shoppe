@@ -1,19 +1,44 @@
 import { MagnifyingGlass } from '@phosphor-icons/react'
 import { Select, Slider, Switch, ConfigProvider } from 'antd'
-// import { } from ''
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-export const FilterComponent = () => {
+export const FilterComponent = ({ setParentToChild }) => {
+    const [searchData, setSearchData] = useState('')
     const [SliderData, setSliderData] = useState([10, 50]);
+    const [ShopByData, setShopByData] = useState('')
+    const [SortByData, setSortByData] = useState('')
+    const [isSale, setIsSale] = useState(false)
+    const [isStock, setIsStock] = useState(false)
 
-    const HandelSlider = (event) => {
-        setSliderData(event)
-    }
+    const [filterData, setFilterData] = useState({
+        searchData: '',
+        ShopBy: '',
+        SortBy: '',
+        SliderData: [],
+        isSale: false,
+        isStock: false
+    })
+
+    useEffect(() => {
+        setFilterData({
+            searchData: searchData,
+            ShopBy: ShopByData,
+            SortBy: SortByData,
+            SliderData: SliderData,
+            isSale: isSale,
+            isStock: isStock
+        })
+
+    }, [searchData, SliderData, ShopByData, SortByData, isSale, isStock])
+
+    useEffect(() => {
+        setParentToChild(filterData)
+    })
 
     return (
         <section className="FilterComponent">
             <label htmlFor="TextInput" className="FilterComponent_search">
-                <input type="text" id="TextInput" name="search" placeholder='Search...'/>
+                <input type="text" id="TextInput" name="search" value={searchData} onChange={(e) => {setSearchData(e.target.value)}} placeholder='Search...'/>
                 <MagnifyingGlass size={32} color='black' className='SearchIcon'/>
             </label>
             <section className='FilterComponent_Content'>
@@ -34,7 +59,8 @@ export const FilterComponent = () => {
                         }
                     }}
                 >
-                    <Select 
+                    <Select
+                        title='test'
                         style={{ height: '54px' }}
                         placeholder={"Shop By"}
                         options={[
@@ -43,6 +69,7 @@ export const FilterComponent = () => {
                             {value: 'Test_3', label: "Test_3"},
                             {value: 'Test_4', label: "Test_4"},
                         ]}
+                        onChange={(e) => {setShopByData(e)}}
                     />
 
                     <Select
@@ -54,6 +81,7 @@ export const FilterComponent = () => {
                             {value: 'Test_3', label: "Test_3"},
                             {value: 'Test_4', label: "Test_4"},
                         ]}
+                        onChange={(e) => {setSortByData(e)}}
                     />
                 </ConfigProvider>
 
@@ -79,7 +107,7 @@ export const FilterComponent = () => {
                         range
                         defaultValue={[10, 50]}
                         value={SliderData}
-                        onChange={HandelSlider}
+                        onChange={(e) => {setSliderData(e)}}
                     />
 
                     <h2>Price: {SliderData[0]}$ - {SliderData[1]}$</h2>
@@ -103,12 +131,12 @@ export const FilterComponent = () => {
                     }}>
                         <section className='FilterComponent_Content_Switch'>
                             <h4>On Sale</h4>
-                            <Switch />
+                            <Switch value={isSale} onChange={(e) => {setIsSale(e)}} />
                         </section>
                         
                         <section className='FilterComponent_Content_Switch'>
                             <h4>In stock</h4>
-                            <Switch />  
+                            <Switch value={isStock} onChange={(e) => {setIsStock(e)}} />  
                         </section>
                     </section>
                 </ConfigProvider>
