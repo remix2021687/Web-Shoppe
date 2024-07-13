@@ -24,7 +24,6 @@ export const ProductListComponents = () => {
         setFilter(FilterData)
     }, [FilterData])
 
-
     return (
         <section className="ProductListComponents">
             {
@@ -32,11 +31,13 @@ export const ProductListComponents = () => {
 
                 data.filter((res) => res.name.toLowerCase().includes(Filter.searchData.toLowerCase()))
                 .filter((res) => res.price >= Filter.SliderData[0] && res.price <= Filter.SliderData[1])
+                .filter((res) => Filter.isSale == true && res.sale > 0 || !Filter.isSale)
                 .map((res, index) => 
                     <ProductBox
                             key={index + 1}
                             Name={res.name}
                             Price={res.price}
+                            Sale={res.sale}
                             URL={res.preview_image}
                         />
                 )

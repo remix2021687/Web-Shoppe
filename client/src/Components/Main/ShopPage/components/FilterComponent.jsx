@@ -1,14 +1,18 @@
 import { MagnifyingGlass } from '@phosphor-icons/react'
 import { Select, Slider, Switch, ConfigProvider } from 'antd'
 import { useEffect, useState } from 'react'
+import { GetProductPriceList, GetShopList } from '../../../../Axios/AxiosInit'
 
 export const FilterComponent = ({ setParentToChild }) => {
     const [searchData, setSearchData] = useState('')
-    const [SliderData, setSliderData] = useState([10, 50]);
+    const [SliderData, setSliderData] = useState([10, 999]);
     const [ShopByData, setShopByData] = useState('')
     const [SortByData, setSortByData] = useState('')
     const [isSale, setIsSale] = useState(false)
     const [isStock, setIsStock] = useState(false)
+    const [MaxPrice, setMaxPrice] = useState([0]);
+
+    const [ShopListData, setShopListData] = useState([]);
 
     const [filterData, setFilterData] = useState({
         searchData: '',
@@ -35,6 +39,35 @@ export const FilterComponent = ({ setParentToChild }) => {
         setParentToChild(filterData)
     })
 
+    useEffect(() => {
+        GetProductPriceList()
+        
+        .then((res) => {
+            const response = res.data;
+            let arr = [];
+
+            response.map((data) => {
+                arr.push(data.price)
+
+                setSliderData([10, Math.max(...arr)])
+                setMaxPrice(Math.max(...arr))
+            })
+        })
+
+    }, [])
+
+    useEffect(() => {
+        GetShopList()
+        .then((res) => {
+            const response = res.data;
+
+            setShopListData(response)
+        })
+        .catch((err) => {
+            console.warn(err)
+        })
+    }, [])
+
     return (
         <section className="FilterComponent">
             <label htmlFor="TextInput" className="FilterComponent_search">
@@ -60,17 +93,16 @@ export const FilterComponent = ({ setParentToChild }) => {
                     }}
                 >
                     <Select
-                        title='test'
                         style={{ height: '54px' }}
                         placeholder={"Shop By"}
-                        options={[
-                            {value: 'Test_1', label: "Test_1"},
-                            {value: 'Test_2', label: "Test_2"},
-                            {value: 'Test_3', label: "Test_3"},
-                            {value: 'Test_4', label: "Test_4"},
-                        ]}
                         onChange={(e) => {setShopByData(e)}}
-                    />
+                    >
+
+                    {
+                        ShopListData.map((data) => <Select.Option value={data.name}>{data.name}</Select.Option>)
+                    }
+
+                    </Select>
 
                     <Select
                         style={{ height: '54px' }}
@@ -103,14 +135,14 @@ export const FilterComponent = ({ setParentToChild }) => {
                 >
                     <Slider 
                         min={1}
-                        max={999}
+                        max={MaxPrice}
                         range
-                        defaultValue={[10, 50]}
+                        step={10}
                         value={SliderData}
                         onChange={(e) => {setSliderData(e)}}
                     />
 
-                    <h2>Price: {SliderData[0]}$ - {SliderData[1]}$</h2>
+                    <h2>Price: {SliderData[0].toLocaleString()}$ - {SliderData[1].toLocaleString()}$</h2>
                 </ConfigProvider>
 
                 <ConfigProvider

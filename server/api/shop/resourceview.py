@@ -1,9 +1,9 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, AllowAny
 
-from shop.models import ShopProduct, ProductReview
+from shop.models import ShopProduct, ProductReview, Shop
 from .serializer import (ProductReviewSerializer,
-                         ShopProductListSerializer, ShopProductSerializer)
+                         ShopProductListSerializer, ShopProductSerializer, ShopProductPriceSerializer, ShopSerializer)
 
 
 class ShopProductViewSet(viewsets.ModelViewSet):
@@ -21,3 +21,15 @@ class ShopProductReviewViewSet(viewsets.ModelViewSet):
     queryset = ProductReview.objects.all()
     serializer_class = ProductReviewSerializer
     permission_classes = [IsAdminUser]
+
+
+class ShopProductPriceListViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ShopProduct.objects.all()
+    serializer_class = ShopProductPriceSerializer
+    permission_classes = [AllowAny]
+
+
+class ShopListViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Shop.objects.all()
+    serializer_class = ShopSerializer
+    permission_classes = [AllowAny]

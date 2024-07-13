@@ -3,10 +3,13 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenVerifyView, TokenRefreshView, TokenObtainPairView
 
-from api.shop.resourceview import ShopProductViewSet, ShopProductReviewViewSet
+from api.shop.resourceview import ShopProductViewSet, ShopProductReviewViewSet, ShopProductPriceListViewSet, \
+    ShopListViewSet
 
 router = routers.DefaultRouter()
 router.register('shop', ShopProductViewSet)
+router.register('product-price', ShopProductPriceListViewSet, basename='shopPrice')
+router.register('shop-list', ShopListViewSet, basename='shopList')
 router.register('review', ShopProductReviewViewSet)
 
 urlpatterns = [

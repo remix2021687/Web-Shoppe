@@ -135,3 +135,5 @@ dist
 __pycache__
 .idea/Web-Shoppe.iml
 *.iml
+*.png
+/server/uploads

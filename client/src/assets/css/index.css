@@ -388,6 +388,32 @@ main {
   -webkit-box-flex: 10%;
       -ms-flex: 10%;
           flex: 10%;
+  position: relative;
+}
+.ProductBox > span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 24px;
+  border-radius: 4px;
+  background-color: #A18A68;
+  color: white;
+  padding: 0 10px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 .ProductBox .ProductBox_content {
   display: -webkit-box;
@@ -656,6 +682,7 @@ main {
       align-self: flex-start;
   position: sticky;
   top: 50px;
+  margin-left: 5px;
 }
 .FilterComponent .FilterComponent_search {
   display: -webkit-box;

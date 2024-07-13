@@ -4,9 +4,26 @@
     justify-content: center;
     gap: 39px;
     flex: 10%;
+    position: relative;
     // max-width: 20%;
 
     // img {object-fit: cover;}
+
+    & > span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 24px;
+        border-radius: 4px;
+        background-color: #A18A68;
+        color: white;
+        padding: 0 10px;
+        align-self: flex-start;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
 
     .ProductBox_content {
         display: flex;

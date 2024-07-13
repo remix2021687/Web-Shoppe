@@ -1,7 +1,13 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from shop.models import ShopProduct, ProductReview, ProductImgList, ProductInfo, ProductInfoMaterial
+from shop.models import ShopProduct, ProductReview, ProductImgList, ProductInfo, ProductInfoMaterial, Shop
+
+
+class ShopSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shop
+        fields = ('id', 'name')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -38,10 +44,16 @@ class ProductReviewSerializer(serializers.ModelSerializer):
         fields = ('id', 'user', 'comment', 'rate', 'product', 'data')
 
 
+class ShopProductPriceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShopProduct
+        fields = ('id', 'price')
+
+
 class ShopProductListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'preview_image')
+        fields = ('id', 'name', 'price', 'sale', 'preview_image')
 
 
 class ShopProductSerializer(serializers.ModelSerializer):

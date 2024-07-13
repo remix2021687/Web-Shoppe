@@ -21,3 +21,23 @@ export const GetProductList = async () => {
         return response
     }
 }
+
+export const GetProductPriceList = async () => {
+    const response = await AxiosInit.get('product-price/')
+
+    try {
+        return response
+    } catch(err) {
+        return response
+    }
+}
+
+export const GetShopList = async () => {
+    const response = await AxiosInit.get('shop-list/')
+
+    try {
+        return response;
+    } catch(err) {
+        return response
+    }
+}

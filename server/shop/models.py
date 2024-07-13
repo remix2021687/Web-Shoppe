@@ -68,6 +68,7 @@ class ShopProduct(models.Model):
     description_product = models.TextField(max_length=3000, null=False, blank=False)
     description_company = models.TextField(max_length=2000, null=False, blank=False)
     stock = models.IntegerField(blank=True, null=False, default=0)
+    sale = models.IntegerField(blank=True, default=0)
     preview_image = models.ImageField(upload_to='uploads/preview_img/', null=False, blank=False, default='')
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
 
@@ -77,4 +78,4 @@ class ShopProduct(models.Model):
         ordering = ['date_created']
 
     def __str__(self):
-        return f"Product {self.name}, Price: {self.price}"
+        return f"Product {self.name}, Price: {self.price}, Sale: {self.sale} %"

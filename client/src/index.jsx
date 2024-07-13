@@ -1,4 +1,4 @@
-import React, { StrictMode, Suspense } from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { App } from './App'
 import { BrowserRouter } from 'react-router-dom'
@@ -9,14 +9,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { LoadingFullScreen } from './Components/Layout/LoadingFullScreen/LoadingFullScreen'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
   <>
-    <StrictMode>
-      <Suspense fallback={<LoadingFullScreen />}>
-          <BrowserRouter>
-            <App Route={RoutesComponents} Components={Components} />
-          </BrowserRouter>
-      </Suspense>
-    </StrictMode>
-  </>,
+    <Suspense fallback={<LoadingFullScreen />}>
+        <BrowserRouter>
+          <App Route={RoutesComponents} Components={Components} />
+        </BrowserRouter>
+    </Suspense>
+  </>
 )
