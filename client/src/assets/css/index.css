@@ -389,8 +389,10 @@ main {
       -ms-flex: 10%;
           flex: 10%;
   position: relative;
+  overflow: hidden;
+  border-radius: 10px;
 }
-.ProductBox > span {
+.ProductBox .ProductBox_sale {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -414,6 +416,31 @@ main {
   position: absolute;
   top: 20px;
   left: 20px;
+}
+.ProductBox .ProductBox_not_stock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 24px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  color: white;
+  padding: 0 10px;
+  border-radius: 4px;
+  background-color: #A18A68;
 }
 .ProductBox .ProductBox_content {
   display: -webkit-box;

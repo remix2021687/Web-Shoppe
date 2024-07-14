@@ -93,18 +93,25 @@ export const FilterComponent = ({ setParentToChild }) => {
                     }}
                 >
                     <Select
+                        allowClear={true}
                         style={{ height: '54px' }}
                         placeholder={"Shop By"}
                         onChange={(e) => {setShopByData(e)}}
                     >
 
                     {
-                        ShopListData.map((data) => <Select.Option value={data.name}>{data.name}</Select.Option>)
+                        ShopListData.map((data, index) => 
+                            data ?
+                            <Select.Option key={index + 1} value={data.name}>{data.name}</Select.Option>
+                            :
+                            null
+                        )
                     }
 
                     </Select>
 
                     <Select
+                        allowClear={true}
                         style={{ height: '54px' }}
                         placeholder={"Sort By"}
                         options={[
@@ -134,7 +141,7 @@ export const FilterComponent = ({ setParentToChild }) => {
                     }}
                 >
                     <Slider 
-                        min={1}
+                        min={10}
                         max={MaxPrice}
                         range
                         step={10}

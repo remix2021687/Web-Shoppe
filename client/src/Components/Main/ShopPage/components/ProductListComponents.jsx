@@ -1,12 +1,14 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, Suspense } from "react"
 import { ProductBox } from "../../../Layout/ProductBox/ProductBox"
-import { GetProductList } from "../../../../Axios/AxiosInit"
+import { GetProductList, GetShopList } from "../../../../Axios/AxiosInit"
 import { FilterContext } from "../ShopPage"
+import { Spin, ConfigProvider } from 'antd'
 
 export const ProductListComponents = () => {
     const [data, setData] = useState([])
     const [Filter, setFilter] = useState([])
     const FilterData = useContext(FilterContext)
+    const [ShopByData, setShopByData] = useState([])
 
 
     useEffect(() => {
@@ -24,27 +26,61 @@ export const ProductListComponents = () => {
         setFilter(FilterData)
     }, [FilterData])
 
+    useEffect(() => {
+        data.map((data) => {
+            const response = data.shop;
+
+            setShopByData(response)
+        })
+
+    }, [data])
+
+    console.log(ShopByData)
+
+
+
     return (
         <section className="ProductListComponents">
-            {
-                Filter.SliderData ?
+            <Suspense fallback={
+                <ConfigProvider theme={{
+                    components: {
+                        Spin: {
+                            colorPrimary: 'black',
+                            dotSize: 35
+                        }
+                    }
+                }}>
+                    <Spin />
+                </ConfigProvider>
+            }>
 
-                data.filter((res) => res.name.toLowerCase().includes(Filter.searchData.toLowerCase()))
-                .filter((res) => res.price >= Filter.SliderData[0] && res.price <= Filter.SliderData[1])
-                .filter((res) => Filter.isSale == true && res.sale > 0 || !Filter.isSale)
-                .map((res, index) => 
-                    <ProductBox
-                            key={index + 1}
-                            Name={res.name}
-                            Price={res.price}
-                            Sale={res.sale}
-                            URL={res.preview_image}
-                        />
-                )
+            {
+                data ? 
+                    Filter.SliderData ?
+
+                    data
+                    .filter((res) => res.name.toLowerCase().includes(Filter.searchData.toLowerCase()))
+                    .filter((res) => res.price >= Filter.SliderData[0] && res.price <= Filter.SliderData[1])
+                    .filter((res) => Filter.isSale == true && res.sale > 0 && res.stock > 0 || !Filter.isSale)
+                    .filter((res) => Filter.isStock == true && res.stock > 0 || !Filter.isStock)
+                    .filter((res) => res.shop.map((data) => data.name) == Filter.ShopBy || !Filter.ShopBy)
+                    .map((res, index) => 
+                            <ProductBox
+                                key={index + 1}
+                                Name={res.name}
+                                Price={res.price}
+                                Sale={res.sale}
+                                URL={res.preview_image}
+                                Stock={res.stock}
+                            />
+                    )
+                    :
+                    null
 
                 :
-                null
+                <h1>Data not loading</h1>
             }
+            </Suspense>
         </section>
     )
 }
