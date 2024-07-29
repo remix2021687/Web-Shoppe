@@ -24,6 +24,18 @@
         }
     }
 
+    .Step_2 {
+        margin: 0 20px;
+
+        .Step_2_content {
+            gap: 25px;
+
+            .ProductBox {
+                flex: 40%;
+            }
+        }
+    }
+
     .ProductBox {
         width: 40%;
     }
@@ -36,9 +48,41 @@
             align-items: center;
         }
     }
+
+
+    .ShopPage {
+        .ShopPage_content {
+            flex-direction: column;
+            margin-top: 15px;
+            gap: 20px;
+
+            .FilterComponent {
+                width: 100%;
+                justify-content: center;
+                margin: 0;
+                
+
+                .FilterComponent_Content {
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 425px) {
+
+    .Step_2 {
+
+        .Step_2_content {
+            gap: 25px;
+
+            .ProductBox {
+                flex: 50%;
+            }
+        }
+    }
+
     .Footer {
         .Footer_left {
             ul {

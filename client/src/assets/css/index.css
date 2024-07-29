@@ -774,6 +774,39 @@ main {
   font-weight: 400;
 }
 
+.FilterComponentMobile button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #A18A68;
+}
+.FilterComponentMobile button img {
+  width: 30px;
+}
+.FilterComponentMobile .FilterComponentMobile_Filter {
+  height: 0px;
+  overflow: hidden;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
 .ProductListComponents {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -810,6 +843,17 @@ main {
   .Step_1 .swiper .swiper-slide .SwiperSlide_content a {
     width: 35%;
   }
+  .Step_2 {
+    margin: 0 20px;
+  }
+  .Step_2 .Step_2_content {
+    gap: 25px;
+  }
+  .Step_2 .Step_2_content .ProductBox {
+    -webkit-box-flex: 40%;
+        -ms-flex: 40%;
+            flex: 40%;
+  }
   .ProductBox {
     width: 40%;
   }
@@ -826,8 +870,34 @@ main {
         -ms-flex-align: center;
             align-items: center;
   }
+  .ShopPage .ShopPage_content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 15px;
+    gap: 20px;
+  }
+  .ShopPage .ShopPage_content .FilterComponent {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 0;
+  }
+  .ShopPage .ShopPage_content .FilterComponent .FilterComponent_Content {
+    margin: 0 10px;
+  }
 }
 @media screen and (max-width: 425px) {
+  .Step_2 .Step_2_content {
+    gap: 25px;
+  }
+  .Step_2 .Step_2_content .ProductBox {
+    -webkit-box-flex: 50%;
+        -ms-flex: 50%;
+            flex: 50%;
+  }
   .Footer .Footer_left ul {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

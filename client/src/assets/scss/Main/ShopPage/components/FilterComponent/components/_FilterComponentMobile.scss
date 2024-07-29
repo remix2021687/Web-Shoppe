@@ -1,0 +1,26 @@
+.FilterComponentMobile {
+
+    button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        justify-content: flex-start;
+        align-self: flex-start;
+        border: none;
+        background: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: #A18A68;
+
+        img {
+            width: 30px;
+        }
+    }
+
+    .FilterComponentMobile_Filter {
+        height: 0px;
+        overflow: hidden;
+        transition: 0.5s ease;
+    }
+}

@@ -8,7 +8,6 @@ export const ProductListComponents = () => {
     const [data, setData] = useState([])
     const [Filter, setFilter] = useState([])
     const FilterData = useContext(FilterContext)
-    const [ShopByData, setShopByData] = useState([])
 
 
     useEffect(() => {
@@ -25,18 +24,6 @@ export const ProductListComponents = () => {
 
         setFilter(FilterData)
     }, [FilterData])
-
-    useEffect(() => {
-        data.map((data) => {
-            const response = data.shop;
-
-            setShopByData(response)
-        })
-
-    }, [data])
-
-    console.log(ShopByData)
-
 
 
     return (
@@ -63,7 +50,8 @@ export const ProductListComponents = () => {
                     .filter((res) => res.price >= Filter.SliderData[0] && res.price <= Filter.SliderData[1])
                     .filter((res) => Filter.isSale == true && res.sale > 0 && res.stock > 0 || !Filter.isSale)
                     .filter((res) => Filter.isStock == true && res.stock > 0 || !Filter.isStock)
-                    .filter((res) => res.shop.map((data) => data.name) == Filter.ShopBy || !Filter.ShopBy)
+                    // .filter((res) => res.shop.map((data) => data.name) == Filter.ShopBy || !Filter.ShopBy)
+                    .filter((res) => res.shop.name == Filter.ShopBy || !Filter.ShopBy)
                     .map((res, index) => 
                             <ProductBox
                                 key={index + 1}
