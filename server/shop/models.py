@@ -7,8 +7,9 @@ from django.db import models
 
 class Shop(models.Model):
     name = models.CharField(max_length=100, unique=True, blank=False, null=True)
-    product = models.ForeignKey('ShopProduct', on_delete=models.DO_NOTHING, blank=False, default='',
-                                related_name='shops')
+    email = models.EmailField(unique=True, blank=False, null=True)
+    # product = models.ForeignKey('ShopProduct', on_delete=models.DO_NOTHING, blank=False, default='',
+    #                             related_name='shops')
 
     def __str__(self):
         return f"Shop Name: {self.name}"
@@ -49,7 +50,7 @@ class ProductInfo(models.Model):
 
 
 class ProductReview(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, primary_key=True)
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField(blank=False, null=False)
     rate = models.IntegerField(blank=True, null=False, default=0, validators=[
@@ -64,15 +65,17 @@ class ProductReview(models.Model):
 
 
 class ShopProduct(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, primary_key=True)
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     name = models.CharField(max_length=50, unique=True, null=False, blank=False)
     price = models.FloatField(blank=True, null=False, default=0)
     description_product = models.TextField(max_length=3000, null=False, blank=False)
     description_company = models.TextField(max_length=2000, null=False, blank=False)
+    shop = models.ForeignKey(Shop, on_delete=models.DO_NOTHING, related_name='products_shop', default=None, null=True)
     stock = models.IntegerField(blank=True, null=False, default=0)
+    sku = models.UUIDField(default=uuid.uuid4, editable=False)
     sale = models.IntegerField(blank=True, default=0)
     preview_image = models.ImageField(upload_to='uploads/preview_img/', null=False, blank=False, default='')
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+    category = models.ManyToManyField(Category)
 
     date_created = models.DateTimeField(auto_now_add=True)
 
