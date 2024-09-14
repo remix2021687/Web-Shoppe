@@ -24,9 +24,12 @@
     .Step_2_content {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         flex-wrap: wrap;
         gap: 57px;
 
+        .ProductBox {
+            width: 20%;
+        }
     }
 }

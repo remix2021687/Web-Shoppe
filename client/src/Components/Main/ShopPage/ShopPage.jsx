@@ -10,7 +10,7 @@ export const ShopPage = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
     useEffect(() => {
-        document.title = 'Shop'
+        document.title = 'SHOPPE | Shop'
     }, [])
 
     const HandleFilterData = (event) => {

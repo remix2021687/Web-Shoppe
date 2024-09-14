@@ -1,10 +1,10 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { DropmenuContext } from "../Header"
 import { motion } from 'framer-motion'
 import { MagnifyingGlass, UserPlus, SignIn } from '@phosphor-icons/react'
 import { NavLink } from "react-router-dom"
 
-export const Dropmenu = () => {
+export const Dropmenu = ({ setDropmenuClickState }) => {
     const isOpne = useContext(DropmenuContext);
     const durationAnimation = 0.6
     const IconSize = 25;

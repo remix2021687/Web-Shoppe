@@ -136,7 +136,7 @@ export const FilterComponent = ({ setParentToChild }) => {
                         onChange={(e) => {setSliderData(e)}}
                     />
 
-                    <h2>Price: {SliderData[0].toLocaleString()}$ - {SliderData[1].toLocaleString()}$</h2>
+                    <h2 className='FilterComponent_PriceCount'>Price: {SliderData[0].toLocaleString()}$ - {SliderData[1].toLocaleString()}$</h2>
                 </ConfigProvider>
 
                 <ConfigProvider

@@ -137,3 +137,8 @@ __pycache__
 *.iml
 *.png
 /server/uploads
+*.yaml
+client/Dockerfile
+/database
+server/Dockerfile
+web/docker-compose.yaml

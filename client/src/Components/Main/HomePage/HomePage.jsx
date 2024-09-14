@@ -4,7 +4,7 @@ import { Step_2 } from "./Step_2/Step_2"
 
 export const HomePage = () => {
     useEffect(() => {
-        document.title = 'Home'
+        document.title = 'SHOPPE | Home'
     }, [])
 
     return (

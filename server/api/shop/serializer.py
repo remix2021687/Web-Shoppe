@@ -7,7 +7,7 @@ from shop.models import ShopProduct, ProductReview, ProductImgList, ProductInfo,
 class ShopSerializer(serializers.ModelSerializer):
     class Meta:
         model = Shop
-        fields = ('id', 'name', 'email')
+        fields = ('id', 'name', 'email', 'company_description')
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -73,5 +73,5 @@ class ShopProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'stock', 'sku', 'description_product', 'shop', 'description_company', 'preview_image',
+        fields = ('id', 'name', 'price', 'sale', 'stock', 'sku', 'description_product', 'shop', 'preview_image',
                   'category', 'img_list', 'product_info', 'reviews')

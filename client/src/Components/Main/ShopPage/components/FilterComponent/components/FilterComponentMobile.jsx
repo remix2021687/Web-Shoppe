@@ -18,7 +18,7 @@ export const FilterComponentMobile = ({ Context }) => {
                     <img src={assets.filter_icon}  alt='filter_icon' />
                     Filter
                 </button>
-                <section className="FilterComponentMobile_Filter" style={{height: isOpen ? '380px': 0}}>
+                <section className="FilterComponentMobile_Filter" style={{height: isOpen ? '450px': 0}}>
                     <FilterComponent setParentToChild={Context} />
                 </section>
             </section>

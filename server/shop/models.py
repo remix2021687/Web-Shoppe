@@ -8,15 +8,14 @@ from django.db import models
 class Shop(models.Model):
     name = models.CharField(max_length=100, unique=True, blank=False, null=True)
     email = models.EmailField(unique=True, blank=False, null=True)
-    # product = models.ForeignKey('ShopProduct', on_delete=models.DO_NOTHING, blank=False, default='',
-    #                             related_name='shops')
+    company_description = models.TextField(max_length=4000, blank=False, null=False, default="")
 
     def __str__(self):
         return f"Shop Name: {self.name}"
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
         return f"Category Name: {self.name}"
@@ -69,8 +68,7 @@ class ShopProduct(models.Model):
     name = models.CharField(max_length=50, unique=True, null=False, blank=False)
     price = models.FloatField(blank=True, null=False, default=0)
     description_product = models.TextField(max_length=3000, null=False, blank=False)
-    description_company = models.TextField(max_length=2000, null=False, blank=False)
-    shop = models.ForeignKey(Shop, on_delete=models.DO_NOTHING, related_name='products_shop', default=None, null=True)
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, related_name='products_shop', default=None, null=True)
     stock = models.IntegerField(blank=True, null=False, default=0)
     sku = models.UUIDField(default=uuid.uuid4, editable=False)
     sale = models.IntegerField(blank=True, default=0)

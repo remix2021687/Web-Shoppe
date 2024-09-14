@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const AxiosInit = axios.create({
-    baseURL: 'http://localhost:8000/api/'
+    baseURL: `http://localhost:8000/api/` 
 })
 
 AxiosInit.interceptors.request.use((config) => {
@@ -24,6 +24,16 @@ export const GetProductList = async () => {
 
 export const GetProductPriceList = async () => {
     const response = await AxiosInit.get('product-price/')
+
+    try {
+        return response
+    } catch(err) {
+        return response
+    }
+}
+
+export const GetProductListPagination = async () => {
+    const response = await AxiosInit.get('shop-list-page/')
 
     try {
         return response

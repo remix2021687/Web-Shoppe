@@ -385,9 +385,6 @@ main {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 39px;
-  -webkit-box-flex: 10%;
-      -ms-flex: 10%;
-          flex: 10%;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -660,12 +657,15 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 57px;
+}
+.Step_2 .Step_2_content .ProductBox {
+  width: 20%;
 }
 
 .ShopPage {
@@ -708,7 +708,7 @@ main {
   -ms-flex-item-align: start;
       align-self: flex-start;
   position: sticky;
-  top: 50px;
+  top: 200px;
   margin-left: 5px;
 }
 .FilterComponent .FilterComponent_search {
@@ -774,6 +774,16 @@ main {
   font-weight: 400;
 }
 
+.FilterComponentMobile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
 .FilterComponentMobile button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -801,10 +811,44 @@ main {
   width: 30px;
 }
 .FilterComponentMobile .FilterComponentMobile_Filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #A18A68;
+  border-radius: 10px;
+  padding: 0 5px;
   height: 0px;
   overflow: hidden;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
+}
+.FilterComponentMobile .FilterComponentMobile_Filter .FilterComponent {
+  position: static;
+  color: white;
+}
+.FilterComponentMobile .FilterComponentMobile_Filter .FilterComponent .FilterComponent_Content .FilterComponent_PriceCount {
+  color: white;
+}
+.FilterComponentMobile .FilterComponentMobile_Filter .FilterComponent_search {
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 95%;
+  margin-top: 32px;
+}
+.FilterComponentMobile .FilterComponentMobile_Filter .FilterComponent_search input {
+  height: 50px;
+  border-radius: 10px;
+  border: none;
 }
 
 .ProductListComponents {
@@ -830,6 +874,13 @@ main {
           flex: none;
 }
 
+@media screen and (min-width: 1920px) {
+  .Step_2 .Step_2_content {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
 @media screen and (max-width: 768px) {
   .Header .Header_navigation {
     display: none;
@@ -840,6 +891,12 @@ main {
   .Step_1 {
     margin: 0 20px;
   }
+  .Step_1 .swiper .swiper-slide {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    padding: 100px 30px;
+  }
   .Step_1 .swiper .swiper-slide .SwiperSlide_content a {
     width: 35%;
   }
@@ -847,12 +904,12 @@ main {
     margin: 0 20px;
   }
   .Step_2 .Step_2_content {
-    gap: 25px;
+    gap: 20px;
   }
   .Step_2 .Step_2_content .ProductBox {
-    -webkit-box-flex: 40%;
-        -ms-flex: 40%;
-            flex: 40%;
+    -webkit-box-flex: 30%;
+        -ms-flex: 30%;
+            flex: 30%;
   }
   .ProductBox {
     width: 40%;
@@ -888,8 +945,17 @@ main {
   .ShopPage .ShopPage_content .FilterComponent .FilterComponent_Content {
     margin: 0 10px;
   }
+  .ShopPage .ProductListComponents .ProductBox {
+    width: auto;
+    -webkit-box-flex: 30%;
+        -ms-flex: 30%;
+            flex: 30%;
+  }
 }
 @media screen and (max-width: 425px) {
+  .Step_1 .swiper .swiper-slide {
+    padding: 50px 8px;
+  }
   .Step_2 .Step_2_content {
     gap: 25px;
   }
@@ -897,6 +963,14 @@ main {
     -webkit-box-flex: 50%;
         -ms-flex: 50%;
             flex: 50%;
+  }
+  .ShopPage {
+    margin: 96px 30px 0 30px;
+  }
+  .ShopPage .ProductListComponents .ProductBox {
+    -webkit-box-flex: 100%;
+        -ms-flex: 100%;
+            flex: 100%;
   }
   .Footer .Footer_left ul {
     -webkit-box-orient: vertical;

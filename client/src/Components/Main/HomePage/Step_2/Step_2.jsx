@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ProductBox } from '../../../Layout/ProductBox/ProductBox'
-import { GetProductList } from '../../../../Axios/AxiosInit';
+import { GetProductListPagination } from '../../../../Axios/AxiosInit';
 
 export const Step_2 = () => {
     const [data, setData] = useState([]);
     
     useEffect(() => {
-        GetProductList()
+        GetProductListPagination()
         .then((res) => {
-            const response = res.data;
-
+            const response = res.data.results;
+            
             setData(response)
         })
         .catch((err) => {
             console.warn(err);
         })
-    }, [data])
+    }, [])
 
 
     return (
@@ -29,8 +29,9 @@ export const Step_2 = () => {
             <section className="Step_2_content">
                 {
                     data ?
-                    data.map((data) => 
+                    data.map((data, index) => 
                         <ProductBox
+                            key={index + 1}
                             Name={data.name}
                             Price={data.price}
                             Sale={data.sale}
