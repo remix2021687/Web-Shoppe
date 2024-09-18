@@ -22,7 +22,7 @@ export const ProductListComponents = () => {
             setData(undefined);
         })
 
-        setFilter(FilterData)
+        setFilter(FilterData)   
     }, [FilterData])
 
 
@@ -50,7 +50,6 @@ export const ProductListComponents = () => {
                     .filter((res) => res.price >= Filter.SliderData[0] && res.price <= Filter.SliderData[1])
                     .filter((res) => Filter.isSale == true && res.sale > 0 && res.stock > 0 || !Filter.isSale)
                     .filter((res) => Filter.isStock == true && res.stock > 0 || !Filter.isStock)
-                    // .filter((res) => res.shop.map((data) => data.name) == Filter.ShopBy || !Filter.ShopBy)
                     .filter((res) => res.shop.name == Filter.ShopBy || !Filter.ShopBy)
                     .map((res, index) => 
                             <ProductBox

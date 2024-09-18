@@ -36,7 +36,7 @@ class ShopListViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class ShopProductListViewSetPagination(viewsets.ReadOnlyModelViewSet):
-    queryset = ShopProduct.objects.all()
+    queryset = ShopProduct.objects.filter(stock__gt=0)  
     serializer_class = ShopProductListSerializer
     permission_classes = [AllowAny]
     pagination_class = ShopListPagination

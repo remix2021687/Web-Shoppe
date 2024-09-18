@@ -904,12 +904,10 @@ main {
     margin: 0 20px;
   }
   .Step_2 .Step_2_content {
-    gap: 20px;
+    gap: 40px;
   }
   .Step_2 .Step_2_content .ProductBox {
-    -webkit-box-flex: 30%;
-        -ms-flex: 30%;
-            flex: 30%;
+    width: 40%;
   }
   .ProductBox {
     width: 40%;

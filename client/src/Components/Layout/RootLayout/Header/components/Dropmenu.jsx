@@ -29,6 +29,10 @@ export const Dropmenu = ({ setDropmenuClickState }) => {
         }
     }
 
+    const ClickEvent = (event) => {
+        setDropmenuClickState(event);
+    } 
+
     return (
         <motion.section 
             className="Dropmenu"
@@ -43,12 +47,12 @@ export const Dropmenu = ({ setDropmenuClickState }) => {
         </label>
 
         <section className="Dropmenu_navigation">
-            <NavLink to={'/'}>Home</NavLink>
-            <NavLink to={'/shop'}>Shop</NavLink>
-            <NavLink>About</NavLink>
-            <NavLink>Blog</NavLink>
-            <NavLink>Help</NavLink>
-            <NavLink>Contact</NavLink>
+            <NavLink to={'/'} onClick={ClickEvent}>Home</NavLink>
+            <NavLink to={'/shop'} onClick={ClickEvent}>Shop</NavLink>
+            <NavLink onClick={ClickEvent}>About</NavLink>
+            <NavLink onClick={ClickEvent}>Blog</NavLink>
+            <NavLink onClick={ClickEvent}>Help</NavLink>
+            <NavLink onClick={ClickEvent}>Contact</NavLink>
         </section>
 
         <hr />

@@ -52,6 +52,14 @@ export const Header = () => {
         }
     }
 
+    const onClickEvent = (event) => {
+        if (event) {
+            setIsOpen(false);
+        } else {
+            setIsOpen(true);
+        }
+    }
+
     return (
         <>
             <nav className="Header"
@@ -118,7 +126,7 @@ export const Header = () => {
             </nav>
 
             <DropmenuContext.Provider value={isOpne}>
-                <Dropmenu />
+                <Dropmenu setDropmenuClickState={onClickEvent} />
             </DropmenuContext.Provider>
 
         </>

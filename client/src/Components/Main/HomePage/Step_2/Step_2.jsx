@@ -5,6 +5,7 @@ import { GetProductListPagination } from '../../../../Axios/AxiosInit';
 
 export const Step_2 = () => {
     const [data, setData] = useState([]);
+    const [productCount, setProductCount] = useState(0);
     
     useEffect(() => {
         GetProductListPagination()
@@ -18,6 +19,12 @@ export const Step_2 = () => {
         })
     }, [])
 
+    useEffect(() => {
+        const countProducts = data.filter((res) => res.stock > 0);
+        
+        setProductCount(countProducts.length);
+    }, [productCount])
+
 
     return (
         <section className="Step_2">
@@ -26,7 +33,9 @@ export const Step_2 = () => {
                 <NavLink to={'/shop'}>View All</NavLink>
             </header>
             
-            <section className="Step_2_content">
+            <section className="Step_2_content" style={{
+                justifyContent: productCount < 4 ? 'center': 'space-between'
+            }}>
                 {
                     data ?
                     data.map((data, index) => 
