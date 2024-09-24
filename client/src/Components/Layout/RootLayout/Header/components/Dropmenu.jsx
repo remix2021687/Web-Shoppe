@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { DropmenuContext } from "../Header"
 import { motion } from 'framer-motion'
 import { MagnifyingGlass, UserPlus, SignIn } from '@phosphor-icons/react'

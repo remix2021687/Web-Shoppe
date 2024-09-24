@@ -1,0 +1,15 @@
+.ProductPage {
+    display: flex;
+    flex-direction: column;
+    
+    .ProductPage_viewer {
+        display: flex;
+        flex-direction: row;
+
+        .ProductPage_viewer_children {
+            display: flex;
+            flex-direction: column;
+            
+        }
+    }
+}
