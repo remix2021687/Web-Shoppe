@@ -4,10 +4,12 @@ import { App } from './App'
 import { BrowserRouter } from 'react-router-dom'
 import { Components } from './Components/Components'
 import { RoutesComponents } from './Routes/Routes'
+import { LoadingFullScreen } from './Components/Layout/LoadingFullScreen/LoadingFullScreen'
 import './assets/css/index.min.css'
 import 'swiper/css';
+import 'swiper/css/scrollbar';
 import 'swiper/css/pagination';
-import { LoadingFullScreen } from './Components/Layout/LoadingFullScreen/LoadingFullScreen'
+import 'swiper/css/thumbs';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

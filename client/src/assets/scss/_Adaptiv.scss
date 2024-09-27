@@ -1,3 +1,11 @@
+@media screen and (min-width: 1920px) {
+    .Step_2 {
+        .Step_2_content {
+            justify-content: space-between;
+        }
+    }
+}
+
 @media screen and (max-width: 768px) {
     .Header {
 
@@ -15,11 +23,26 @@
 
         .swiper {
             .swiper-slide {
+                justify-content: flex-end;
+                padding: 100px 30px;
                 .SwiperSlide_content {
                     a {
                         width: 35%;
                     }
                 }
+            }
+        }
+
+    }
+
+    .Step_2 {
+        margin: 0 20px;
+
+        .Step_2_content {
+            gap: 40px;
+
+            .ProductBox {
+                width: 40%;
             }
         }
     }
@@ -36,9 +59,65 @@
             align-items: center;
         }
     }
+
+
+    .ShopPage {
+        .ShopPage_content {
+            flex-direction: column;
+            margin-top: 15px;
+            gap: 20px;
+
+            .FilterComponent {
+                width: 100%;
+                justify-content: center;
+                margin: 0;
+                
+
+                .FilterComponent_Content {
+                    margin: 0 10px;
+                }
+            }
+        }
+
+        .ProductListComponents {
+            .ProductBox {
+                width: auto;
+                flex: 30%;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 425px) {
+
+    .Step_1 {
+        .swiper {
+            .swiper-slide {
+                padding: 50px 8px;
+            }
+        }
+
+    }
+
+    .Step_2 {
+
+        .Step_2_content {
+            gap: 25px;
+
+            .ProductBox {
+                flex: 50%;
+            }
+        }
+    }
+    .ShopPage {
+        margin: 96px 30px 0 30px;
+        .ProductListComponents {
+            .ProductBox {
+                flex: 100%;
+            }
+        }
+    }
+
     .Footer {
         .Footer_left {
             ul {

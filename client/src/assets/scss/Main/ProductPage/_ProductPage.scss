@@ -1,0 +1,16 @@
+.ProductPage {
+    display: flex;
+    flex-direction: column;
+    margin: 128px 96px 0 96px;
+
+    .ProductPage_head {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 64px;
+
+        @import './components/ProductPageViewer';
+
+        @import './components/ProductPageInfo';
+    }
+}

@@ -9,7 +9,6 @@ export const Step_1 = () => {
                 modules={[Autoplay, Pagination]}
 
                 spaceBetween={10}
-                // centeredSlides={true}
                 pagination={{
                     enabled: true,
                     type: 'bullets',

@@ -1,7 +1,7 @@
 import { MagnifyingGlass } from '@phosphor-icons/react'
 import { Select, Slider, Switch, ConfigProvider } from 'antd'
 import { useEffect, useState } from 'react'
-import { GetProductPriceList, GetShopList } from '../../../../Axios/AxiosInit'
+import { GetProductPriceList, GetShopList } from '../../../../../Axios/AxiosInit'
 
 export const FilterComponent = ({ setParentToChild }) => {
     const [searchData, setSearchData] = useState('')
@@ -109,19 +109,6 @@ export const FilterComponent = ({ setParentToChild }) => {
                     }
 
                     </Select>
-
-                    <Select
-                        allowClear={true}
-                        style={{ height: '54px' }}
-                        placeholder={"Sort By"}
-                        options={[
-                            {value: 'Test_1', label: "Test_1"},
-                            {value: 'Test_2', label: "Test_2"},
-                            {value: 'Test_3', label: "Test_3"},
-                            {value: 'Test_4', label: "Test_4"},
-                        ]}
-                        onChange={(e) => {setSortByData(e)}}
-                    />
                 </ConfigProvider>
 
                 <ConfigProvider
@@ -149,7 +136,7 @@ export const FilterComponent = ({ setParentToChild }) => {
                         onChange={(e) => {setSliderData(e)}}
                     />
 
-                    <h2>Price: {SliderData[0].toLocaleString()}$ - {SliderData[1].toLocaleString()}$</h2>
+                    <h2 className='FilterComponent_PriceCount'>Price: {SliderData[0].toLocaleString()}$ - {SliderData[1].toLocaleString()}$</h2>
                 </ConfigProvider>
 
                 <ConfigProvider

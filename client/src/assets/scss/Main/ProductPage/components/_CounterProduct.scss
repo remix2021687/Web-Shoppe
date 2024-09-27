@@ -1,0 +1,39 @@
+.CounterProduct {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 53px;
+    background-color: #EFEFEF;
+    border-radius: 8px;
+
+
+    h2 {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    button {
+        width: 50%;
+        background: none;
+        border: none;
+        outline: none;
+        opacity: 0.3;
+
+        &:hover {
+            color: black;
+            opacity: 1;
+        }
+    }
+
+    input {
+        text-align: center;
+        width: 80%;
+        height: 30px;
+        border: none;
+        border-radius: 8px;
+
+        
+    }
+}

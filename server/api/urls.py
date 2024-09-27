@@ -4,15 +4,16 @@ from rest_framework import routers
 from rest_framework_simplejwt.views import TokenVerifyView, TokenRefreshView, TokenObtainPairView
 
 from api.shop.resourceview import ShopProductViewSet, ShopProductReviewViewSet, ShopProductPriceListViewSet, \
-    ShopListViewSet
+    ShopListViewSet, ShopProductListViewSetPagination
 
 router = routers.DefaultRouter()
 router.register('shop', ShopProductViewSet)
 router.register('product-price', ShopProductPriceListViewSet, basename='shopPrice')
 router.register('shop-list', ShopListViewSet, basename='shopList')
+router.register('shop-list-page', ShopProductListViewSetPagination, basename='shopListPagination')
 router.register('review', ShopProductReviewViewSet)
 
-urlpatterns = [
+urlpatterns = [             
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

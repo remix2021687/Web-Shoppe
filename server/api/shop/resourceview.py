@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, AllowAny
+from .pagination import ShopListPagination
 
 from shop.models import ShopProduct, ProductReview, Shop
 from .serializer import (ProductReviewSerializer,
@@ -20,7 +21,7 @@ class ShopProductViewSet(viewsets.ModelViewSet):
 class ShopProductReviewViewSet(viewsets.ModelViewSet):
     queryset = ProductReview.objects.all()
     serializer_class = ProductReviewSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class ShopProductPriceListViewSet(viewsets.ReadOnlyModelViewSet):
@@ -28,8 +29,14 @@ class ShopProductPriceListViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ShopProductPriceSerializer
     permission_classes = [AllowAny]
 
-
 class ShopListViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Shop.objects.all()
     serializer_class = ShopSerializer
     permission_classes = [AllowAny]
+
+
+class ShopProductListViewSetPagination(viewsets.ReadOnlyModelViewSet):
+    queryset = ShopProduct.objects.filter(stock__gt=0)  
+    serializer_class = ShopProductListSerializer
+    permission_classes = [AllowAny]
+    pagination_class = ShopListPagination

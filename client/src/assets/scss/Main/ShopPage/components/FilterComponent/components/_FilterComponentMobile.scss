@@ -1,0 +1,59 @@
+.FilterComponentMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        justify-content: flex-start;
+        align-self: flex-start;
+        border: none;
+        background: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: #A18A68;
+
+        img {
+            width: 30px;
+        }
+    }
+
+    .FilterComponentMobile_Filter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #A18A68;
+        border-radius: 10px;
+        padding: 0 5px;
+        height: 0px;
+        overflow: hidden;
+        transition: 0.5s ease;
+
+        .FilterComponent {
+            position: static;
+            color: white;
+
+            .FilterComponent_Content {
+                .FilterComponent_PriceCount {
+                    color: white;
+                }
+            }
+        }
+
+        .FilterComponent_search {
+            align-self: center;
+            width: 95%;
+            margin-top: 32px;
+
+            input {
+                height: 50px;
+                border-radius: 10px;
+                border: none;
+            }
+        }
+    }
+}
