@@ -13,7 +13,7 @@ router.register('shop-list', ShopListViewSet, basename='shopList')
 router.register('shop-list-page', ShopProductListViewSetPagination, basename='shopListPagination')
 router.register('review', ShopProductReviewViewSet)
 
-urlpatterns = [
+urlpatterns = [             
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
