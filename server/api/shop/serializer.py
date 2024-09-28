@@ -55,7 +55,6 @@ class ShopProductPriceSerializer(serializers.ModelSerializer):
         model = ShopProduct
         fields = ('id', 'price')
 
-
 class ShopProductListSerializer(serializers.ModelSerializer):
     shop = ShopSerializer(read_only=True)
 
@@ -73,5 +72,5 @@ class ShopProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'sale', 'stock', 'sku', 'description_product', 'shop', 'preview_image',
-                  'category', 'img_list', 'product_info', 'reviews')
+        fields = ('id', 'name', 'price', 'description_product', 'preview_image', 'img_list', 'sale', 'stock', 'sku',
+                  'shop', 'category', 'product_info', 'reviews')

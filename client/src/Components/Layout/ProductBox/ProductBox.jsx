@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom'
 
-export const ProductBox = ({Name, Price, Sale, URL, Stock}) => {
+export const ProductBox = ({ProductId, Name, Price, Sale, URL, Stock}) => {
 
     return (
-        <NavLink className='ProductBox'>
+        <NavLink className='ProductBox' to={`/shop/${ProductId}`}>
             <img src={URL ? URL: '/src/assets/img/img_2.png'} />
             
             {

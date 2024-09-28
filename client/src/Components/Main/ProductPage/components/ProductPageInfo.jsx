@@ -18,12 +18,13 @@ export const ProductPageInfo = () => {
 
     return (
         <section className="ProductPage_head_info">
+        
             <section className="ProductPage_head_info_header">
                 <h2>Lira Earrings</h2>
                 <h3>$ 20,00</h3>
             </section>
+
             <section className="ProductPage_head_info_description">
-                
                 <section className="ProductPage_head_info_description_rate">
                     <Rate 
                         allowHalf
@@ -39,10 +40,12 @@ export const ProductPageInfo = () => {
                 a maximus elit ex vitae libero. 
                 Sed quis mauris eget arcu facilisis consequat sed eu felis. </p>
             </section>
+
             <section className="ProductPage_head_info_counter">
                 <CounterProduct />
                 <button>ADD TO CART</button>
             </section>
+
             <section className="ProductPage_head_info_footer">
                 <section className="ProductPage_head_info_footer_social_and_like">
                     <motion.section whileTap={{scale: 0.8}} style={{width: '25px'}}>
@@ -53,7 +56,9 @@ export const ProductPageInfo = () => {
                             
                         />
                     </motion.section>
+
                     <hr />
+
                     <section className="ProductPage_head_info_footer_social">
                         <a href="#" target="_blank" className="EmailIcon">
                             <EnvelopeSimple size={25} weight="bold" color="#979797" />
@@ -69,6 +74,7 @@ export const ProductPageInfo = () => {
                         </a>
                     </section>
                 </section>
+
                 <section className="ProductPage_head_info_footer_sku_category">
                     <h4>SKU: <span>12</span></h4>
                     <h4>Categories: <span>Fashion, Style</span></h4>

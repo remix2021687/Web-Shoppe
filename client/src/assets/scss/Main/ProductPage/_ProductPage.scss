@@ -1,6 +1,7 @@
 .ProductPage {
     display: flex;
     flex-direction: column;
+    gap: 100px;
     margin: 128px 96px 0 96px;
 
     .ProductPage_head {
@@ -13,4 +14,7 @@
 
         @import './components/ProductPageInfo';
     }
+
+    @import './components/ProductPageDescription/ProductPageDescription';
+
 }

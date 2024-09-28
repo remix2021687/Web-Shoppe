@@ -21,7 +21,7 @@ class ShopProductViewSet(viewsets.ModelViewSet):
 class ShopProductReviewViewSet(viewsets.ModelViewSet):
     queryset = ProductReview.objects.all()
     serializer_class = ProductReviewSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAdminUser]
 
 
 class ShopProductPriceListViewSet(viewsets.ReadOnlyModelViewSet):

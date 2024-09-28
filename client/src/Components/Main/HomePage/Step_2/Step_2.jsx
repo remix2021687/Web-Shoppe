@@ -41,6 +41,7 @@ export const Step_2 = () => {
                     data.map((data, index) => 
                         <ProductBox
                             key={index + 1}
+                            ProductId={data.id}
                             Name={data.name}
                             Price={data.price}
                             Sale={data.sale}
