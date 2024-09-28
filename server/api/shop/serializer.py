@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from shop.models import ShopProduct, ProductReview, ProductImgList, ProductInfo, ProductInfoMaterial, Shop, Category
+from shop.models import ShopProduct, ProductReview, ProductImgList, ProductInfo, Shop, Category
 
 
 class ShopSerializer(serializers.ModelSerializer):
@@ -19,7 +19,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username')
+        fields = ('id', 'username', 'first_name', 'last_name')
 
 
 class ProductImgListSerializer(serializers.ModelSerializer):
@@ -28,18 +28,10 @@ class ProductImgListSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'url')
 
 
-class ProductInfoMaterialSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ProductInfoMaterial
-        fields = ('id', 'name', 'product_info')
-
-
 class ProductInfoSerializer(serializers.ModelSerializer):
-    material = ProductInfoMaterialSerializer(many=True)
-
     class Meta:
         model = ProductInfo
-        fields = ('id', 'weight', 'dimentions', 'colours', 'material', 'product')
+        fields = ('id', 'weight', 'dimentions', 'colours', 'material')
 
 
 class ProductReviewSerializer(serializers.ModelSerializer):
@@ -66,11 +58,11 @@ class ShopProductListSerializer(serializers.ModelSerializer):
 class ShopProductSerializer(serializers.ModelSerializer):
     reviews = ProductReviewSerializer(many=True, required=False)
     img_list = ProductImgListSerializer(many=True, required=True)
-    product_info = ProductInfoSerializer(many=True, source='info')
+    product_info = ProductInfoSerializer(read_only=True)
     category = CategorySerializer(many=True, read_only=True)
     shop = ShopSerializer(read_only=True)
 
     class Meta:
         model = ShopProduct
         fields = ('id', 'name', 'price', 'description_product', 'preview_image', 'img_list', 'sale', 'stock', 'sku',
-                  'shop', 'category', 'product_info', 'reviews')
+                  'shop', 'product_info', 'category', 'reviews')
