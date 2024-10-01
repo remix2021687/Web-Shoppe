@@ -1,14 +1,24 @@
-import { useState } from "react"
+import { useState, useContext, useEffect } from "react"
 import { AditionalInfo } from "./components/AditionalInfo"
 import { Description } from "./components/Description"
 import { Review } from "./components/Review/Review"
+import { ProductPageDescriptionContext } from "../../ProductPage"
 
 export const ProductPageDescription = () => {
+    const ProductDescriptionContext = useContext(ProductPageDescriptionContext)
+    const [data, setData] = useState([]);
+
     const [ButtonIsActive, setButtonIsActive] = useState({
         DescriptionButton: true,
         AditionalInfoButton: false,
         Reviews: false
     })
+
+    useEffect(() => {
+        if (ProductDescriptionContext) {
+            setData(ProductDescriptionContext)
+        }
+    }, [ProductDescriptionContext])
 
     const ButtonSelect = (event) => {
         const ButtonValue = event.target.value 
@@ -66,7 +76,7 @@ export const ProductPageDescription = () => {
             ClassName: ButtonIsActive.Reviews ? 'active': '',
             onClickFunction: ButtonSelect,
             value: 'Reviews',
-            DisplayValue: 'Reviews (0)',
+            DisplayValue: `Reviews (${data.reviews ? data.reviews.length: null})`,
         },
 
     ]
@@ -82,19 +92,28 @@ export const ProductPageDescription = () => {
             </section>
             {
                 ButtonIsActive.DescriptionButton ? 
-                <Description />
+                <Description 
+                    Text={data.company_description}
+                />
                 :
                 null
             }
             {
                 ButtonIsActive.AditionalInfoButton ?
-                <AditionalInfo />
+                <AditionalInfo 
+                    Weight={data.product_info.weight}
+                    Dimentions={data.product_info.dimentions}
+                    Colours={data.product_info.colours}
+                    Material={data.product_info.material}
+                />
                 :
                 null
             }
             {
                 ButtonIsActive.Reviews ?
-                <Review />
+                <Review 
+                    dataReview={data.reviews}
+                />
                 :
                 null
             }

@@ -9,8 +9,6 @@ export const ProductPageViewer = () => {
     const [thumbsGallery, setThumbsGallery] = useState(null);
     const imgList = useContext(ProductPageViewerContext);
 
-    console.log(imgList)
-    
     return (
         <section className="ProductPage_viewer">
             <section className="ProductPage_viewer_children">

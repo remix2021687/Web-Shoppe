@@ -2,17 +2,30 @@ import { ReviewComment } from "./components/ReviewComment"
 import { Checkbox, ConfigProvider, Rate } from "antd"
 import { motion } from 'framer-motion'
 
-export const Review = () => {
+export const Review = ({dataReview}) => {
+    const reviewCount = dataReview.length;
+
     return (
         <section className="Review">
             <section className="Review_content">
-                <h2>2 Reviews for lira earings</h2>
+                <h2>{dataReview ? reviewCount: null} Reviews for lira earings</h2>
                 
                 <section className="Review_content__content">
-                    <ReviewComment />
-                    <ReviewComment />
-                    <ReviewComment />
-                    <ReviewComment />
+                    {
+                        dataReview ?
+                        dataReview.map((data, index) => 
+                            <ReviewComment
+                                key={index + 1}
+                                LastName={data.user.last_name}
+                                FirstName={data.user.first_name}
+                                DateCreated={data.data}
+                                CountRate={data.rate}
+                                Comment={data.comment}
+                            />
+                        )
+                        :
+                        null
+                    }
                 </section>
             </section>
             <section className="Review_form">

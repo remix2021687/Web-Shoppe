@@ -9,6 +9,7 @@ import { ProductPageInfoContext } from "../ProductPage";
 export const ProductPageInfo = () => {
     const [isLiked, setIsLiked] = useState(false);
     const [data, setData] = useState([])
+    const categoryData = data.category
     const PageInfoContext = useContext(ProductPageInfoContext);
 
     const LikeHandler = () => {
@@ -85,7 +86,11 @@ export const ProductPageInfo = () => {
 
                 <section className="ProductPage_head_info_footer_sku_category">
                     <h4>SKU: <span>12</span></h4>
-                    <h4>Categories: <span>Fashion, Style</span></h4>
+                    <h4>
+                        Categories: {
+                            categoryData ? categoryData.map((data) => <span key={data.id}>{data.name}, </span>) : null
+                        }
+                    </h4>
                 </section>
             </section>
         </section>

@@ -7,14 +7,15 @@ import { GetProductInfo } from "../../../Axios/AxiosInit";
 
 export const ProductPageViewerContext = createContext(null);
 export const ProductPageInfoContext = createContext(null);
+export const ProductPageDescriptionContext = createContext(null)
 
 export const ProductPage = () => {
     const { id } = useParams();
     const [data, setData] = useState([]);
     
     useEffect(() => {
-        document.title = 'SHOPPE | Name'
-    }, [])
+        document.title = `SHOPPE | ${data.name}`
+    }, [data.name])
 
     useEffect(() => {
         GetProductInfo(id)
@@ -56,7 +57,16 @@ export const ProductPage = () => {
                 </ProductPageInfoContext.Provider>
             </section>
 
-            <ProductPageDescription />
+            <ProductPageDescriptionContext.Provider
+                value={{
+                    company_description: data.shop ? data.shop.company_description: null,
+                    product_info: data.product_info ? data.product_info: null,
+                    reviews: data.reviews ? data.reviews: null 
+                }}
+            >
+                <ProductPageDescription />
+            </ProductPageDescriptionContext.Provider>
+
         </section>
     )
 }

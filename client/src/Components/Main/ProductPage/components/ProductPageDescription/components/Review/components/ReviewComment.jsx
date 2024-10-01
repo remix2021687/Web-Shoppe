@@ -1,15 +1,21 @@
 import { Rate } from "antd"
+import moment from 'moment'
 
-export const ReviewComment = () => {
+export const ReviewComment = ({
+    FirstName,
+    LastName,
+    DateCreated,
+    CountRate,
+    Comment
+}) => {
     return (
         <section className="ReviewComment">
             <section className="ReviewComment_header">
-                <h3>Scarlet withch <span>6 May, 2020</span></h3>
-                <Rate style={{color: 'black'}} disabled={true} defaultValue={3} />
+                <h3>{LastName} {FirstName} <span>{moment(DateCreated).format("D MMM, YYYY")}</span></h3>
+                <Rate style={{color: 'black'}} disabled={true} defaultValue={CountRate} />
             </section>
 
-            <p>Lorem ipsum dolor sit amet, 
-            consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
+            <p>{Comment}</p>
         </section>
     )
 }
