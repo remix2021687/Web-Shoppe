@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, createContext } from "react"
 import { useParams } from "react-router-dom";
 import { ProductPageViewer } from "./components/ProductPageViewer";
 import { ProductPageInfo } from "./components/ProductPageInfo";
 import { ProductPageDescription } from "./components/ProductPageDescription/ProductPageDescription";
 import { GetProductInfo } from "../../../Axios/AxiosInit";
+
+export const ProductPageViewerContext = createContext(null);
+export const ProductPageInfoContext = createContext(null);
 
 export const ProductPage = () => {
     const { id } = useParams();
@@ -26,13 +29,31 @@ export const ProductPage = () => {
         })
     }, [])
 
-    console.log(data)
-
     return (
         <section className="ProductPage">
             <section className="ProductPage_head">
-                <ProductPageViewer />
-                <ProductPageInfo />
+                <ProductPageViewerContext.Provider value={data.img_list}>
+                    <ProductPageViewer />
+                </ProductPageViewerContext.Provider>
+
+                <ProductPageInfoContext.Provider 
+                    value={
+                        [
+                            {
+                                name: data.name,
+                                price: data.price,
+                                description_product: data.description_product,
+                                sale: data.sale,
+                                stock: data.stock,
+                                shop: data.shop,
+                                material_info: data.product_info,
+                                category: data.category,
+                                reviews: data.reviews
+                            }
+                        ]
+                    }>
+                    <ProductPageInfo />
+                </ProductPageInfoContext.Provider>
             </section>
 
             <ProductPageDescription />

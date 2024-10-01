@@ -57,12 +57,12 @@ class ShopProductListSerializer(serializers.ModelSerializer):
 
 class ShopProductSerializer(serializers.ModelSerializer):
     reviews = ProductReviewSerializer(many=True, required=False)
-    img_list = ProductImgListSerializer(many=True, required=True)
     product_info = ProductInfoSerializer(read_only=True)
+    img_list = ProductImgListSerializer(many=True)
     category = CategorySerializer(many=True, read_only=True)
     shop = ShopSerializer(read_only=True)
 
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'description_product', 'preview_image', 'img_list', 'sale', 'stock', 'sku',
+        fields = ('id', 'name', 'price', 'description_product', 'img_list', 'preview_image', 'sale', 'stock', 'sku',
                   'shop', 'product_info', 'category', 'reviews')
