@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export const AxiosInit = axios.create({
-    baseURL: `http://localhost:8000/api/` 
+    // baseURL: `http://127.0.0.1:8000/api/`
+    baseURL: `http://localhost:8000/api/`
 })
 
 AxiosInit.interceptors.request.use((config) => {
@@ -16,6 +17,16 @@ export const GetProductList = async () => {
     const response = await AxiosInit.get('shop/')
 
     try {        
+        return response
+    } catch(err) {
+        return response
+    }
+}
+
+export const GetProductInfo = async (id) => {
+    const response = await AxiosInit.get(`shop/${id}`)
+
+    try {
         return response
     } catch(err) {
         return response

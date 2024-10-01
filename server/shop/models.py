@@ -23,29 +23,19 @@ class Category(models.Model):
 
 class ProductImgList(models.Model):
     name = models.CharField(max_length=100, unique=True, blank=False, null=True)
-    product = models.ForeignKey('ShopProduct', on_delete=models.CASCADE, related_name='img_list')
     url = models.ImageField(upload_to="uploads/products/%Y/%m/%d/")
 
     def __str__(self):
-        return f'Image Name: {self.name}, Product: | {self.product} |'
-
-
-class ProductInfoMaterial(models.Model):
-    name = models.CharField(max_length=100, unique=True, blank=False, null=True)
-    product_info = models.ForeignKey('ProductInfo', on_delete=models.CASCADE, related_name='material', default='')
-
-    def __str__(self):
-        return f'Material: {self.name}'
-
+        return f'Image Name: {self.name}'
 
 class ProductInfo(models.Model):
     weight = models.FloatField(max_length=100, blank=False, null=False)
     dimentions = models.CharField(max_length=100, blank=False, null=False)
     colours = models.CharField(max_length=100, blank=False, null=False)
-    product = models.ForeignKey('ShopProduct', on_delete=models.CASCADE, related_name='info', default='')
+    material = models.CharField(max_length=100, blank=False, null=False, default='')
 
     def __str__(self):
-        return f'Material: {self.weight}'
+        return f'Material: {self.material}'
 
 
 class ProductReview(models.Model):
@@ -59,6 +49,9 @@ class ProductReview(models.Model):
     product = models.ForeignKey('shop.ShopProduct', on_delete=models.CASCADE, related_name='reviews')
     data = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['data']
+
     def __str__(self):
         return f"Review by {self.user}, rate: {self.rate}"
 
@@ -70,9 +63,12 @@ class ShopProduct(models.Model):
     description_product = models.TextField(max_length=3000, null=False, blank=False)
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, related_name='products_shop', default=None, null=True)
     stock = models.IntegerField(blank=True, null=False, default=0)
+    product_info = models.ForeignKey('ProductInfo', on_delete=models.CASCADE, related_name='products_info',
+                                     default='', null=False)
     sku = models.UUIDField(default=uuid.uuid4, editable=False)
     sale = models.IntegerField(blank=True, default=0)
     preview_image = models.ImageField(upload_to='uploads/preview_img/', null=False, blank=False, default='')
+    img_list = models.ManyToManyField('ProductImgList')
     category = models.ManyToManyField(Category)
 
     date_created = models.DateTimeField(auto_now_add=True)

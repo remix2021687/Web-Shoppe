@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from datetime import timedelta
+from email.policy import default
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,8 +25,6 @@ SECRET_KEY = 'django-insecure-qjz^0&97_feozm)iggy^=nlq6h%1qpn+o)bz&iga*(%u432tsx
 
 # # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-
-ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -78,16 +77,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'shopdb',
-#         'USER': 'ROOT',
-#         'PASSWORD': '2010665KE',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -99,10 +88,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173/',
-    'http://192.168.0.31:5173/'
-]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -193,7 +178,7 @@ if os.environ.get('PROD', default="False") == "True":
     except ImportError:
         pass
 
-elif os.environ.get('PROD', default="False") == "False":
+else:
     try:
         from .settings_local import *
     except ImportError:

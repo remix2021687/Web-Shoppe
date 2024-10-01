@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs, Scrollbar } from "swiper/modules";
 import { assets } from "../../../../assets/assets";
+import { ProductPageViewerContext } from "../ProductPage";
 
 
 export const ProductPageViewer = () => {
     const [thumbsGallery, setThumbsGallery] = useState(null);
-    
+    const imgList = useContext(ProductPageViewerContext);
+
     return (
         <section className="ProductPage_viewer">
             <section className="ProductPage_viewer_children">
@@ -16,18 +18,16 @@ export const ProductPageViewer = () => {
                     slidesPerView={4}
                     modules={[Thumbs]}
                 >
-                    <SwiperSlide>
-                        <img src={assets.img_test} alt="img_test" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src={assets.img_test} alt="img_test" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src={assets.img_test} alt="img_test" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src={assets.img_test} alt="img_test" />
-                    </SwiperSlide>
+                    {
+                        imgList ?
+                        imgList.map((data) => 
+                            <SwiperSlide key={data.id}>
+                                <img src={data.url} alt={data.name} />
+                            </SwiperSlide>
+                        )
+                        :
+                        null
+                    }
                 </Swiper>
             </section>
             <section className="ProductPage_viewer_parent">
@@ -39,18 +39,16 @@ export const ProductPageViewer = () => {
                     }}
                     modules={[Thumbs, Scrollbar]}
                 >
-                    <SwiperSlide>
-                        <img src={assets.img_test} alt="img_test" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src={assets.img_test} alt="img_test" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src={assets.img_test} alt="img_test" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src={assets.img_test} alt="img_test" />
-                    </SwiperSlide>
+                    {
+                        imgList ?
+                        imgList.map((data) => 
+                            <SwiperSlide key={data.id}>
+                                <img src={data.url} alt={data.name} />
+                            </SwiperSlide>
+                        )
+                        :
+                        null
+                    }
                 </Swiper>
             </section>    
         </section>

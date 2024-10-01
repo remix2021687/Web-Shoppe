@@ -1,0 +1,19 @@
+.AditionalInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    height: 250px;
+
+    h3 {
+        font-size: 18px;
+        font-weight: 400;
+        color: black;
+
+        span {
+            color: #707070;
+        }
+    }
+}

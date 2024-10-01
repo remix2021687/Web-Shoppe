@@ -54,6 +54,7 @@ export const ProductListComponents = () => {
                     .map((res, index) => 
                             <ProductBox
                                 key={index + 1}
+                                ProductId={res.id}
                                 Name={res.name}
                                 Price={res.price}
                                 Sale={res.sale}

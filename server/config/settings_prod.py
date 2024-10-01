@@ -2,6 +2,8 @@ import os
 
 DEBUG = False
 
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', 'localhost')]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -14,5 +16,5 @@ DATABASES = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    f"{os.environ.get('ALLOWED_FORNT_CONNACTION', 'http://localhost:80/')}"
+    f"{os.environ.get('ALLOWED_FORNT_CONNACTION', 'http://localhost:5173')}"
 ]

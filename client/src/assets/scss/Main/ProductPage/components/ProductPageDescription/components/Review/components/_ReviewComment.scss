@@ -1,0 +1,37 @@
+.ReviewComment {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #707070;
+    box-sizing: content-box;
+
+    .ReviewComment_header {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        h3 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+            font-size: 20px;
+            font-weight: 400;
+
+            span {
+                font-size: 14px;
+                color: #707070;
+            }
+
+        }
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        color: #707070;
+        max-width: 560px;
+        line-height: 30px;
+    }
+}
