@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const AxiosInit = axios.create({
     // baseURL: `http://127.0.0.1:8000/api/`
-    baseURL: import.meta.env.BASE_URL ? `${import.meta.env.BASE_URL}`: 'http://localhost:8000/api/'
+    baseURL: import.meta.env.VITE_URL ? `${import.meta.env.VITE_URL}`: 'http://localhost:800/api/'
 })
 
 AxiosInit.interceptors.request.use((config) => {
