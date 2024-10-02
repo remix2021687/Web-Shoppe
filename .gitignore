@@ -141,4 +141,3 @@ __pycache__
 client/Dockerfile
 /database
 server/Dockerfile
-web/docker-compose.yaml
