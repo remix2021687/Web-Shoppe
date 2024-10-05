@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const AxiosInit = axios.create({
     // baseURL: `http://127.0.0.1:8000/api/`
-    baseURL: import.meta.env.VITE_URL ? `${import.meta.env.VITE_URL}`: 'http://localhost:800/api/'
+    baseURL: import.meta.env.VITE_URL2
 })
 
 AxiosInit.interceptors.request.use((config) => {
@@ -58,6 +58,16 @@ export const GetShopList = async () => {
 
     try {
         return response;
+    } catch(err) {
+        return response
+    }
+}
+
+export const PostReviewProduct = async (requestData) => {
+    const response = await AxiosInit.post('review/', requestData)
+
+    try {
+        return response
     } catch(err) {
         return response
     }

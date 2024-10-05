@@ -1,8 +1,10 @@
 import uuid
+from logging import fatal
 
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.template.defaultfilters import default
 
 
 class Shop(models.Model):
@@ -40,7 +42,9 @@ class ProductInfo(models.Model):
 
 class ProductReview(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    email = models.EmailField(blank=False, null=False, default='')
+    first_name = models.CharField(max_length=50, blank=False, null=False, default='')
+    last_name = models.CharField(max_length=50, blank=False, null=False, default='')
     comment = models.TextField(blank=False, null=False)
     rate = models.IntegerField(blank=True, null=False, default=0, validators=[
         MinValueValidator(0),
@@ -53,7 +57,7 @@ class ProductReview(models.Model):
         ordering = ['data']
 
     def __str__(self):
-        return f"Review by {self.user}, rate: {self.rate}"
+        return f"Review by {self.first_name} {self.last_name}, rate: {self.rate}"
 
 
 class ShopProduct(models.Model):
