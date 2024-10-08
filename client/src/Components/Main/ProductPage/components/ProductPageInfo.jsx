@@ -44,7 +44,7 @@ export const ProductPageInfo = () => {
                         style={{color: 'black'}}
                         defaultValue={2.5}
                     />
-                    <h4>1 customer review</h4>
+                    <h4>{data.reviews ? data.reviews.length: null} customer review</h4>
                 </section>
                 
                 <p>{data.description_product}</p>

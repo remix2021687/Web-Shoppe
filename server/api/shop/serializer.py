@@ -34,18 +34,23 @@ class ProductInfoSerializer(serializers.ModelSerializer):
         fields = ('id', 'weight', 'dimentions', 'colours', 'material')
 
 
-class ProductReviewSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-
+class ProductReviewPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductReview
-        fields = ('id', 'user', 'comment', 'rate', 'data')
+        fields = ('id', 'first_name', 'last_name', 'email', 'comment', 'rate', 'product')
+
+
+class ProductReviewListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductReview
+        fields = ('id', 'first_name', 'last_name', 'comment', 'rate', 'data')
 
 
 class ShopProductPriceSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopProduct
         fields = ('id', 'price')
+
 
 class ShopProductListSerializer(serializers.ModelSerializer):
     shop = ShopSerializer(read_only=True)
@@ -56,7 +61,7 @@ class ShopProductListSerializer(serializers.ModelSerializer):
 
 
 class ShopProductSerializer(serializers.ModelSerializer):
-    reviews = ProductReviewSerializer(many=True, required=False)
+    reviews = ProductReviewListSerializer(many=True, required=False)
     product_info = ProductInfoSerializer(read_only=True)
     img_list = ProductImgListSerializer(many=True)
     category = CategorySerializer(many=True, read_only=True)
