@@ -49,6 +49,8 @@
                 }
             }
         }
+
+        &.non_border {border: none !important;}
     }
 
     @import './components/Description';

@@ -67,6 +67,10 @@ export const ProductPage = () => {
                 <ProductPageDescription />
             </ProductPageDescriptionContext.Provider>
 
+            <section className="ProductPage_recommendation">
+
+            </section>
+
         </section>
     )
 }

@@ -108,6 +108,10 @@
 
         .ProductPage_description {
             width: 100%;
+
+            .Review {
+                flex-direction: column-reverse;
+            }
         }
 
     }

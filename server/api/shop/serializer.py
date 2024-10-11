@@ -1,3 +1,5 @@
+from math import trunc
+
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
@@ -54,10 +56,17 @@ class ShopProductPriceSerializer(serializers.ModelSerializer):
 
 class ShopProductListSerializer(serializers.ModelSerializer):
     shop = ShopSerializer(read_only=True)
+    preview_img = ProductImgListSerializer(read_only=True, many=True, source="img_list")
 
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'sale', 'stock', 'shop', 'preview_image')
+        fields = ('id', 'name', 'price', 'sale', 'stock', 'shop', 'preview_img')
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['preview_img'] = representation['preview_img'][0]
+
+        return representation
 
 
 class ShopProductSerializer(serializers.ModelSerializer):
@@ -69,5 +78,5 @@ class ShopProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'description_product', 'img_list', 'preview_image', 'sale', 'stock', 'sku',
+        fields = ('id', 'name', 'price', 'description_product', 'img_list', 'sale', 'stock', 'sku',
                   'shop', 'product_info', 'category', 'reviews')

@@ -23,7 +23,7 @@ export const Step_2 = () => {
         const countProducts = data.filter((res) => res.stock > 0);
         
         setProductCount(countProducts.length);
-    }, [productCount])
+    }, [productCount]);
 
 
     return (
@@ -46,6 +46,7 @@ export const Step_2 = () => {
                             Price={data.price}
                             Sale={data.sale}
                             Stock={data.stock}
+                            URL={data.preview_img.url}
                         />
                     )
                     :

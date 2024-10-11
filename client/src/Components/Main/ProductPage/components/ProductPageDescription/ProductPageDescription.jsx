@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react"
+import { Select, ConfigProvider } from 'antd'
 import { AditionalInfo } from "./components/AditionalInfo"
 import { Description } from "./components/Description"
 import { Review } from "./components/Review/Review"
@@ -6,6 +7,8 @@ import { ProductPageDescriptionContext } from "../../ProductPage"
 
 export const ProductPageDescription = () => {
     const ProductDescriptionContext = useContext(ProductPageDescriptionContext)
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [selectData, setSelectData] = useState('');
     const [data, setData] = useState([]);
 
     const [ButtonIsActive, setButtonIsActive] = useState({
@@ -15,13 +18,22 @@ export const ProductPageDescription = () => {
     })
 
     useEffect(() => {
+        const handleWidth = () => {setScreenWidth(window.innerWidth)}
+
+        window.addEventListener('resize', handleWidth);
+
+        return () => window.removeEventListener('resize', handleWidth);
+    })
+
+    useEffect(() => {
         if (ProductDescriptionContext) {
             setData(ProductDescriptionContext)
         }
     }, [ProductDescriptionContext])
 
+
     const ButtonSelect = (event) => {
-        const ButtonValue = event.target.value 
+        const ButtonValue = screenWidth <= 768 ? event : event.target.value;
 
         switch (ButtonValue) {
 
@@ -83,8 +95,29 @@ export const ProductPageDescription = () => {
 
     return (
         <section className="ProductPage_description">
-            <section className="ProductPage_description_header">
+            <section className={screenWidth <= 768 ? 'ProductPage_description_header non_border': 'ProductPage_description_header'}>
                 {
+                    screenWidth <= 768 ?
+                    <ConfigProvider
+                        theme={{
+                            components: {
+                                Select: {
+                                    activeBorderColor: 'red'
+                                }
+                            }
+                        }}
+                    >
+                        <Select onChange={ButtonSelect} defaultValue={'Description'} style={{width: '100%'}}>
+                            {
+                                ButtonInfo.map((data, index) => 
+                                    <Select.Option value={data.value} key={index + 1}>
+                                        {data.DisplayValue}
+                                    </Select.Option>
+                                )
+                            }
+                        </Select>
+                    </ConfigProvider>
+                    :
                     ButtonInfo.map((data, index) =>
                         <button key={index + 1} onClick={data.onClickFunction} className={data.ClassName} value={data.value}>{data.DisplayValue}</button> 
                     )

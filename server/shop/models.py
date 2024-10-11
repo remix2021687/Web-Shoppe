@@ -1,10 +1,8 @@
 import uuid
-from logging import fatal
 
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.template.defaultfilters import default
 
 
 class Shop(models.Model):
@@ -71,8 +69,7 @@ class ShopProduct(models.Model):
                                      default='', null=False)
     sku = models.UUIDField(default=uuid.uuid4, editable=False)
     sale = models.IntegerField(blank=True, default=0)
-    preview_image = models.ImageField(upload_to='uploads/preview_img/', null=False, blank=False, default='')
-    img_list = models.ManyToManyField('ProductImgList')
+    img_list = models.ManyToManyField('ProductImgList', related_name='img_list')
     category = models.ManyToManyField(Category)
 
     date_created = models.DateTimeField(auto_now_add=True)

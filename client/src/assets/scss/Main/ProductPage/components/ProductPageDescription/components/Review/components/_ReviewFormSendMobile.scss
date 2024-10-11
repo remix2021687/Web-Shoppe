@@ -1,0 +1,32 @@
+.ReviewFormSendMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 50px 10px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+
+    .Review_form {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+
+        textarea, input {
+            background-color: whitesmoke;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        .Review_form_content {
+            align-items: center;
+
+            .Review_form_content_last_fist_name {
+                width: 100%;
+            }
+        }
+    }
+}
