@@ -10,7 +10,7 @@ from .serializer import (ProductReviewListSerializer,
                          ShopProductPriceSerializer, ShopSerializer)
 
 
-class ShopProductViewSet(viewsets.ModelViewSet):
+class ShopProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ShopProduct.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
 

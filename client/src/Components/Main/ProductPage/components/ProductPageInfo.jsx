@@ -42,7 +42,7 @@ export const ProductPageInfo = () => {
                         allowHalf
                         disabled={true}
                         style={{color: 'black'}}
-                        defaultValue={2.5}
+                        value={data.product_rate}
                     />
                     <h4>{data.reviews ? data.reviews.length: null} customer review</h4>
                 </section>
@@ -88,7 +88,7 @@ export const ProductPageInfo = () => {
                     <h4>SKU: <span>12</span></h4>
                     <h4>
                         Categories: {
-                            categoryData ? categoryData.map((data) => <span key={data.id}>{data.name}, </span>) : null
+                            categoryData ? categoryData.map((data, index) => <span key={index + 1}>{data.name}{index < categoryData.length - 1 ? ',': ''} </span>) : null
                         }
                     </h4>
                 </section>

@@ -16,6 +16,7 @@ export const ReviewFormSend = () => {
 
     const onSubmit = async (data) => {
         await PostReviewProduct({
+            email: data.Email,
             first_name: data.FirstName,
             last_name: data.LastName,
             comment: data.Comment,

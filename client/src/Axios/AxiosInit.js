@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 export const AxiosInit = axios.create({
     // baseURL: `http://127.0.0.1:8000/api/`
@@ -64,8 +65,15 @@ export const GetShopList = async () => {
 }
 
 export const PostReviewProduct = async (requestData) => {
-    const response = await AxiosInit.post('review/', requestData)
-
+    const response = await toast.promise(
+        AxiosInit.post('review/', requestData),
+        {
+            pending: 'Loading',
+            success: 'Posted !',
+            error: 'Not Posted'
+        }
+    )
+    
     try {
         return response
     } catch(err) {
