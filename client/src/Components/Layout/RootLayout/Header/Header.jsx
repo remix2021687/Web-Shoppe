@@ -1,14 +1,17 @@
 import { assets } from "../../../../assets/assets"
 import { NavLink } from "react-router-dom"
-import { List, X } from '@phosphor-icons/react'
+import { List, X, ShoppingCart, User, MagnifyingGlass} from '@phosphor-icons/react'
 import { useState, createContext } from "react"
 import { motion } from 'framer-motion'
 import { Dropmenu } from "./components/Dropmenu"
+import { Shopbag } from "./components/Shopbag/Shopbag"
 
 export const DropmenuContext = createContext(null);
+export const ShopBagContext = createContext(null);
 
 export const Header = () => {
     const [isOpne, setIsOpen] = useState(false);
+    const [isOpenBag, setIsOpenBag] = useState(false);
     const iconSize = 40;
     const durationAnimation = 0.6
 
@@ -60,6 +63,14 @@ export const Header = () => {
         }
     }
 
+    const onOpenBag = (event) => {
+        if (event) {
+            setIsOpenBag(false);
+        } else {
+            setIsOpenBag(true)
+        }
+    }
+
     return (
         <>
             <nav className="Header"
@@ -90,14 +101,16 @@ export const Header = () => {
                     <hr />
 
                     <section className="Header_navigation_right">
+                        <MagnifyingGlass size={21} />
+                            <motion.section
+                                whileHover={{y: -6}}
+                                whileTap={{y: 0}}
+                                onClick={() => {setIsOpenBag(true)}}
+                            >
+                                <ShoppingCart size={21} />
+                            </motion.section>
                         <NavLink>
-                            <img src={assets.Layout.RootLayout.Header.search}/>
-                        </NavLink>
-                        <NavLink>
-                            <img src={assets.Layout.RootLayout.Header.shop_cart}/>
-                        </NavLink>
-                        <NavLink>
-                            <img src={assets.Layout.RootLayout.Header.profile}/>
+                            <User size={21} color="black" />
                         </NavLink>
                     </section>
                 </section>
@@ -128,6 +141,10 @@ export const Header = () => {
             <DropmenuContext.Provider value={isOpne}>
                 <Dropmenu setDropmenuClickState={onClickEvent} />
             </DropmenuContext.Provider>
+
+            <ShopBagContext.Provider value={isOpenBag}>
+                <Shopbag setIsOpenClose={onOpenBag} />
+            </ShopBagContext.Provider>
 
         </>
     )

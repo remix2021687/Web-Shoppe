@@ -1,8 +1,9 @@
 import axios from 'axios'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export const AxiosInit = axios.create({
-    // baseURL: `http://127.0.0.1:8000/api/`
-    baseURL: import.meta.env.VITE_URL ? `${import.meta.env.VITE_URL}`: 'http://localhost:800/api/'
+    baseURL: import.meta.env.VITE_URL
 })
 
 AxiosInit.interceptors.request.use((config) => {
@@ -55,6 +56,23 @@ export const GetProductListPagination = async () => {
 
 export const GetShopList = async () => {
     const response = await AxiosInit.get('shop-list/')
+
+    try {
+        return response;
+    } catch(err) {
+        return response
+    }
+}
+
+export const PostReviewProduct = async (requestData) => {
+    const response = await toast.promise(
+        AxiosInit.post('review/', requestData),
+        {
+            pending: 'Loading',
+            success: 'Posted !',
+            error: 'Not Posted'
+        }
+    )
 
     try {
         return response;

@@ -10,6 +10,7 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

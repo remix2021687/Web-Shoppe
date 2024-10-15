@@ -8,6 +8,9 @@ from django.db import models
 class Shop(models.Model):
     name = models.CharField(max_length=100, unique=True, blank=False, null=True)
     email = models.EmailField(unique=True, blank=False, null=True)
+    facebook_link = models.URLField(blank=False, null=False, default='')
+    instagram_link = models.URLField(blank=False, null=False, default='')
+    x_link = models.URLField(blank=False, null=False, default='')
     company_description = models.TextField(max_length=4000, blank=False, null=False, default="")
 
     def __str__(self):
@@ -40,7 +43,9 @@ class ProductInfo(models.Model):
 
 class ProductReview(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    email = models.EmailField(blank=False, null=False, default='')
+    first_name = models.CharField(max_length=50, blank=False, null=False, default='')
+    last_name = models.CharField(max_length=50, blank=False, null=False, default='')
     comment = models.TextField(blank=False, null=False)
     rate = models.IntegerField(blank=True, null=False, default=0, validators=[
         MinValueValidator(0),
@@ -53,7 +58,7 @@ class ProductReview(models.Model):
         ordering = ['data']
 
     def __str__(self):
-        return f"Review by {self.user}, rate: {self.rate}"
+        return f"Review by {self.first_name} {self.last_name}, rate: {self.rate}"
 
 
 class ShopProduct(models.Model):
@@ -67,8 +72,7 @@ class ShopProduct(models.Model):
                                      default='', null=False)
     sku = models.UUIDField(default=uuid.uuid4, editable=False)
     sale = models.IntegerField(blank=True, default=0)
-    preview_image = models.ImageField(upload_to='uploads/preview_img/', null=False, blank=False, default='')
-    img_list = models.ManyToManyField('ProductImgList')
+    img_list = models.ManyToManyField('ProductImgList', related_name='img_list')
     category = models.ManyToManyField(Category)
 
     date_created = models.DateTimeField(auto_now_add=True)

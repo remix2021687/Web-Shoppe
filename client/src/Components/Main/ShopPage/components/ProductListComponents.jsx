@@ -58,7 +58,7 @@ export const ProductListComponents = () => {
                                 Name={res.name}
                                 Price={res.price}
                                 Sale={res.sale}
-                                URL={res.preview_image}
+                                URL={res.preview_img.url}
                                 Stock={res.stock}
                             />
                     )

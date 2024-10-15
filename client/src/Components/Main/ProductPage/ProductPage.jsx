@@ -1,5 +1,5 @@
 import { useEffect, useState, createContext } from "react"
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ProductPageViewer } from "./components/ProductPageViewer";
 import { ProductPageInfo } from "./components/ProductPageInfo";
 import { ProductPageDescription } from "./components/ProductPageDescription/ProductPageDescription";
@@ -11,6 +11,7 @@ export const ProductPageDescriptionContext = createContext(null)
 
 export const ProductPage = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
     
     useEffect(() => {
@@ -26,6 +27,7 @@ export const ProductPage = () => {
         })
 
         .catch((err) => {
+            navigate('/404')
             console.warn(err);
         })
     }, [])
@@ -43,6 +45,7 @@ export const ProductPage = () => {
                             {
                                 name: data.name,
                                 price: data.price,
+                                product_rate : data.product_rate,
                                 description_product: data.description_product,
                                 sale: data.sale,
                                 stock: data.stock,
@@ -66,6 +69,10 @@ export const ProductPage = () => {
             >
                 <ProductPageDescription />
             </ProductPageDescriptionContext.Provider>
+
+            <section className="ProductPage_recommendation">
+
+            </section>
 
         </section>
     )

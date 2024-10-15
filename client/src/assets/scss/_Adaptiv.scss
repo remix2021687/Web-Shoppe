@@ -86,6 +86,35 @@
             }
         }
     }
+
+    .ProductPage {
+        margin: 128px 80px 0;
+
+        .ProductPage_head {
+            flex-direction: column;
+        }
+
+        .ProductPage_viewer {
+            flex-direction: column-reverse !important;
+
+            .ProductPage_viewer_children {
+                width: 100% !important;
+                .swiper-wrapper {
+                    flex-direction: row !important;
+
+                }
+            }
+        }
+
+        .ProductPage_description {
+            width: 100%;
+
+            .Review {
+                flex-direction: column-reverse;
+            }
+        }
+
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -116,6 +145,27 @@
                 flex: 100%;
             }
         }
+    }
+
+    .ProductPage {
+        margin: 128px 10px 0; 
+        
+        .ProductPage_viewer {
+
+            .ProductPage_viewer_children {
+
+                .swiper-wrapper {
+                    gap: 50px !important;
+
+                }
+            }
+
+            .ProductPage_viewer_parent {
+                width: 100% !important;
+            }
+        }
+
+
     }
 
     .Footer {

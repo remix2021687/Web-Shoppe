@@ -56,13 +56,7 @@
             flex-direction: row;
             gap: 39px;
 
-            a {
-                transition: 0.3s ease;
-
-                &:hover {
-                    transform: translateY(-6px);
-                }
-            }
+            svg {cursor: pointer;}
         }
 
     }
@@ -87,3 +81,4 @@
 }
 
 @import './components/Dropmenu';
+@import './components/Shopbag/Shopbag';

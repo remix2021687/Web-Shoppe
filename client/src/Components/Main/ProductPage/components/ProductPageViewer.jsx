@@ -20,8 +20,8 @@ export const ProductPageViewer = () => {
                 >
                     {
                         imgList ?
-                        imgList.map((data) => 
-                            <SwiperSlide key={data.id}>
+                        imgList.map((data, index) => 
+                            <SwiperSlide key={index + 1}>
                                 <img src={data.url} alt={data.name} />
                             </SwiperSlide>
                         )
@@ -41,8 +41,8 @@ export const ProductPageViewer = () => {
                 >
                     {
                         imgList ?
-                        imgList.map((data) => 
-                            <SwiperSlide key={data.id}>
+                        imgList.map((data, index) => 
+                            <SwiperSlide key={index + 1}>
                                 <img src={data.url} alt={data.name} />
                             </SwiperSlide>
                         )

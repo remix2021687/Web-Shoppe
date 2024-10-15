@@ -42,9 +42,9 @@ export const ProductPageInfo = () => {
                         allowHalf
                         disabled={true}
                         style={{color: 'black'}}
-                        defaultValue={2.5}
+                        value={data.product_rate}
                     />
-                    <h4>1 customer review</h4>
+                    <h4>{data.reviews ? data.reviews.length: null} customer review</h4>
                 </section>
                 
                 <p>{data.description_product}</p>
@@ -72,13 +72,13 @@ export const ProductPageInfo = () => {
                         <a href="#" target="_blank" className="EmailIcon">
                             <EnvelopeSimple size={25} weight="bold" color="#979797" />
                         </a>
-                        <a href="#" target="_blank" className="FacebookIcon">
+                        <a href={data.shop ? data.shop.facebook_link: null} target="_blank" className="FacebookIcon">
                             <FacebookLogo size={25} weight="bold" color="#979797" />
                         </a>
-                        <a href="#" target="_blank" className="InstagramIcon">
+                        <a href={data.shop ? data.shop.instagram_link: null} target="_blank" className="InstagramIcon">
                             <InstagramLogo size={25} weight="bold" color="#979797" />
                         </a>
-                        <a href="#" target="_blank" className="XIcon">
+                        <a href={data.shop ? data.shop.x_link: null} target="_blank" className="XIcon">
                             <XLogo size={25} weight="bold" color="#979797" />
                         </a>
                     </section>
@@ -88,7 +88,7 @@ export const ProductPageInfo = () => {
                     <h4>SKU: <span>12</span></h4>
                     <h4>
                         Categories: {
-                            categoryData ? categoryData.map((data) => <span key={data.id}>{data.name}, </span>) : null
+                            categoryData ? categoryData.map((data, index) => <span key={index + 1}>{data.name}{index < categoryData.length - 1 ? ',': ''} </span>) : null
                         }
                     </h4>
                 </section>
