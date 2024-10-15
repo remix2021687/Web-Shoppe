@@ -72,13 +72,13 @@ export const ProductPageInfo = () => {
                         <a href="#" target="_blank" className="EmailIcon">
                             <EnvelopeSimple size={25} weight="bold" color="#979797" />
                         </a>
-                        <a href="#" target="_blank" className="FacebookIcon">
+                        <a href={data.shop ? data.shop.facebook_link: null} target="_blank" className="FacebookIcon">
                             <FacebookLogo size={25} weight="bold" color="#979797" />
                         </a>
-                        <a href="#" target="_blank" className="InstagramIcon">
+                        <a href={data.shop ? data.shop.instagram_link: null} target="_blank" className="InstagramIcon">
                             <InstagramLogo size={25} weight="bold" color="#979797" />
                         </a>
-                        <a href="#" target="_blank" className="XIcon">
+                        <a href={data.shop ? data.shop.x_link: null} target="_blank" className="XIcon">
                             <XLogo size={25} weight="bold" color="#979797" />
                         </a>
                     </section>

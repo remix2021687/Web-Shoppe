@@ -8,6 +8,9 @@ from django.db import models
 class Shop(models.Model):
     name = models.CharField(max_length=100, unique=True, blank=False, null=True)
     email = models.EmailField(unique=True, blank=False, null=True)
+    facebook_link = models.URLField(blank=False, null=False, default='')
+    instagram_link = models.URLField(blank=False, null=False, default='')
+    x_link = models.URLField(blank=False, null=False, default='')
     company_description = models.TextField(max_length=4000, blank=False, null=False, default="")
 
     def __str__(self):

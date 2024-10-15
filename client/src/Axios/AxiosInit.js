@@ -1,9 +1,9 @@
 import axios from 'axios'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 export const AxiosInit = axios.create({
-    // baseURL: `http://127.0.0.1:8000/api/`
-    baseURL: import.meta.env.VITE_URL2
+    baseURL: import.meta.env.VITE_URL
 })
 
 AxiosInit.interceptors.request.use((config) => {
@@ -73,9 +73,9 @@ export const PostReviewProduct = async (requestData) => {
             error: 'Not Posted'
         }
     )
-    
+
     try {
-        return response
+        return response;
     } catch(err) {
         return response
     }

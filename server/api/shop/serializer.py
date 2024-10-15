@@ -8,7 +8,7 @@ from shop.models import ShopProduct, ProductReview, ProductImgList, ProductInfo,
 class ShopSerializer(serializers.ModelSerializer):
     class Meta:
         model = Shop
-        fields = ('name', 'company_description')
+        fields = ('name', 'company_description', 'facebook_link', 'instagram_link', 'x_link')
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -65,7 +65,9 @@ class ShopProductListSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        representation['preview_img'] = representation['preview_img'][0]
+        if representation['preview_img']:
+            representation['preview_img'] = representation['preview_img'][0]
+
 
         return representation
 

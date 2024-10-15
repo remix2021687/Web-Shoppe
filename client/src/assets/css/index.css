@@ -141,13 +141,8 @@ main {
           flex-direction: row;
   gap: 39px;
 }
-.Header .Header_navigation .Header_navigation_right a {
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-.Header .Header_navigation .Header_navigation_right a:hover {
-  -webkit-transform: translateY(-6px);
-          transform: translateY(-6px);
+.Header .Header_navigation .Header_navigation_right svg {
+  cursor: pointer;
 }
 .Header .Dropmenu_control {
   display: none;
@@ -178,7 +173,7 @@ main {
   background-color: white;
   position: fixed;
   top: 100px;
-  z-index: 2;
+  z-index: 100;
   overflow: hidden;
 }
 .Dropmenu .SearchInput {
@@ -293,6 +288,105 @@ main {
 .Dropmenu .Dropmenu_account a:hover {
   -webkit-transform: translateX(20px);
           transform: translateX(20px);
+}
+
+.Shopbag {
+  width: 20%;
+  height: 100%;
+  position: fixed;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: white;
+  z-index: 90;
+  left: 80%;
+  padding: 72px 36px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.Shopbag .Shopbag_closeButton {
+  position: absolute;
+  top: 35px;
+  left: 80%;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.Shopbag .Shopbag_closeButton:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+.Shopbag h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+.Shopbag .Shopbag_viewer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.Shopbag .Shopbag_viewer h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #707070;
+}
+.Shopbag .Shopbag_viewer .Shopbag_viewer_content {
+  width: 100%;
+  max-height: 760px;
+}
+.Shopbag .Shopbag_viewer .Shopbag_viewer_count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 21px;
+  top: 90%;
+  width: 100%;
+  padding-top: 21px;
+  border-top: 1px solid #D8D8D8;
+}
+.Shopbag .Shopbag_viewer .Shopbag_viewer_count .Shopbag_viewer_count_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Shopbag .Shopbag_viewer .Shopbag_viewer_count .Shopbag_viewer_count_info h5 {
+  font-size: 16px;
+  font-weight: 500;
+}
+.Shopbag .Shopbag_viewer .Shopbag_viewer_count button {
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 100%;
+  height: 53px;
+  background: none;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.Shopbag .Shopbag_viewer .Shopbag_viewer_count button:hover {
+  background: black;
+  color: white;
+}
+.Shopbag .Shopbag_viewer .Shopbag_viewer_count button:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
 }
 
 .Footer {
@@ -458,6 +552,76 @@ main {
   font-size: 20px;
   font-weight: 400;
   color: #A18A68;
+}
+
+.Page404 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 64px;
+  width: 100%;
+  height: 100vh;
+}
+.Page404 .Page404_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  gap: 24px;
+}
+.Page404 .Page404_header h2 {
+  font-size: 33px;
+  font-weight: 600;
+}
+.Page404 .Page404_header p {
+  font-size: 20px;
+  font-weight: 400;
+  color: #707070;
+}
+.Page404 a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 15%;
+  height: 53px;
+  background: none;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  text-transform: uppercase;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.Page404 a:hover {
+  width: 18%;
+  background-color: black;
+  color: white;
 }
 
 .LoadingFullScreen {
