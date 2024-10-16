@@ -63,7 +63,7 @@ export const Header = () => {
         }
     }
 
-    const onOpenBag = (event) => {
+    const openShopBagHandle = (event) => {
         if (event) {
             setIsOpenBag(false);
         } else {
@@ -143,7 +143,7 @@ export const Header = () => {
             </DropmenuContext.Provider>
 
             <ShopBagContext.Provider value={isOpenBag}>
-                <Shopbag setIsOpenClose={onOpenBag} />
+                <Shopbag setIsOpenClose={openShopBagHandle} />
             </ShopBagContext.Provider>
 
         </>
