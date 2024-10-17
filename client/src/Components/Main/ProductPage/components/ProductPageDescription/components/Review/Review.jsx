@@ -30,24 +30,24 @@ export const Review = ({dataReview}) => {
                     
                     <section className="Review_content__content"
                         style={{
-                            overflowY: dataReview.length > 5 ? 'scroll': 'visible',
+                            overflowY: dataReview.length > 3 ? 'scroll': 'visible',
                         }}
                     >
                         {
                             dataReview ?
-                            dataReview.length > 0 ?
-                                dataReview.map((data, index) => 
-                                    <ReviewComment
-                                        key={index + 1}
-                                        LastName={data.last_name}
-                                        FirstName={data.first_name}
-                                        DateCreated={data.data}
-                                        CountRate={data.rate}
-                                        Comment={data.comment}
-                                    />
-                                )
-                            :
-                            <h2>Review not found</h2>
+                                dataReview.length > 0 ?
+                                    dataReview.map((data, index) => 
+                                        <ReviewComment
+                                            key={index + 1}
+                                            LastName={data.last_name}
+                                            FirstName={data.first_name}
+                                            DateCreated={data.data}
+                                            CountRate={data.rate}
+                                            Comment={data.comment}
+                                        />
+                                    )
+                                :
+                                null
                             :
                             null
                         }

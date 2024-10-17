@@ -3,11 +3,13 @@ import { motion } from 'framer-motion'
 import { useForm, Controller } from 'react-hook-form'
 import { useParams } from "react-router-dom"
 import { PostReviewProduct } from "../../../../../../../../Axios/AxiosInit"
+import { useEffect } from "react"
 
 export const ReviewFormSend = () => {
     const { id } = useParams();
+    const RequiredErrorMSG = 'This field is required !'
 
-    const { register, control, handleSubmit } = useForm({
+    const { register, control, handleSubmit, setError, formState: { errors } } = useForm({
         defaultValues: {
             coockeIsOn: false,
             Rate: 0
@@ -25,6 +27,8 @@ export const ReviewFormSend = () => {
         })
     }
 
+    console.log(errors.Rate)
+
     return (
         <section className="Review_form">
 
@@ -34,14 +38,56 @@ export const ReviewFormSend = () => {
             </section>
 
             <form className="Review_form_content" onSubmit={handleSubmit(onSubmit)}>
-                <textarea placeholder="Your Review*" maxLength={5000} {...register('Comment', {required: true})}></textarea>
+                <section className="Review_form_content_textarea">
+                    <textarea 
+                        placeholder="Your Review*" 
+                        maxLength={5000} 
+                        {...register('Comment', {required: RequiredErrorMSG})}
+                        aria-invalid='true'
+                    ></textarea>
+                    <span className="Error_snap">{errors.Comment ? errors.Comment.message: null}</span>
+                </section>
                
                 <section className="Review_form_content_last_fist_name">
-                    <input className="textInput" type='text' name="first_name" placeholder="Enter your fist name*" {...register("FirstName", {required: true})} />
-                    <input className="textInput" type='text' name="last_name" placeholder="Enter your last name*" {...register("LastName", {required: true})} />
+                    <section>
+                        <input 
+                            className="textInput" 
+                            type='text' 
+                            name="first_name" 
+                            placeholder="Enter your fist name*"
+                            {...register("FirstName", {required: RequiredErrorMSG})}
+                        />
+                        <span className="Error_snap">{errors.FirstName ? errors.FirstName.message: null}</span>
+                    </section>
+
+                    <section>
+                        <input 
+                            className="textInput" 
+                            type='text' 
+                            name="last_name" 
+                            placeholder="Enter your last name*" 
+                            {...register("LastName", {required: RequiredErrorMSG})} 
+                        />
+                        <span className="Error_snap">{errors.LastName ? errors.LastName.message: null}</span>
+                    </section>
                 </section>
                 
-                <input className="textInput" type='email' name="email" placeholder="Enter your Email*" {...register("Email", {required: true})} />
+                <section className="Review_form_content_email">
+                    <input 
+                        className="textInput" 
+                        type='email' 
+                        name="email" 
+                        placeholder="Enter your Email*"
+                        {...register("Email", {
+                            required: RequiredErrorMSG,
+                            pattern: {
+                                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                                message: 'Please enter a valid email !'
+                            }
+                        })} 
+                    />
+                    <span className="Error_snap">{errors.Email ? errors.Email.message: null}</span>
+                </section>
                 
                 <section className="Review_form_content_savecookee">
                     <ConfigProvider
@@ -72,6 +118,7 @@ export const ReviewFormSend = () => {
                     <Controller 
                         control={control}
                         name="Rate"
+                        rules={{required: true}}
                         render={({field: {value, onChange} }) => (
                             <Rate 
                                 style={{color: 'black'}} 
@@ -81,8 +128,9 @@ export const ReviewFormSend = () => {
                             />
                         )}
                     />
+                    <span className="Error_snap">{errors.Rate ? errors.Rate.message: null}</span>
                 </section>
-                <motion.button whileTap={{scale: 0.8}} whileHover={{scale: 1.04}}>Submit</motion.button>
+                <motion.button type='submit' whileTap={{scale: 0.8}} whileHover={{scale: 1.04}}>Submit</motion.button>
             </form>
         </section>
     )

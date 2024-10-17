@@ -1605,60 +1605,9 @@ main {
           flex-direction: column;
   gap: 46px;
 }
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea {
-  height: 83px;
-  resize: none;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #707070;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea::-webkit-input-placeholder {
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea::-moz-placeholder {
-  -moz-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea:-ms-input-placeholder {
-  -ms-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea::-ms-input-placeholder {
-  -ms-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea::placeholder {
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea:focus::-webkit-input-placeholder {
-  opacity: 0;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea:focus::-moz-placeholder {
-  opacity: 0;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea:focus:-ms-input-placeholder {
-  opacity: 0;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea:focus::-ms-input-placeholder {
-  opacity: 0;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea:focus::placeholder {
-  opacity: 0;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea::-webkit-scrollbar {
-  width: 10px;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea::-webkit-scrollbar-track {
-  border-radius: 8px;
-  background-color: #D8D8D8;
-}
-.ProductPage .ProductPage_description .Review .Review_form .Review_form_content textarea::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  border-radius: 10px;
-  background-color: #707070;
-  border: 3px solid #D8D8D8;
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Error_snap {
+  color: red;
+  font-weight: 600;
 }
 .ProductPage .ProductPage_description .Review .Review_form .Review_form_content button {
   width: 25%;
@@ -1717,6 +1666,74 @@ main {
 .ProductPage .ProductPage_description .Review .Review_form .Review_form_content .textInput:focus::placeholder {
   opacity: 0;
 }
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea {
+  height: 83px;
+  resize: none;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #707070;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea::-webkit-input-placeholder {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea::-moz-placeholder {
+  -moz-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea:-ms-input-placeholder {
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea::-ms-input-placeholder {
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea::placeholder {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea:focus::-moz-placeholder {
+  opacity: 0;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea:focus::-ms-input-placeholder {
+  opacity: 0;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea:focus::placeholder {
+  opacity: 0;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea:invalid {
+  border: 1px solid red;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea::-webkit-scrollbar {
+  width: 10px;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #D8D8D8;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_textarea textarea::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border-radius: 10px;
+  background-color: #707070;
+  border: 3px solid #D8D8D8;
+}
 .ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_last_fist_name {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1732,6 +1749,27 @@ main {
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 20px;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_last_fist_name section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+.ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_email {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
 }
 .ProductPage .ProductPage_description .Review .Review_form .Review_form_content .Review_form_content_savecookee {
   display: -webkit-box;
