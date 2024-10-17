@@ -33,7 +33,15 @@ export const ProductPageInfo = () => {
         
             <section className="ProductPage_head_info_header">
                 <h2>{data.name}</h2>
-                <h3>$ {data.price}</h3>
+                {
+                    data.sale ?
+                    <section className="ProductPage_head_info_header_saleprice">
+                        <h3>$ {data.price_sale} (<span>- {data.sale}%</span>)</h3>
+                        <h4><del>$ {data.price}</del></h4>
+                    </section>
+                    :
+                    <h3>$ {data.price}</h3>
+                }
             </section>
 
             <section className="ProductPage_head_info_description">

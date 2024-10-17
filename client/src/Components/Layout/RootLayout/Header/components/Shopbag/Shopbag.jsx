@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react" 
+import { useState, useContext } from "react" 
 import { ShopbagProduct } from "./components/ShopbagProduct"
 import { X } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
@@ -6,6 +6,7 @@ import { ShopBagContext } from "../../Header"
 
 export const Shopbag = ({ setIsOpenClose }) => {
     const ShopBagStateContext = useContext(ShopBagContext);
+    const [coockeData, setCooceData] = useState();
 
     const OpenCloseMenuAnimation = {
         hidden: {
@@ -38,19 +39,24 @@ export const Shopbag = ({ setIsOpenClose }) => {
             />
 
             <h3>Shopping bag</h3>
-            <section className="Shopbag_viewer">
-                <h4>5 items</h4>
-                <section className="Shopbag_viewer_content">
-                    <ShopbagProduct />
-                </section>
-                <section className="Shopbag_viewer_count">
-                    <section className="Shopbag_viewer_count_info">
-                        <h5>Subtotal (5 items)</h5>
-                        <h5>$ 100,00</h5>
+            {
+                coockeData ?
+                <section className="Shopbag_viewer">
+                    <h4>5 items</h4>
+                    <section className="Shopbag_viewer_content">
+                        <ShopbagProduct />
                     </section>
-                    <button>VIEW CART</button>
+                    <section className="Shopbag_viewer_count">
+                        <section className="Shopbag_viewer_count_info">
+                            <h5>Subtotal (5 items)</h5>
+                            <h5>$ 100,00</h5>
+                        </section>
+                        <button>VIEW CART</button>
+                    </section>
                 </section>
-            </section>
+                :
+                null
+            }
         </motion.section>
     )
 }

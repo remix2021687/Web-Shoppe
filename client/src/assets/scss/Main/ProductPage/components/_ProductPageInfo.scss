@@ -18,6 +18,18 @@
             font-weight: 400;
             color: #B4A186;
         }
+
+        .ProductPage_head_info_header_saleprice {
+            display: flex;
+            flex-direction: column;
+
+            h4 {
+                color: #707070;
+                opacity: 0.5;
+                font-size: 14px;
+            }
+        }
+
     }
 
     .ProductPage_head_info_description {

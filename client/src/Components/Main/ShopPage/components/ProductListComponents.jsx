@@ -25,6 +25,7 @@ export const ProductListComponents = () => {
         setFilter(FilterData)   
     }, [FilterData])
 
+    console.log(data)
 
     return (
         <section className="ProductListComponents">
@@ -47,7 +48,7 @@ export const ProductListComponents = () => {
 
                     data
                     .filter((res) => res.name.toLowerCase().includes(Filter.searchData.toLowerCase()))
-                    .filter((res) => res.price >= Filter.SliderData[0] && res.price <= Filter.SliderData[1])
+                    .filter((res) => (res.sale ? res.price_sale: res.price) >= Filter.SliderData[0] && (res.sale ? res.price_sale: res.price) <= Filter.SliderData[1])
                     .filter((res) => Filter.isSale == true && res.sale > 0 && res.stock > 0 || !Filter.isSale)
                     .filter((res) => Filter.isStock == true && res.stock > 0 || !Filter.isStock)
                     .filter((res) => res.shop.name == Filter.ShopBy || !Filter.ShopBy)
@@ -56,7 +57,7 @@ export const ProductListComponents = () => {
                                 key={index + 1}
                                 ProductId={res.id}
                                 Name={res.name}
-                                Price={res.price}
+                                Price={res.sale ? res.price_sale: res.price}
                                 Sale={res.sale}
                                 URL={res.preview_img.url}
                                 Stock={res.stock}

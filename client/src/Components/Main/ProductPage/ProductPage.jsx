@@ -45,6 +45,7 @@ export const ProductPage = () => {
                             {
                                 name: data.name,
                                 price: data.price,
+                                price_sale: data.price_sale,
                                 product_rate : data.product_rate,
                                 description_product: data.description_product,
                                 sale: data.sale,
