@@ -44,6 +44,7 @@ export const Step_2 = () => {
                             ProductId={data.id}
                             Name={data.name}
                             Price={data.price}
+                            Price_Sale={data.price_sale}
                             Sale={data.sale}
                             Stock={data.stock}
                             URL={data.preview_img.url}

@@ -57,7 +57,8 @@ export const ProductListComponents = () => {
                                 key={index + 1}
                                 ProductId={res.id}
                                 Name={res.name}
-                                Price={res.sale ? res.price_sale: res.price}
+                                Price={res.sale}
+                                Price_Sale={res.price_sale}
                                 Sale={res.sale}
                                 URL={res.preview_img.url}
                                 Stock={res.stock}

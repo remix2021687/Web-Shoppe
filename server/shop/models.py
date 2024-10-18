@@ -1,4 +1,5 @@
 import uuid
+import random
 
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -52,7 +53,7 @@ class ProductReview(models.Model):
         MaxValueValidator(5)
     ])
     product = models.ForeignKey('shop.ShopProduct', on_delete=models.CASCADE, related_name='reviews')
-    data = models.DateTimeField(auto_now_add=True)
+    data = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
         ordering = ['data']
@@ -70,12 +71,12 @@ class ShopProduct(models.Model):
     stock = models.IntegerField(blank=True, null=False, default=0)
     product_info = models.ForeignKey('ProductInfo', on_delete=models.CASCADE, related_name='products_info',
                                      default='', null=False)
-    sku = models.UUIDField(default=uuid.uuid4, editable=False)
+    sku = models.IntegerField(blank=True, null=False, default=random.randint(0, 999), editable=False)
     sale = models.IntegerField(blank=True, default=0)
     img_list = models.ManyToManyField('ProductImgList', related_name='img_list')
     category = models.ManyToManyField(Category)
 
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
         ordering = ['date_created']
