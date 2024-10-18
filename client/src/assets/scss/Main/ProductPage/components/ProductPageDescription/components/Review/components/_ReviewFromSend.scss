@@ -22,41 +22,11 @@
         display: flex;
         flex-direction: column;
         gap: 46px;
-        
-        textarea {
-            height: 83px;
-            resize: none;
-            border: none;
-            outline: none;
-            border-bottom: 1px solid #707070;
 
-            &::placeholder {
-                transition: 0.5s ease;
-            }
+        .Error_snap {
+            color: red;
+            font-weight: 600;
 
-            &:focus {
-                &::placeholder {
-                    opacity: 0;
-                }
-            }
-
-
-            &::-webkit-scrollbar {
-                width: 10px;
-            }
-
-            &::-webkit-scrollbar-track {
-                border-radius: 8px;
-                background-color: #D8D8D8;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                border-radius: 8px;
-                border-radius: 10px;
-                background-color: #707070;
-                border: 3px solid #D8D8D8;
-
-            }
         }
 
         button {
@@ -93,12 +63,72 @@
             }
         }
 
+        .Review_form_content_textarea {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            textarea {
+                height: 83px;
+                resize: none;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid #707070;
+    
+                &::placeholder {
+                    transition: 0.5s ease;
+                }
+    
+                &:focus {
+                    &::placeholder {
+                        opacity: 0;
+                    }
+                }
+
+                &:invalid {
+                    border: 1px solid red;
+                }
+    
+    
+                &::-webkit-scrollbar {
+                    width: 10px;
+                }
+    
+                &::-webkit-scrollbar-track {
+                    border-radius: 8px;
+                    background-color: #D8D8D8;
+                }
+    
+                &::-webkit-scrollbar-thumb {
+                    border-radius: 8px;
+                    border-radius: 10px;
+                    background-color: #707070;
+                    border: 3px solid #D8D8D8;
+    
+                }
+            }
+        }
+
+
         .Review_form_content_last_fist_name {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
+
+            section {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+        }
+
+        .Review_form_content_email {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
         
 

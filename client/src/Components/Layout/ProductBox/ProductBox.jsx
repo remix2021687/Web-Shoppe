@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-export const ProductBox = ({ProductId, Name, Price, Sale, URL, Stock}) => {
+export const ProductBox = ({ProductId, Name, Price, Price_Sale, Sale, URL, Stock}) => {
 
     return (
         <NavLink className='ProductBox' to={`/shop/${ProductId}`}>
@@ -25,7 +25,12 @@ export const ProductBox = ({ProductId, Name, Price, Sale, URL, Stock}) => {
                     </>
                     :
                     <>
-                        <h4>$ {Price ? Price.toLocaleString(): '20,00'}</h4>
+                        {
+                            Sale ?
+                            <h4>$ {Price_Sale ? Price_Sale.toLocaleString(): '20,00'}</h4>
+                            :
+                            <h4>$ {Price ? Price.toLocaleString(): '20,00'}</h4>
+                        }
                         <h3>{Name ? Name: 'Lira Earrings'}</h3>
                     </>
                 }

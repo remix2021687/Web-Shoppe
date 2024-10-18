@@ -31,10 +31,18 @@ export const ProductPageInfo = () => {
     return (
         <section className="ProductPage_head_info">
         
-            <section className="ProductPage_head_info_header">
+            <header className="ProductPage_head_info_header">
                 <h2>{data.name}</h2>
-                <h3>$ {data.price}</h3>
-            </section>
+                {
+                    data.sale ?
+                    <section className="ProductPage_head_info_header_saleprice">
+                        <h3>$ {data.price_sale} (<span>- {data.sale}%</span>)</h3>
+                        <h4><del>$ {data.price}</del></h4>
+                    </section>
+                    :
+                    <h3>$ {data.price}</h3>
+                }
+            </header>
 
             <section className="ProductPage_head_info_description">
                 <section className="ProductPage_head_info_description_rate">
@@ -85,7 +93,7 @@ export const ProductPageInfo = () => {
                 </section>
 
                 <section className="ProductPage_head_info_footer_sku_category">
-                    <h4>SKU: <span>12</span></h4>
+                    <h4>SKU: <span>{data.sku}</span></h4>
                     <h4>
                         Categories: {
                             categoryData ? categoryData.map((data, index) => <span key={index + 1}>{data.name}{index < categoryData.length - 1 ? ',': ''} </span>) : null

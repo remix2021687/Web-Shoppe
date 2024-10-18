@@ -47,7 +47,11 @@ export const FilterComponent = ({ setParentToChild }) => {
             let arr = [];
 
             response.map((data) => {
-                arr.push(data.price)
+                if (data.price_sale) {
+                    arr.push(data.price_sale)
+                } else {
+                    arr.push(data.price)
+                }
 
                 setSliderData([10, Math.max(...arr)])
                 setMaxPrice(Math.max(...arr))
