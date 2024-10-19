@@ -4,6 +4,7 @@ import { ProductPageViewer } from "./components/ProductPageViewer";
 import { ProductPageInfo } from "./components/ProductPageInfo";
 import { ProductPageDescription } from "./components/ProductPageDescription/ProductPageDescription";
 import { GetProductInfo } from "../../../Axios/AxiosInit";
+import { ProductBoxRander } from "../../Layout/ProductBoxRander/ProductBoxRander";
 
 export const ProductPageViewerContext = createContext(null);
 export const ProductPageInfoContext = createContext(null);
@@ -51,6 +52,7 @@ export const ProductPage = () => {
                                 sale: data.sale,
                                 stock: data.stock,
                                 shop: data.shop,
+                                sku: data.sku,
                                 material_info: data.product_info,
                                 category: data.category,
                                 reviews: data.reviews
@@ -70,11 +72,6 @@ export const ProductPage = () => {
             >
                 <ProductPageDescription />
             </ProductPageDescriptionContext.Provider>
-
-            <section className="ProductPage_recommendation">
-
-            </section>
-
         </section>
     )
 }

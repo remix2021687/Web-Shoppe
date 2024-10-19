@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from django.db.models import Sum
 from rest_framework import serializers
 
 from shop.models import ShopProduct, ProductReview, ProductImgList, ProductInfo, Shop, Category
@@ -102,12 +101,14 @@ class ShopProductSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['reviews'] = ProductReviewListSerializer(instance.reviews, many=True).data
+        counting_sale_percent = round(representation['price'] * (1 - representation['sale'] / 100))
+        counting_product_rate = (sum([rate['rate'] for rate in representation['reviews']]) /
+                                 len(representation['reviews']))
 
         if representation['sale'] > 0:
-            representation['price_sale'] = round(representation['price'] * (1 - representation['sale'] / 100))
+            representation['price_sale'] = counting_sale_percent
 
         if representation['reviews']:
-            representation['product_rate'] = (sum([rate['rate'] for rate in representation['reviews']]) /
-                                              len(representation['reviews']))
+            representation['product_rate'] = counting_product_rate
 
         return representation
