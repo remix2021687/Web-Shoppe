@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-export const CounterProduct = () => {
+export const CounterProduct = ({GetValue}) => {
     const [isDynamicEdit, setIsDynamicEdit] = useState(false);
     const [counter, setCounter] = useState(0);
 
@@ -23,6 +23,10 @@ export const CounterProduct = () => {
             setIsDynamicEdit(false);
         }
     }
+
+    useEffect(() => {
+        GetValue(counter)
+    }, [counter])
 
     return (
         <section className="CounterProduct">

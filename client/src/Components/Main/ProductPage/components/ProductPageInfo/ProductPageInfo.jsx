@@ -1,22 +1,32 @@
 import { useState, useContext, useEffect } from "react"
-import { CounterProduct } from "./CounterProduct";
-import { Rate } from 'antd'
-import { Heart, EnvelopeSimple, FacebookLogo, InstagramLogo, XLogo} from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
-import { ProductPageInfoContext } from "../ProductPage";
-
+import { Heart, EnvelopeSimple, FacebookLogo, InstagramLogo, XLogo} from '@phosphor-icons/react'
+import { Rate } from 'antd'
+import { useCookies } from "react-cookie"
+import { ProductPageInfoContext } from "../../ProductPage";
+import { ProductCart } from "./components/ProductCart/ProductCart"
 
 export const ProductPageInfo = () => {
     const [isLiked, setIsLiked] = useState(false);
     const [data, setData] = useState([])
-    const categoryData = data.category
+    const [cookie, setCookie] = useCookies([]);
     const PageInfoContext = useContext(ProductPageInfoContext);
+    const categoryData = data.category
+    const isLikedCookie = cookie.isLiked ? cookie.isLiked.isLiked: false;
 
     const LikeHandler = () => {
         if (isLiked) {
             setIsLiked(false)
+            setCookie('isLiked', {
+                isLiked: false,
+                product: PageInfoContext
+            })
         } else {
             setIsLiked(true)
+            setCookie('isLiked', {
+                isLiked: true,
+                product: PageInfoContext
+            })
         }
     }
 
@@ -27,6 +37,14 @@ export const ProductPageInfo = () => {
             })
         }
     }, [PageInfoContext])
+
+    useEffect(() => {
+        if (isLikedCookie) {
+            setIsLiked(true)
+        } else {
+            setIsLiked(false)
+        }
+    }, [isLikedCookie])
 
     return (
         <section className="ProductPage_head_info">
@@ -58,10 +76,7 @@ export const ProductPageInfo = () => {
                 <p>{data.description_product}</p>
             </section>
 
-            <section className="ProductPage_head_info_counter">
-                <CounterProduct />
-                <button>ADD TO CART</button>
-            </section>
+            <ProductCart productInfo={data} />
 
             <section className="ProductPage_head_info_footer">
                 <section className="ProductPage_head_info_footer_social_and_like">

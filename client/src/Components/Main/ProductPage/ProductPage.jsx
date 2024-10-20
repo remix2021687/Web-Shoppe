@@ -1,10 +1,11 @@
 import { useEffect, useState, createContext } from "react"
 import { useParams, useNavigate } from "react-router-dom";
 import { ProductPageViewer } from "./components/ProductPageViewer";
-import { ProductPageInfo } from "./components/ProductPageInfo";
+import { ProductPageInfo } from "./components/ProductPageInfo/ProductPageInfo";
 import { ProductPageDescription } from "./components/ProductPageDescription/ProductPageDescription";
 import { GetProductInfo } from "../../../Axios/AxiosInit";
-import { ProductBoxRander } from "../../Layout/ProductBoxRander/ProductBoxRander";
+
+// import { ProductBoxRander } from "../../Layout/ProductBoxRander/ProductBoxRander";
 
 export const ProductPageViewerContext = createContext(null);
 export const ProductPageInfoContext = createContext(null);

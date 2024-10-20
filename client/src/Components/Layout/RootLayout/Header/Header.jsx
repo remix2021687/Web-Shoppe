@@ -1,6 +1,6 @@
 import { assets } from "../../../../assets/assets"
 import { NavLink } from "react-router-dom"
-import { List, X, ShoppingCart, User, MagnifyingGlass} from '@phosphor-icons/react'
+import { List, X, ShoppingCart, User, Heart, MagnifyingGlass} from '@phosphor-icons/react'
 import { useState, createContext } from "react"
 import { motion } from 'framer-motion'
 import { Dropmenu } from "./components/Dropmenu"
@@ -12,7 +12,8 @@ export const ShopBagContext = createContext(null);
 export const Header = () => {
     const [isOpne, setIsOpen] = useState(false);
     const [isOpenBag, setIsOpenBag] = useState(false);
-    const iconSize = 40;
+    const DropmenuIconSize = 40;
+    const NavigationIconSize = 21;
     const durationAnimation = 0.6
 
     const OpenButton = {
@@ -101,16 +102,14 @@ export const Header = () => {
                     <hr />
 
                     <section className="Header_navigation_right">
-                        <MagnifyingGlass size={21} />
-                            <motion.section
-                                whileHover={{y: -6}}
-                                whileTap={{y: 0}}
-                                onClick={() => {setIsOpenBag(true)}}
-                            >
-                                <ShoppingCart size={21} />
-                            </motion.section>
+                            <MagnifyingGlass size={NavigationIconSize} />
+                            
+                            <Heart size={NavigationIconSize} className="Heart" />
+                            
+                            <ShoppingCart size={NavigationIconSize} />
+
                         <NavLink>
-                            <User size={21} color="black" />
+                            <User size={NavigationIconSize} color="black" />
                         </NavLink>
                     </section>
                 </section>
@@ -123,7 +122,7 @@ export const Header = () => {
                         animate={isOpne ? 'hidden': 'visible'}
                         onClick={() => {setIsOpen(true)}}
                     >
-                        <List size={iconSize}/>
+                        <List size={DropmenuIconSize}/>
                     </motion.div>
 
                     <motion.div 
@@ -133,7 +132,7 @@ export const Header = () => {
                         animate={isOpne ? 'visible': 'hidden'}
                         onClick={() => {setIsOpen(false)}}
                     >
-                        <X size={iconSize}/>
+                        <X size={DropmenuIconSize}/>
                     </motion.div>
                 </section>
             </nav>

@@ -142,7 +142,17 @@ main {
   gap: 39px;
 }
 .Header .Header_navigation .Header_navigation_right svg {
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
   cursor: pointer;
+}
+.Header .Header_navigation .Header_navigation_right svg:hover {
+  -webkit-transform: translateY(-6px);
+          transform: translateY(-6px);
+}
+.Header .Header_navigation .Header_navigation_right svg:active {
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
 }
 .Header .Dropmenu_control {
   display: none;
@@ -1232,8 +1242,8 @@ main {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 .ProductPage .ProductPage_head .ProductPage_head_info .ProductPage_head_info_counter button:hover {
   color: white;
@@ -1308,8 +1318,8 @@ main {
   gap: 40px;
 }
 .ProductPage .ProductPage_head .ProductPage_head_info .ProductPage_head_info_footer .ProductPage_head_info_footer_social_and_like .HeartIcon {
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
   cursor: pointer;
 }
 .ProductPage .ProductPage_head .ProductPage_head_info .ProductPage_head_info_footer .ProductPage_head_info_footer_social_and_like .HeartIcon:hover {
@@ -1328,12 +1338,12 @@ main {
   gap: 24px;
 }
 .ProductPage .ProductPage_head .ProductPage_head_info .ProductPage_head_info_footer .ProductPage_head_info_footer_social_and_like .ProductPage_head_info_footer_social a {
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 .ProductPage .ProductPage_head .ProductPage_head_info .ProductPage_head_info_footer .ProductPage_head_info_footer_social_and_like .ProductPage_head_info_footer_social a svg {
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 .ProductPage .ProductPage_head .ProductPage_head_info .ProductPage_head_info_footer .ProductPage_head_info_footer_social_and_like .ProductPage_head_info_footer_social a:hover {
   -webkit-transform: translateY(-5px);
