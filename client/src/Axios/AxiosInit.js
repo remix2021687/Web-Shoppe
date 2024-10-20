@@ -73,8 +73,11 @@ export const PostReviewProduct = async (requestData) => {
             error: 'Not Posted'
         }
     )
-
+    
     try {
+        setTimeout(() => {
+            location.reload();
+        }, 3500)
         return response;
     } catch(err) {
         return response

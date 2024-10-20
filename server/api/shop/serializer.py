@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from django.db.models import Sum
 from rest_framework import serializers
 
 from shop.models import ShopProduct, ProductReview, ProductImgList, ProductInfo, Shop, Category
@@ -56,7 +55,15 @@ class ProductReviewRateListSerializer(serializers.ModelSerializer):
 class ShopProductPriceSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopProduct
-        fields = ('id', 'price')
+        fields = ('id', 'price', 'sale')
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+
+        if representation['sale'] > 0:
+            representation['price_sale'] = round(representation['price'] * (1 - representation['sale'] / 100))
+
+        return representation
 
 
 class ShopProductListSerializer(serializers.ModelSerializer):
@@ -65,9 +72,12 @@ class ShopProductListSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
+
+        if representation['sale'] > 0:
+            representation['price_sale'] = round(representation['price'] * (1 - representation['sale'] / 100))
+
         if representation['preview_img']:
             representation['preview_img'] = representation['preview_img'][0]
-
 
         return representation
 
@@ -83,7 +93,6 @@ class ShopProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer(many=True, read_only=True)
     shop = ShopSerializer(read_only=True)
 
-
     class Meta:
         model = ShopProduct
         fields = ('id', 'name', 'price', 'description_product', 'img_list', 'sale', 'stock', 'sku',
@@ -92,9 +101,14 @@ class ShopProductSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['reviews'] = ProductReviewListSerializer(instance.reviews, many=True).data
+        counting_sale_percent = round(representation['price'] * (1 - representation['sale'] / 100))
+        counting_product_rate = (sum([rate['rate'] for rate in representation['reviews']]) /
+                                 len(representation['reviews']))
+
+        if representation['sale'] > 0:
+            representation['price_sale'] = counting_sale_percent
 
         if representation['reviews']:
-            representation['product_rate'] = (sum([rate['rate'] for rate in representation['reviews']]) /
-                                              len(representation['reviews']))
+            representation['product_rate'] = counting_product_rate
 
         return representation

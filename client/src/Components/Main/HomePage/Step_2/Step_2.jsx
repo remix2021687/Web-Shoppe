@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ProductBox } from '../../../Layout/ProductBox/ProductBox'
 import { GetProductListPagination } from '../../../../Axios/AxiosInit';
+import { ProductBoxRander } from '../../../Layout/ProductBoxRander/ProductBoxRander';
 
 export const Step_2 = () => {
     const [data, setData] = useState([]);
@@ -36,22 +37,7 @@ export const Step_2 = () => {
             <section className="Step_2_content" style={{
                 justifyContent: productCount < 4 ? 'center': 'space-between'
             }}>
-                {
-                    data ?
-                    data.map((data, index) => 
-                        <ProductBox
-                            key={index + 1}
-                            ProductId={data.id}
-                            Name={data.name}
-                            Price={data.price}
-                            Sale={data.sale}
-                            Stock={data.stock}
-                            URL={data.preview_img.url}
-                        />
-                    )
-                    :
-                    null  
-                }
+                <ProductBoxRander data={data} />
             </section>
         </section>
     )

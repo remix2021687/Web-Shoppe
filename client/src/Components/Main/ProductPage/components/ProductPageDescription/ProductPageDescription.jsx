@@ -8,7 +8,6 @@ import { ProductPageDescriptionContext } from "../../ProductPage"
 export const ProductPageDescription = () => {
     const ProductDescriptionContext = useContext(ProductPageDescriptionContext)
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-    const [selectData, setSelectData] = useState('');
     const [data, setData] = useState([]);
 
     const [ButtonIsActive, setButtonIsActive] = useState({

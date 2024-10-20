@@ -1,22 +1,32 @@
 import { useState, useContext, useEffect } from "react"
-import { CounterProduct } from "./CounterProduct";
-import { Rate } from 'antd'
-import { Heart, EnvelopeSimple, FacebookLogo, InstagramLogo, XLogo} from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
-import { ProductPageInfoContext } from "../ProductPage";
-
+import { Heart, EnvelopeSimple, FacebookLogo, InstagramLogo, XLogo} from '@phosphor-icons/react'
+import { Rate } from 'antd'
+import { useCookies } from "react-cookie"
+import { ProductPageInfoContext } from "../../ProductPage";
+import { ProductCart } from "./components/ProductCart/ProductCart"
 
 export const ProductPageInfo = () => {
     const [isLiked, setIsLiked] = useState(false);
     const [data, setData] = useState([])
-    const categoryData = data.category
+    const [cookie, setCookie] = useCookies([]);
     const PageInfoContext = useContext(ProductPageInfoContext);
+    const categoryData = data.category
+    const isLikedCookie = cookie.isLiked ? cookie.isLiked.isLiked: false;
 
     const LikeHandler = () => {
         if (isLiked) {
             setIsLiked(false)
+            setCookie('isLiked', {
+                isLiked: false,
+                product: PageInfoContext
+            })
         } else {
             setIsLiked(true)
+            setCookie('isLiked', {
+                isLiked: true,
+                product: PageInfoContext
+            })
         }
     }
 
@@ -28,13 +38,29 @@ export const ProductPageInfo = () => {
         }
     }, [PageInfoContext])
 
+    useEffect(() => {
+        if (isLikedCookie) {
+            setIsLiked(true)
+        } else {
+            setIsLiked(false)
+        }
+    }, [isLikedCookie])
+
     return (
         <section className="ProductPage_head_info">
         
-            <section className="ProductPage_head_info_header">
+            <header className="ProductPage_head_info_header">
                 <h2>{data.name}</h2>
-                <h3>$ {data.price}</h3>
-            </section>
+                {
+                    data.sale ?
+                    <section className="ProductPage_head_info_header_saleprice">
+                        <h3>$ {data.price_sale} (<span>- {data.sale}%</span>)</h3>
+                        <h4><del>$ {data.price}</del></h4>
+                    </section>
+                    :
+                    <h3>$ {data.price}</h3>
+                }
+            </header>
 
             <section className="ProductPage_head_info_description">
                 <section className="ProductPage_head_info_description_rate">
@@ -50,10 +76,7 @@ export const ProductPageInfo = () => {
                 <p>{data.description_product}</p>
             </section>
 
-            <section className="ProductPage_head_info_counter">
-                <CounterProduct />
-                <button>ADD TO CART</button>
-            </section>
+            <ProductCart productInfo={data} />
 
             <section className="ProductPage_head_info_footer">
                 <section className="ProductPage_head_info_footer_social_and_like">
@@ -85,7 +108,7 @@ export const ProductPageInfo = () => {
                 </section>
 
                 <section className="ProductPage_head_info_footer_sku_category">
-                    <h4>SKU: <span>12</span></h4>
+                    <h4>SKU: <span>{data.sku}</span></h4>
                     <h4>
                         Categories: {
                             categoryData ? categoryData.map((data, index) => <span key={index + 1}>{data.name}{index < categoryData.length - 1 ? ',': ''} </span>) : null
