@@ -143,9 +143,7 @@ export const ProductPageDescription = () => {
             }
             {
                 ButtonIsActive.Reviews ?
-                <Review 
-                    dataReview={data.reviews}
-                />
+                <Review />
                 :
                 null
             }

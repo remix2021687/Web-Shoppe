@@ -1,3 +1,5 @@
+from itertools import product
+
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from .pagination import ShopListPagination
@@ -6,7 +8,8 @@ from shop.models import ShopProduct, ProductReview, Shop
 from .permission import IsAdminOnlyCanEdit
 from .serializer import (ProductReviewListSerializer,
                          ProductReviewPostSerializer,
-                         ShopProductListSerializer, ShopProductSerializer,
+                         ShopProductListSerializer, ProductReviewReadOnlyListSerializer,
+                         ProductReviewReadOnlySerializer, ShopProductSerializer,
                          ShopProductPriceSerializer, ShopSerializer)
 
 
@@ -23,7 +26,6 @@ class ShopProductViewSet(viewsets.ReadOnlyModelViewSet):
 
 class ShopProductReviewViewSet(viewsets.ModelViewSet):
     queryset = ProductReview.objects.all()
-    serializer_class = ProductReviewPostSerializer
     permission_classes = [AllowAny, IsAdminOnlyCanEdit]
 
     def get_serializer_class(self):
@@ -32,6 +34,14 @@ class ShopProductReviewViewSet(viewsets.ModelViewSet):
 
         return ProductReviewPostSerializer
 
+class ShopProductOnlyReadViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ShopProduct.objects.all()
+    permission_classes = [IsAdminOnlyCanEdit]
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return ProductReviewReadOnlyListSerializer
+        return ProductReviewReadOnlySerializer
 
 class ShopProductPriceListViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ShopProduct.objects.all()

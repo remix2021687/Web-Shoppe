@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 
 export const ProductBox = ({ProductId, Name, Price, Price_Sale, Sale, URL, Stock}) => {
-
+    
     return (
         <NavLink className='ProductBox' to={`/shop/${ProductId}`}>
             <img src={URL ? URL: '/src/assets/img/img_2.png'} />
@@ -26,10 +26,10 @@ export const ProductBox = ({ProductId, Name, Price, Price_Sale, Sale, URL, Stock
                     :
                     <>
                         {
-                            Sale ?
-                            <h4>$ {Price_Sale ? Price_Sale.toLocaleString(): '20,00'}</h4>
+                            Sale > 0 ?
+                            <h4>$ {Price_Sale ? Price_Sale.toLocaleString(): '25,00'}</h4>
                             :
-                            <h4>$ {Price ? Price.toLocaleString(): '20,00'}</h4>
+                            <h4>$ {Price ? Price.toLocaleString(): '25,00'}</h4>
                         }
                         <h3>{Name ? Name: 'Lira Earrings'}</h3>
                     </>

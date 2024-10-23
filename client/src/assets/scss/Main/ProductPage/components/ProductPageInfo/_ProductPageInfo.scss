@@ -54,6 +54,7 @@
             color: #707070;
             max-width: 484px;
             line-height: 27px;
+            word-break: break-all;
         }
     }
 
@@ -79,7 +80,7 @@
             }
         }
 
-        @import './CounterProduct';
+        @import './components/CounterProduct';
     }
 
     .ProductPage_head_info_footer {

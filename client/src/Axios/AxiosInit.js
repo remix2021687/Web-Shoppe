@@ -1,9 +1,8 @@
 import axios from 'axios'
-import { Navigate, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 export const AxiosInit = axios.create({
-    baseURL: import.meta.env.VITE_URL
+    baseURL: import.meta.env.VITE_URL,
 })
 
 AxiosInit.interceptors.request.use((config) => {
@@ -25,7 +24,7 @@ export const GetProductList = async () => {
 }
 
 export const GetProductInfo = async (id) => {
-    const response = await AxiosInit.get(`shop/${id}`)
+    const response = await AxiosInit.get(`shop/${id}`, {timeout: 30000})
 
     try {
         return response
@@ -64,6 +63,16 @@ export const GetShopList = async () => {
     }
 }
 
+export const GetReviewProduct = async (id) => {
+    const response = await AxiosInit(`review-list/${id}`)
+
+    try {
+        return response
+    } catch(err) {
+        return response
+    }
+}
+
 export const PostReviewProduct = async (requestData) => {
     const response = await toast.promise(
         AxiosInit.post('review/', requestData),
@@ -75,9 +84,6 @@ export const PostReviewProduct = async (requestData) => {
     )
     
     try {
-        setTimeout(() => {
-            location.reload();
-        }, 3500)
         return response;
     } catch(err) {
         return response

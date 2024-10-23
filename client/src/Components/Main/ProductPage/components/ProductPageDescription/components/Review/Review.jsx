@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { ReviewComment } from "./components/ReviewComment"
 import { ReviewFormSend } from "./components/ReviewFormSend";
 import { ReviewFormSendMobile } from "./components/ReviewFormSendMobile";
+import { GetReviewProduct } from "../../../../../../../Axios/AxiosInit";
 
 
-export const Review = ({dataReview}) => {
-    const reviewCount = dataReview.length;
+export const Review = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
+    const [reviewData, setReviewData] = useState([]);
+    const reviewCount = reviewData.length;
+    const { id } = useParams();
+    
     useEffect(() => {
         const handleWidth = () => {setScreenWidth(window.innerWidth)}
 
@@ -17,6 +21,20 @@ export const Review = ({dataReview}) => {
         return () => window.removeEventListener('resize', handleWidth);
     })
 
+    useEffect(() => {
+        GetReviewProduct(id)
+        .then((res) => {
+            setReviewData(res.data.reviews)
+        })
+        .catch((err) => {
+            console.warn(err);
+        })
+    }, [])
+
+    const SubmitEventHandle = (event) => {
+        console.log(event)
+    }
+    
     return (
         <>
             <ToastContainer 
@@ -26,17 +44,17 @@ export const Review = ({dataReview}) => {
             />
             <section className="Review">
                 <section className="Review_content">
-                    <h2>{dataReview ? reviewCount: null} Reviews for lira earings</h2>
+                    <h2>{reviewData ? reviewCount: null} Reviews for lira earings</h2>
                     
                     <section className="Review_content__content"
                         style={{
-                            overflowY: dataReview.length > 3 ? 'scroll': 'visible',
+                            overflowY: reviewCount > 3 ? 'scroll': 'visible',
                         }}
                     >
                         {
-                            dataReview ?
-                                dataReview.length > 0 ?
-                                    dataReview.map((data, index) => 
+                            reviewData ?
+                                reviewData.length > 0 ?
+                                    reviewData.map((data, index) => 
                                         <ReviewComment
                                             key={index + 1}
                                             LastName={data.last_name}
@@ -57,7 +75,7 @@ export const Review = ({dataReview}) => {
                     screenWidth <= 768 ?
                     <ReviewFormSendMobile />
                     :
-                    <ReviewFormSend />
+                    <ReviewFormSend setSubmitEvent={SubmitEventHandle} />
                 }
             </section>
         </>

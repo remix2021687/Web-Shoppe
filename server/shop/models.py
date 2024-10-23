@@ -48,8 +48,8 @@ class ProductReview(models.Model):
     first_name = models.CharField(max_length=50, blank=False, null=False, default='')
     last_name = models.CharField(max_length=50, blank=False, null=False, default='')
     comment = models.TextField(blank=False, null=False)
-    rate = models.IntegerField(blank=True, null=False, default=0, validators=[
-        MinValueValidator(0),
+    rate = models.IntegerField(blank=True, null=False, default=1, validators=[
+        MinValueValidator(1),
         MaxValueValidator(5)
     ])
     product = models.ForeignKey('shop.ShopProduct', on_delete=models.CASCADE, related_name='reviews')

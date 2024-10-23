@@ -2,11 +2,11 @@ import { Checkbox, ConfigProvider, Rate } from "antd"
 import { motion } from 'framer-motion'
 import { useForm, Controller } from 'react-hook-form'
 import { useParams } from "react-router-dom"
-import { useCookies, CookiesProvider } from 'react-cookie'
+import { useCookies } from 'react-cookie'
 import { PostReviewProduct } from "../../../../../../../../Axios/AxiosInit"
 
 
-export const ReviewFormSend = () => {
+export const ReviewFormSend = ({ setSubmitEvent }) => {
     const { id } = useParams();
     const RequiredErrorMSG = 'This field is required !'
     const [cookie, setCookie, removeCookie] = useCookies([])
@@ -21,9 +21,8 @@ export const ReviewFormSend = () => {
             Rate: 0
         }
     });
-
+    
     const onSubmit = async (data) => {
-        console.log(data)
         await PostReviewProduct({
             email: data.Email,
             first_name: data.FirstName,
@@ -44,6 +43,8 @@ export const ReviewFormSend = () => {
         if (data.isDeleteCheackBox) {
             removeCookie('saveInfoCookeid')
         }
+
+        setSubmitEvent(data)
     }
 
     return (
@@ -143,7 +144,6 @@ export const ReviewFormSend = () => {
                             <Controller 
                                 control={control}
                                 name="CheackBoxCoockid"
-                                rules={{required: false}}
                                 render={({ field: {value, onChange} }) => (
                                     <Checkbox 
                                         checked={value}
@@ -160,7 +160,12 @@ export const ReviewFormSend = () => {
                     <Controller 
                         control={control}
                         name="Rate"
-                        rules={{required: true}}
+                        rules={{
+                            min: {
+                                value: 1,
+                                message: RequiredErrorMSG
+                            },
+                        }}
                         render={({field: {value, onChange} }) => (
                             <Rate 
                                 style={{color: 'black'}} 
@@ -176,9 +181,6 @@ export const ReviewFormSend = () => {
                     type='submit' 
                     whileTap={{scale: 0.8}} 
                     whileHover={{scale: 1.04}}
-                    onClick={() => {
-                        setError('Rate', {type: 'required', message: "Test"})
-                    }}
                 >
                     Submit
                 </motion.button>

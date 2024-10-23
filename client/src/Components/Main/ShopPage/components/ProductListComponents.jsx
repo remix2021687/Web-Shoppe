@@ -25,8 +25,6 @@ export const ProductListComponents = () => {
         setFilter(FilterData)   
     }, [FilterData])
 
-    console.log(data)
-
     return (
         <section className="ProductListComponents">
             <Suspense fallback={
@@ -57,7 +55,7 @@ export const ProductListComponents = () => {
                                 key={index + 1}
                                 ProductId={res.id}
                                 Name={res.name}
-                                Price={res.sale}
+                                Price={res.price}
                                 Price_Sale={res.price_sale}
                                 Sale={res.sale}
                                 URL={res.preview_img.url}

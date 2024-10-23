@@ -1222,6 +1222,7 @@ main {
   color: #707070;
   max-width: 484px;
   line-height: 27px;
+  word-break: break-all;
 }
 .ProductPage .ProductPage_head .ProductPage_head_info .ProductPage_head_info_counter {
   display: -webkit-box;
