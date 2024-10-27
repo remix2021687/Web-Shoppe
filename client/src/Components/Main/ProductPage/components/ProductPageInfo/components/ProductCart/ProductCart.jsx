@@ -11,12 +11,10 @@ export const ProductCart = ({ productInfo }) => {
     }
 
     const ButtonHandle = () => {
-        setCookie("Products", [
-            {
-                ProductCount: countValue,
-                product: productInfo
-            }
-        ])
+        setCookie("Products", {
+            ProductCount: countValue,
+            product: productInfo
+        })
     }
 
     return (

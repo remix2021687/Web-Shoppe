@@ -45,10 +45,12 @@ class ProductReviewListSerializer(serializers.ModelSerializer):
         model = ProductReview
         fields = ('id', 'first_name', 'last_name', 'comment', 'rate', 'data')
 
+
 class ProductReviewReadOnlyListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopProduct
         fields = ('id', 'name')
+
 
 class ProductReviewReadOnlySerializer(serializers.ModelSerializer):
     reviews = ProductReviewListSerializer(read_only=True, many=True)
@@ -56,6 +58,7 @@ class ProductReviewReadOnlySerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopProduct
         fields = ('id', 'name', 'reviews')
+
 
 class ProductReviewRateListSerializer(serializers.ModelSerializer):
     class Meta:
@@ -79,6 +82,7 @@ class ShopProductPriceSerializer(serializers.ModelSerializer):
 
 class ShopProductListSerializer(serializers.ModelSerializer):
     shop = ShopSerializer(read_only=True)
+    category = CategorySerializer(read_only=True, many=True)
     preview_img = ProductImgListSerializer(read_only=True, many=True, source="img_list")
 
     def to_representation(self, instance):
@@ -94,7 +98,7 @@ class ShopProductListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'sale', 'stock', 'shop', 'preview_img')
+        fields = ('id', 'name', 'price', 'category', 'sale', 'stock', 'shop', 'preview_img')
 
 
 class ShopProductSerializer(serializers.ModelSerializer):

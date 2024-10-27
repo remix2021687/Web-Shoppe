@@ -1,12 +1,13 @@
 import { useState, useEffect, useContext, Suspense } from "react"
 import { ProductBox } from "../../../Layout/ProductBox/ProductBox"
-import { GetProductList, GetShopList } from "../../../../Axios/AxiosInit"
+import { GetProductList } from "../../../../Axios/AxiosInit"
 import { FilterContext } from "../ShopPage"
 import { Spin, ConfigProvider } from 'antd'
 
 export const ProductListComponents = () => {
     const [data, setData] = useState([])
     const [Filter, setFilter] = useState([])
+    const [CategoryFilter, setCategoryFilter] = useState([]) 
     const FilterData = useContext(FilterContext)
 
 
@@ -24,6 +25,15 @@ export const ProductListComponents = () => {
 
         setFilter(FilterData)   
     }, [FilterData])
+
+
+    useEffect(() => {
+        if (Filter.Category) {
+            Filter.Category.map((data) => {
+                setCategoryFilter(data)
+            })
+        }
+    }, [data, Filter.Category])
 
     return (
         <section className="ProductListComponents">
@@ -50,6 +60,7 @@ export const ProductListComponents = () => {
                     .filter((res) => Filter.isSale == true && res.sale > 0 && res.stock > 0 || !Filter.isSale)
                     .filter((res) => Filter.isStock == true && res.stock > 0 || !Filter.isStock)
                     .filter((res) => res.shop.name == Filter.ShopBy || !Filter.ShopBy)
+                    .filter((res) => res.category.map((data) => data.name).includes(CategoryFilter) || Filter.Category.length == 0)
                     .map((res, index) => 
                             <ProductBox
                                 key={index + 1}

@@ -17,12 +17,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <>
-    <Suspense fallback={<LoadingFullScreen />}>
-        <BrowserRouter>
-          <CookiesProvider>
-              <App Route={RoutesComponents} Components={Components} />
-          </CookiesProvider>
-        </BrowserRouter>
-    </Suspense>
+    <CookiesProvider>
+      <Suspense fallback={<LoadingFullScreen />}>
+          <BrowserRouter>
+            <App Route={RoutesComponents} Components={Components} />
+          </BrowserRouter>
+      </Suspense>
+    </CookiesProvider>
   </>
 )

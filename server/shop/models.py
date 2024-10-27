@@ -32,6 +32,7 @@ class ProductImgList(models.Model):
     def __str__(self):
         return f'Image Name: {self.name}'
 
+
 class ProductInfo(models.Model):
     weight = models.FloatField(max_length=100, blank=False, null=False)
     dimentions = models.CharField(max_length=100, blank=False, null=False)
@@ -56,7 +57,7 @@ class ProductReview(models.Model):
     data = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
-        ordering = ['data']
+        ordering = ['-data']
 
     def __str__(self):
         return f"Review by {self.first_name} {self.last_name}, rate: {self.rate}"

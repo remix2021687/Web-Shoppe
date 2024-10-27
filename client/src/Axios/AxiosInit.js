@@ -24,7 +24,7 @@ export const GetProductList = async () => {
 }
 
 export const GetProductInfo = async (id) => {
-    const response = await AxiosInit.get(`shop/${id}`, {timeout: 30000})
+    const response = await AxiosInit.get(`shop/${id}`)
 
     try {
         return response
@@ -35,6 +35,16 @@ export const GetProductInfo = async (id) => {
 
 export const GetProductPriceList = async () => {
     const response = await AxiosInit.get('product-price/')
+
+    try {
+        return response
+    } catch(err) {
+        return response
+    }
+}
+
+export const GetCategoryList = async () => {
+    const response = await AxiosInit.get('category-list/')
 
     try {
         return response
