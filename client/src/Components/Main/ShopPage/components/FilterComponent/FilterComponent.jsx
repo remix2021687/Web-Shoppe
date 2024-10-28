@@ -1,22 +1,25 @@
 import { MagnifyingGlass } from '@phosphor-icons/react'
 import { Select, Slider, Switch, ConfigProvider } from 'antd'
 import { useEffect, useState } from 'react'
-import { GetProductPriceList, GetShopList } from '../../../../../Axios/AxiosInit'
+import { GetCategoryList, GetProductPriceList, GetShopList } from '../../../../../Axios/AxiosInit'
 
 export const FilterComponent = ({ setParentToChild }) => {
     const [searchData, setSearchData] = useState('')
     const [SliderData, setSliderData] = useState([10, 999]);
     const [ShopByData, setShopByData] = useState('')
+    const [Category, setCategory] = useState([])
     const [SortByData, setSortByData] = useState('')
     const [isSale, setIsSale] = useState(false)
     const [isStock, setIsStock] = useState(false)
     const [MaxPrice, setMaxPrice] = useState([0]);
 
     const [ShopListData, setShopListData] = useState([]);
+    const [categoryData, setCategoryData] = useState([]);
 
     const [filterData, setFilterData] = useState({
         searchData: '',
         ShopBy: '',
+        Category: [],
         SortBy: '',
         SliderData: [],
         isSale: false,
@@ -28,16 +31,17 @@ export const FilterComponent = ({ setParentToChild }) => {
             searchData: searchData,
             ShopBy: ShopByData,
             SortBy: SortByData,
+            Category: Category,
             SliderData: SliderData,
             isSale: isSale,
             isStock: isStock
         })
 
-    }, [searchData, SliderData, ShopByData, SortByData, isSale, isStock])
+    }, [searchData, SliderData, ShopByData, Category, SortByData, isSale, isStock])
 
     useEffect(() => {
         setParentToChild(filterData)
-    })
+    }, [filterData])
 
     useEffect(() => {
         GetProductPriceList()
@@ -47,7 +51,11 @@ export const FilterComponent = ({ setParentToChild }) => {
             let arr = [];
 
             response.map((data) => {
-                arr.push(data.price)
+                if (data.price_sale) {
+                    arr.push(data.price_sale)
+                } else {
+                    arr.push(data.price)
+                }
 
                 setSliderData([10, Math.max(...arr)])
                 setMaxPrice(Math.max(...arr))
@@ -65,6 +73,19 @@ export const FilterComponent = ({ setParentToChild }) => {
         })
         .catch((err) => {
             console.warn(err)
+        })
+    }, [])
+
+    useEffect(() => {
+        GetCategoryList()
+        .then((res) => {
+            const response = res.data;
+            
+            setCategoryData(response)
+        })
+
+        .catch((err) => {
+            console.warn(err);
         })
     }, [])
 
@@ -108,6 +129,29 @@ export const FilterComponent = ({ setParentToChild }) => {
                         )
                     }
 
+                    </Select>
+                </ConfigProvider>
+
+                <ConfigProvider
+                    theme={{
+                        components: {
+                            Select: {
+                                colorTextPlaceholder: 'black',
+                            }
+                        }
+                    }}
+                >
+                    <Select 
+                        mode='multiple'
+                        allowClear={true}
+                        onChange={(value) => setCategory(value)}
+                        placeholder={'Category'}
+                    >
+                        {
+                            categoryData.map((data, index) => 
+                                <Select.Option key={index + 1} value={data.name} >{data.name}</Select.Option>
+                            )
+                        }
                     </Select>
                 </ConfigProvider>
 

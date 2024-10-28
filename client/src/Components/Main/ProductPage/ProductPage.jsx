@@ -1,9 +1,11 @@
 import { useEffect, useState, createContext } from "react"
 import { useParams, useNavigate } from "react-router-dom";
 import { ProductPageViewer } from "./components/ProductPageViewer";
-import { ProductPageInfo } from "./components/ProductPageInfo";
+import { ProductPageInfo } from "./components/ProductPageInfo/ProductPageInfo";
 import { ProductPageDescription } from "./components/ProductPageDescription/ProductPageDescription";
 import { GetProductInfo } from "../../../Axios/AxiosInit";
+
+// import { ProductBoxRander } from "../../Layout/ProductBoxRander/ProductBoxRander";
 
 export const ProductPageViewerContext = createContext(null);
 export const ProductPageInfoContext = createContext(null);
@@ -45,11 +47,13 @@ export const ProductPage = () => {
                             {
                                 name: data.name,
                                 price: data.price,
+                                price_sale: data.price_sale,
                                 product_rate : data.product_rate,
                                 description_product: data.description_product,
                                 sale: data.sale,
                                 stock: data.stock,
                                 shop: data.shop,
+                                sku: data.sku,
                                 material_info: data.product_info,
                                 category: data.category,
                                 reviews: data.reviews
@@ -69,11 +73,6 @@ export const ProductPage = () => {
             >
                 <ProductPageDescription />
             </ProductPageDescriptionContext.Provider>
-
-            <section className="ProductPage_recommendation">
-
-            </section>
-
         </section>
     )
 }

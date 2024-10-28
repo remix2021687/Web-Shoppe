@@ -2,12 +2,13 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from .pagination import ShopListPagination
 
-from shop.models import ShopProduct, ProductReview, Shop
+from shop.models import ShopProduct, ProductReview, Shop, Category
 from .permission import IsAdminOnlyCanEdit
 from .serializer import (ProductReviewListSerializer,
                          ProductReviewPostSerializer,
-                         ShopProductListSerializer, ShopProductSerializer,
-                         ShopProductPriceSerializer, ShopSerializer)
+                         ShopProductListSerializer, ProductReviewReadOnlyListSerializer,
+                         ProductReviewReadOnlySerializer, ShopProductSerializer,
+                         ShopProductPriceSerializer, ShopSerializer, CategorySerializer)
 
 
 class ShopProductViewSet(viewsets.ReadOnlyModelViewSet):
@@ -23,7 +24,6 @@ class ShopProductViewSet(viewsets.ReadOnlyModelViewSet):
 
 class ShopProductReviewViewSet(viewsets.ModelViewSet):
     queryset = ProductReview.objects.all()
-    serializer_class = ProductReviewPostSerializer
     permission_classes = [AllowAny, IsAdminOnlyCanEdit]
 
     def get_serializer_class(self):
@@ -32,6 +32,14 @@ class ShopProductReviewViewSet(viewsets.ModelViewSet):
 
         return ProductReviewPostSerializer
 
+class ShopProductOnlyReadViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ShopProduct.objects.all()
+    permission_classes = [IsAdminOnlyCanEdit]
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return ProductReviewReadOnlyListSerializer
+        return ProductReviewReadOnlySerializer
 
 class ShopProductPriceListViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ShopProduct.objects.all()
@@ -50,3 +58,9 @@ class ShopProductListViewSetPagination(viewsets.ReadOnlyModelViewSet):
     serializer_class = ShopProductListSerializer
     permission_classes = [AllowAny]
     pagination_class = ShopListPagination
+
+
+class ProductCategoryViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [AllowAny]
