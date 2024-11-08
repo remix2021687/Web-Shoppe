@@ -3,12 +3,14 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenVerifyView, TokenRefreshView, TokenObtainPairView
 
-from api.shop.resourceview import (ShopProductViewSet, ShopProductReviewViewSet, ShopProductOnlyReadViewSet,
+from api.shop.resourceview import (ShopProductViewSet, ShopProductReviewViewSet, ShopProductPostViewSet, ShopProductOnlyReadViewSet,
                                    ShopProductPriceListViewSet, ShopListViewSet, ShopProductListViewSetPagination,
-                                   ProductCategoryViewSet)
+                                   ProductCategoryViewSet, ProductImgListViewSet)
 
 router = routers.DefaultRouter()
 router.register('shop', ShopProductViewSet)
+router.register('product-img', ProductImgListViewSet, basename='product-img')
+router.register('shop-post', ShopProductPostViewSet, basename='shopPost')
 router.register('product-price', ShopProductPriceListViewSet, basename='shopPrice')
 router.register('shop-list', ShopListViewSet, basename='shopList')
 router.register('shop-list-page', ShopProductListViewSetPagination, basename='shopListPagination')

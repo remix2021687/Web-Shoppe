@@ -1,7 +1,7 @@
+import string
 import uuid
 import random
 
-from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
@@ -26,11 +26,14 @@ class Category(models.Model):
 
 
 class ProductImgList(models.Model):
-    name = models.CharField(max_length=100, unique=True, blank=False, null=True)
+    name = models.CharField(max_length=100, blank=False, null=True, editable=False,
+                            default=''.join(random.choice(string.ascii_letters + string.digits) for _ in range(32)))
     url = models.ImageField(upload_to="uploads/products/%Y/%m/%d/")
+    product = models.ForeignKey('ShopProduct', on_delete=models.CASCADE, null=True, blank=False, default='',
+                                related_name='product_img')
 
     def __str__(self):
-        return f'Image Name: {self.name}'
+        return f'Image id: {self.name} " {self.product}'
 
 
 class ProductInfo(models.Model):
@@ -74,7 +77,6 @@ class ShopProduct(models.Model):
                                      default='', null=False)
     sku = models.IntegerField(blank=True, null=False, default=random.randint(0, 999), editable=False)
     sale = models.IntegerField(blank=True, default=0)
-    img_list = models.ManyToManyField('ProductImgList', related_name='img_list')
     category = models.ManyToManyField(Category)
 
     date_created = models.DateTimeField(auto_now_add=True, editable=False)

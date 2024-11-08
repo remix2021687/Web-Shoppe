@@ -25,7 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
 class ProductImgListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductImgList
-        fields = ('name', 'url')
+        fields = ('name', 'url', 'product')
 
 
 class ProductInfoSerializer(serializers.ModelSerializer):
@@ -80,10 +80,18 @@ class ShopProductPriceSerializer(serializers.ModelSerializer):
         return representation
 
 
+class ShopProductPostSerializer(serializers.ModelSerializer):
+    img_list = ProductImgListSerializer(many=True, write_only=True)
+    
+    class Meta:
+        model = ShopProduct
+        fields = ('id', 'name', 'price', 'description_product', 'shop', 'stock', 'product_info', 'sale', 'img_list')
+
+
 class ShopProductListSerializer(serializers.ModelSerializer):
     shop = ShopSerializer(read_only=True)
     category = CategorySerializer(read_only=True, many=True)
-    preview_img = ProductImgListSerializer(read_only=True, many=True, source="img_list")
+    preview_img = ProductImgListSerializer(read_only=True, many=True, source="product_img")
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -104,13 +112,13 @@ class ShopProductListSerializer(serializers.ModelSerializer):
 class ShopProductSerializer(serializers.ModelSerializer):
     reviews = ProductReviewListSerializer(many=True, required=False)
     product_info = ProductInfoSerializer(read_only=True)
-    img_list = ProductImgListSerializer(many=True)
+    img_list = ProductImgListSerializer(many=True, read_only=True, source='product_img')
     category = CategorySerializer(many=True, read_only=True)
     shop = ShopSerializer(read_only=True)
 
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'description_product', 'img_list', 'sale', 'stock', 'sku',
+        fields = ('id', 'name', 'price', 'description_product', 'sale', 'stock', 'sku', 'img_list',
                   'shop', 'product_info', 'category', 'reviews')
 
     def to_representation(self, instance):
