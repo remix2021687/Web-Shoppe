@@ -79,7 +79,7 @@ class ShopProductPostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'description_product', 'shop', 'category', 'stock', 'product_info', 'sale')
+        fields = ('id', 'name', 'price', 'sale', 'description_product', 'shop', 'category', 'stock', 'product_info')
 
 
 class ShopProductListSerializer(serializers.ModelSerializer):

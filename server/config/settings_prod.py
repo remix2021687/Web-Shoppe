@@ -6,7 +6,7 @@ ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', 'localhost')]
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': f'{os.environ.get('DB_NAME')}',
         'USER': f'{os.environ.get('DB_USER')}',
         'PASSWORD': f'{os.environ.get('DB_PASSWORD')}',

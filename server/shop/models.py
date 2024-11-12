@@ -78,7 +78,6 @@ class ShopProduct(models.Model):
     sku = models.IntegerField(blank=False, null=False, default=random.randint(0, 999), editable=False)
     sale = models.IntegerField(blank=False, null=False)
     category = models.ManyToManyField(Category, blank=False)
-
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
