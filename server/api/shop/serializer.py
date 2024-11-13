@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from shop.models import ShopProduct, ProductReview, ProductImgList, ProductInfo, Shop, Category
@@ -16,22 +15,16 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ('id', 'name')
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'first_name', 'last_name')
-
-
 class ProductImgListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductImgList
-        fields = ('name', 'url')
+        fields = ('name', 'url', 'product')
 
 
 class ProductInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductInfo
-        fields = ('weight', 'dimentions', 'colours', 'material')
+        fields = ('weight', 'dimensions', 'colours', 'material')
 
 
 class ProductReviewPostSerializer(serializers.ModelSerializer):
@@ -80,10 +73,19 @@ class ShopProductPriceSerializer(serializers.ModelSerializer):
         return representation
 
 
+class ShopProductPostSerializer(serializers.ModelSerializer):
+    product_info = ProductInfoSerializer(required=True)
+    category = CategorySerializer(many=True, write_only=True)
+
+    class Meta:
+        model = ShopProduct
+        fields = ('id', 'name', 'price', 'sale', 'description_product', 'shop', 'category', 'stock', 'product_info')
+
+
 class ShopProductListSerializer(serializers.ModelSerializer):
-    shop = ShopSerializer(read_only=True)
+    shop = ShopSerializer(required=True)
     category = CategorySerializer(read_only=True, many=True)
-    preview_img = ProductImgListSerializer(read_only=True, many=True, source="img_list")
+    preview_img = ProductImgListSerializer(read_only=True, many=True, source="product_img")
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -104,13 +106,13 @@ class ShopProductListSerializer(serializers.ModelSerializer):
 class ShopProductSerializer(serializers.ModelSerializer):
     reviews = ProductReviewListSerializer(many=True, required=False)
     product_info = ProductInfoSerializer(read_only=True)
-    img_list = ProductImgListSerializer(many=True)
+    img_list = ProductImgListSerializer(many=True, read_only=True, source='product_img')
     category = CategorySerializer(many=True, read_only=True)
     shop = ShopSerializer(read_only=True)
 
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'description_product', 'img_list', 'sale', 'stock', 'sku',
+        fields = ('id', 'name', 'price', 'description_product', 'sale', 'stock', 'sku', 'img_list',
                   'shop', 'product_info', 'category', 'reviews')
 
     def to_representation(self, instance):

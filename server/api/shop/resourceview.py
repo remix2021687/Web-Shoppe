@@ -1,13 +1,14 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAdminUser
 from .pagination import ShopListPagination
 
-from shop.models import ShopProduct, ProductReview, Shop, Category
+from shop.models import ShopProduct, ProductReview, Shop, Category, ProductImgList, ProductInfo
 from .permission import IsAdminOnlyCanEdit
 from .serializer import (ProductReviewListSerializer,
                          ProductReviewPostSerializer,
                          ShopProductListSerializer, ProductReviewReadOnlyListSerializer,
-                         ProductReviewReadOnlySerializer, ShopProductSerializer,
+                         ProductReviewReadOnlySerializer, ProductInfoSerializer, ProductImgListSerializer,
+                         ShopProductPostSerializer, ShopProductSerializer,
                          ShopProductPriceSerializer, ShopSerializer, CategorySerializer)
 
 
@@ -32,6 +33,13 @@ class ShopProductReviewViewSet(viewsets.ModelViewSet):
 
         return ProductReviewPostSerializer
 
+
+class ShopProductPostViewSet(viewsets.ModelViewSet):
+    queryset = ShopProduct.objects.all()
+    serializer_class = ShopProductPostSerializer
+    permission_classes = [IsAdminUser]
+
+
 class ShopProductOnlyReadViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ShopProduct.objects.all()
     permission_classes = [IsAdminOnlyCanEdit]
@@ -40,6 +48,19 @@ class ShopProductOnlyReadViewSet(viewsets.ReadOnlyModelViewSet):
         if self.action == 'list':
             return ProductReviewReadOnlyListSerializer
         return ProductReviewReadOnlySerializer
+
+
+class ProductInfoViewSet(viewsets.ModelViewSet):
+    queryset = ProductInfo.objects.all()
+    serializer_class = ProductInfoSerializer
+    permission_classes = [IsAdminUser]
+
+
+class ProductImgListViewSet(viewsets.ModelViewSet):
+    queryset = ProductImgList.objects.all()
+    serializer_class = ProductImgListSerializer
+    permission_classes = [IsAdminUser]
+
 
 class ShopProductPriceListViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ShopProduct.objects.all()
