@@ -2,7 +2,7 @@ import { Checkbox, ConfigProvider, Rate } from "antd"
 import { motion } from 'framer-motion'
 import { useForm, Controller } from 'react-hook-form'
 import { useParams } from "react-router-dom"
-import { useCookies } from 'react-cookie'
+import { useCookies, CookiesProvider } from 'react-cookie'
 import { PostReviewProduct } from "../../../../../../../../Axios/AxiosInit"
 
 
@@ -11,7 +11,7 @@ export const ReviewFormSend = ({ setSubmitEvent }) => {
     const RequiredErrorMSG = 'This field is required !'
     const [cookie, setCookie, removeCookie] = useCookies([])
 
-    const { register, control, handleSubmit, setError, formState: { errors } } = useForm({
+    const { register, control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             Email: cookie.saveInfoCookeid ? cookie.saveInfoCookeid.email: '',
             FirstName: cookie.saveInfoCookeid ? cookie.saveInfoCookeid.first_name: '',
@@ -107,53 +107,55 @@ export const ReviewFormSend = ({ setSubmitEvent }) => {
                 </section>
                 
                 <section className="Review_form_content_savecookee">
-                    {
-                        cookie.saveInfoCookeid ?
-                        <ConfigProvider
-                            theme={{
-                                token: {
-                                    colorPrimary: 'black',
-                                    borderRadiusSM: 2,
-                                    controlInteractiveSize: 18
-                                }
-                            }}
-                        >
-                            <Controller 
-                                control={control}
-                                name="isDeleteCheackBox"
-                                rules={{required: false}}
-                                render={({ field: {value, onChange} }) => (
-                                    <Checkbox 
-                                        checked={value}
-                                        onChange={(event) => onChange(event.target.checked)}
-                                    />
-                                )}
-                            />
-                            <p>Delete name, email on website ?</p>
-                        </ConfigProvider>
-                        :
-                        <ConfigProvider
-                            theme={{
-                                token: {
-                                    colorPrimary: 'black',
-                                    borderRadiusSM: 2,
-                                    controlInteractiveSize: 18
-                                }
-                            }}
-                        >
-                            <Controller 
-                                control={control}
-                                name="CheackBoxCoockid"
-                                render={({ field: {value, onChange} }) => (
-                                    <Checkbox 
-                                        checked={value}
-                                        onChange={(event) => onChange(event.target.checked)}
-                                    />
-                                )}
-                            />
-                            <p>Save my name, email, and website in this browser for the next time I comment</p>
-                        </ConfigProvider>
-                    }
+                    <CookiesProvider defaultSetOptions={{path: `shop/${id}`}}>
+                        {
+                            cookie.saveInfoCookeid ?
+                            <ConfigProvider
+                                theme={{
+                                    token: {
+                                        colorPrimary: 'black',
+                                        borderRadiusSM: 2,
+                                        controlInteractiveSize: 18
+                                    }
+                                }}
+                            >
+                                <Controller 
+                                    control={control}
+                                    name="isDeleteCheackBox"
+                                    rules={{required: false}}
+                                    render={({ field: {value, onChange} }) => (
+                                        <Checkbox 
+                                            checked={value}
+                                            onChange={(event) => onChange(event.target.checked)}
+                                        />
+                                    )}
+                                />
+                                <p>Delete name, email on website ?</p>
+                            </ConfigProvider>
+                            :
+                            <ConfigProvider
+                                theme={{
+                                    token: {
+                                        colorPrimary: 'black',
+                                        borderRadiusSM: 2,
+                                        controlInteractiveSize: 18
+                                    }
+                                }}
+                            >
+                                <Controller 
+                                    control={control}
+                                    name="CheackBoxCoockid"
+                                    render={({ field: {value, onChange} }) => (
+                                        <Checkbox 
+                                            checked={value}
+                                            onChange={(event) => onChange(event.target.checked)}
+                                        />
+                                    )}
+                                />
+                                <p>Save my name, email, and website in this browser for the next time I comment</p>
+                            </ConfigProvider>
+                        }
+                    </CookiesProvider>
                 </section>
                 <section className="Review_form_content_rate">
                     <h4>Your Rating*</h4>

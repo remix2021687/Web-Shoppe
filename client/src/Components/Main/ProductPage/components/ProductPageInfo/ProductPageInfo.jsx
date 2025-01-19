@@ -1,8 +1,9 @@
 import { useState, useContext, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { useCookies, CookiesProvider } from "react-cookie"
 import { motion } from 'framer-motion'
 import { Heart, EnvelopeSimple, FacebookLogo, InstagramLogo, XLogo} from '@phosphor-icons/react'
 import { Rate } from 'antd'
-import { useCookies } from "react-cookie"
 import { ProductPageInfoContext } from "../../ProductPage";
 import { ProductCart } from "./components/ProductCart/ProductCart"
 
@@ -14,19 +15,23 @@ export const ProductPageInfo = () => {
     const categoryData = data.category
     const isLikedCookie = cookie.isLiked ? cookie.isLiked.isLiked: false;
 
+    const { id } = useParams();
+
+    console.log(cookie)
+
     const LikeHandler = () => {
         if (isLiked) {
             setIsLiked(false)
             setCookie('isLiked', {
                 isLiked: false,
                 product: PageInfoContext
-            })
+            }, {path: `/shop/${id}`})
         } else {
             setIsLiked(true)
             setCookie('isLiked', {
                 isLiked: true,
                 product: PageInfoContext
-            })
+            }, {path: `/shop/${id}`})
         }
     }
 
@@ -80,14 +85,16 @@ export const ProductPageInfo = () => {
 
             <section className="ProductPage_head_info_footer">
                 <section className="ProductPage_head_info_footer_social_and_like">
-                    <motion.section whileTap={{scale: 0.8}} style={{width: '25px'}}>
-                        <Heart className="HeartIcon" size={25} 
-                            weight={isLiked ? "fill": 'bold'} 
-                            color={isLiked ? "red": "#979797"}
-                            onClick={LikeHandler}
-                            
-                        />
-                    </motion.section>
+                    <CookiesProvider>
+                        <motion.section whileTap={{scale: 0.8}} style={{width: '25px'}}>
+                            <Heart className="HeartIcon" size={25} 
+                                weight={isLiked ? "fill": 'bold'} 
+                                color={isLiked ? "red": "#979797"}
+                                onClick={LikeHandler}
+                                
+                            />
+                        </motion.section>
+                    </CookiesProvider>
 
                     <hr />
 

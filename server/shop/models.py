@@ -76,7 +76,10 @@ class ShopProduct(models.Model):
     product_info = models.ForeignKey('ProductInfo', on_delete=models.CASCADE, related_name='products_info',
                                      default='', null=False)
     sku = models.IntegerField(blank=False, null=False, default=random.randint(0, 999), editable=False)
-    sale = models.IntegerField(blank=False, null=False)
+    sale = models.IntegerField(blank=False, null=False, validators=[
+        MinValueValidator(0),
+        MaxValueValidator(100)
+    ])
     category = models.ManyToManyField(Category, blank=False)
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
 

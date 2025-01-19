@@ -8,7 +8,7 @@
     width: 89.8%;
     height: 100px;
     position: relative;
-    z-index: 2;
+    z-index: 3;
     top: 0px;
     padding: 0 10px;
     transition: 0.5s ease;
@@ -69,6 +69,7 @@
                     transform: translateY(3px);
                 }
             }
+
         }
 
     }
@@ -91,6 +92,5 @@
 
     }
 }
-
+@import './components/HeaderUnderDrop';
 @import './components/Dropmenu';
-@import './components/Shopbag/Shopbag';

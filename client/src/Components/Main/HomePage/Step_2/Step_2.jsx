@@ -35,7 +35,7 @@ export const Step_2 = () => {
             </header>
             
             <section className="Step_2_content" style={{
-                justifyContent: productCount < 4 ? 'center': 'space-between'
+                justifyContent: productCount == 4 ? 'center': 'space-between'
             }}>
                 <ProductBoxRander data={data} />
             </section>

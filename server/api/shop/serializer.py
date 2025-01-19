@@ -75,11 +75,10 @@ class ShopProductPriceSerializer(serializers.ModelSerializer):
 
 class ShopProductPostSerializer(serializers.ModelSerializer):
     product_info = ProductInfoSerializer(required=True)
-    category = CategorySerializer(many=True, write_only=True)
 
     class Meta:
         model = ShopProduct
-        fields = ('id', 'name', 'price', 'sale', 'description_product', 'shop', 'category', 'stock', 'product_info')
+        fields = ('id', 'name', 'price', 'sale', 'description_product', 'shop', 'stock', 'product_info', 'category')
 
 
 class ShopProductListSerializer(serializers.ModelSerializer):

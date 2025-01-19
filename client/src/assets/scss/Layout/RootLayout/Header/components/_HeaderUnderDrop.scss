@@ -1,0 +1,13 @@
+.HeaderUnderDrop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 89%;
+    height: 68px;
+    background-color: #EFEFEF;
+    border-top: 1px solid #A18A68;
+    position: absolute;
+    top: 5%;
+    z-index: -3;
+}
