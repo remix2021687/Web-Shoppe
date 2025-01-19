@@ -20,6 +20,7 @@
         background-color: #EFEFEF;
         border-radius: 8px;
         overflow: hidden;
+        margin-bottom: 128px;
     
         button {
             position: relative;
@@ -44,6 +45,54 @@
                 background-color: white;
                 border-radius: 8px;
             }
+        }
+    }
+
+    .AuthPage_SingIn {
+        display: flex;
+        flex-direction: column;
+        gap: 111px;
+        width: 100%; 
+
+        .AuthPage_SingIn_inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 46px;
+
+            input {
+                height: 39px;
+                border: none;
+                border-bottom: 1px solid #D8D8D8;
+                font-size: 16px;
+                outline: none;
+                                
+                &::placeholder {
+                    color: #707070;
+                }
+            }
+            
+        }
+
+        .AuthPage_SingIn_footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            gap: 13px;
+
+            button {
+                position: relative;
+                height: 53px;
+                background-color: black;
+                border: 1px solid black;
+                border-radius: 4px;
+                color: white;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+            }
+
+            a {color: black;}
         }
     }
 }
