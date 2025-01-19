@@ -1,17 +1,15 @@
-import { assets } from "../../../../assets/assets"
-import { NavLink } from "react-router-dom"
-import { List, X, ShoppingCart, User, Heart, MagnifyingGlass} from '@phosphor-icons/react'
 import { useState, createContext } from "react"
 import { motion } from 'framer-motion'
+import { NavLink } from "react-router-dom"
+import { assets } from "../../../../assets/assets"
+import { List, X, ShoppingCart, User, Heart, MagnifyingGlass} from '@phosphor-icons/react'
 import { Dropmenu } from "./components/Dropmenu"
-import { Shopbag } from "./components/Shopbag/Shopbag"
+import { HeaderUnderDrop } from './components/HeaderUnderDrop'
 
 export const DropmenuContext = createContext(null);
-export const ShopBagContext = createContext(null);
 
 export const Header = () => {
     const [isOpne, setIsOpen] = useState(false);
-    const [isOpenBag, setIsOpenBag] = useState(false);
     const DropmenuIconSize = 40;
     const NavigationIconSize = 21;
     const durationAnimation = 0.6
@@ -64,14 +62,6 @@ export const Header = () => {
         }
     }
 
-    const openShopBagHandle = (event) => {
-        if (event) {
-            setIsOpenBag(false);
-        } else {
-            setIsOpenBag(true)
-        }
-    }
-
     return (
         <>
             <nav className="Header"
@@ -108,7 +98,7 @@ export const Header = () => {
                             
                             <ShoppingCart size={NavigationIconSize} />
 
-                        <NavLink>
+                        <NavLink to={'/auth'}>
                             <User size={NavigationIconSize} color="black" />
                         </NavLink>
                     </section>
@@ -135,16 +125,12 @@ export const Header = () => {
                         <X size={DropmenuIconSize}/>
                     </motion.div>
                 </section>
+                    {/* <HeaderUnderDrop /> */}
             </nav>
 
             <DropmenuContext.Provider value={isOpne}>
                 <Dropmenu setDropmenuClickState={onClickEvent} />
             </DropmenuContext.Provider>
-
-            <ShopBagContext.Provider value={isOpenBag}>
-                <Shopbag setIsOpenClose={openShopBagHandle} />
-            </ShopBagContext.Provider>
-
         </>
     )
 }
