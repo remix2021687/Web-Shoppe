@@ -664,27 +664,40 @@ main {
           flex-direction: column;
   gap: 46px;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+}
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input {
   height: 39px;
   border: none;
   border-bottom: 1px solid #D8D8D8;
   font-size: 16px;
   outline: none;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input::-webkit-input-placeholder {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input::-webkit-input-placeholder {
   color: #707070;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input::-moz-placeholder {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input::-moz-placeholder {
   color: #707070;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input:-ms-input-placeholder {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input:-ms-input-placeholder {
   color: #707070;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input::-ms-input-placeholder {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input::-ms-input-placeholder {
   color: #707070;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input::placeholder {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input::placeholder {
   color: #707070;
+}
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section span {
+  color: red;
 }
 .AuthPage .AuthPage_SingIn .AuthPage_SingIn_footer {
   display: -webkit-box;

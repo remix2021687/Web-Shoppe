@@ -59,17 +59,28 @@
             flex-direction: column;
             gap: 46px;
 
-            input {
-                height: 39px;
-                border: none;
-                border-bottom: 1px solid #D8D8D8;
-                font-size: 16px;
-                outline: none;
-                                
-                &::placeholder {
-                    color: #707070;
+            section {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                input {
+                    height: 39px;
+                    border: none;
+                    border-bottom: 1px solid #D8D8D8;
+                    font-size: 16px;
+                    outline: none;
+                                    
+                    &::placeholder {
+                        color: #707070;
+                    }
+                }
+    
+                span {
+                    color: red;
                 }
             }
+
             
         }
 
