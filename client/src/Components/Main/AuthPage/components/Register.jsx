@@ -2,13 +2,17 @@ import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 
 export const Register = () => {
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, getValues, formState: {errors}} = useForm();
     const RequiredErrorMSG = 'This field is required !'
     const EmailRegax = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
+    const onSubmit = (event) => {
+        console.log(event)
+    }
+
     return (
         <>
-            <form className='AuthPage_SingIn Register' onSubmit={(event) => {event.preventDefault()}}>
+            <form className='AuthPage_SingIn Register' onSubmit={handleSubmit(onSubmit)}>
                 <section className='AuthPage_SingIn_inputs'>
                     <section>
                         <input 
@@ -19,42 +23,63 @@ export const Register = () => {
                             name='first_name' 
                             placeholder='First Name' 
                         />
-                        <span>errors</span>
+                        <span>{errors.first_name?.message}</span>
                     </section>
                     <section>
                         <input 
                             {...register('last_name', {
-                                required: RequiredErrorMSG
+                                required: RequiredErrorMSG,
                             })}
                             type='text' 
                             name='last_name' 
                             placeholder='Last Name' 
                         />
-                        <span>errors</span>
+                        <span>{errors.last_name?.message}</span>
                     </section>
                     <section>
                         <input 
                             {...register('email', {
                                 required: RequiredErrorMSG,
-                                pattern: EmailRegax
+                                pattern: {
+                                    value: EmailRegax,
+                                    message: 'Incorrect Email'
+                                }
                             })}
                             type='email' 
                             name='email' 
                             placeholder='E-mail' 
                         />
-                        <span>errors</span>
+                        <span>{errors.email?.message}</span>
                     </section>
                     <section>
-                        <input 
+                        <input
+                            {...register('password', {
+                                required: RequiredErrorMSG,
+                                minLength: {
+                                    value: 8,
+                                    message: 'Password must not be less than 8 characters'
+                                }
+                            })}
                             type='password' 
                             name='password' 
                             placeholder='Password' 
                         />
-                        <span>errors</span>
+                        <span>{errors.password?.message}</span>
                     </section>
                     <section>
-                        <input type='password' name='retry_password' placeholder='Retry Password' />
-                        <span>errors</span>
+                        <input 
+                            {...register('confirm_password', {
+                                required: RequiredErrorMSG,
+                                validate: (match) => {
+                                    const password = getValues('password')
+                                    return match === password || 'Password should much !'
+                                }
+                            })}
+                            type='password' 
+                            name='retry_password' 
+                            placeholder='Retry Password' 
+                        />
+                        <span>{errors.confirm_password?.message}</span>
                     </section>
                     
                     
@@ -69,7 +94,6 @@ export const Register = () => {
                         }}
                         whileTap={{scale: 0.9}}
                     >Register</motion.button>
-                    <a href='#'>Have you forgotten your password?</a>
                 </section>
             </form>
         </>
