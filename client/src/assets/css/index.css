@@ -487,6 +487,11 @@ main {
   font-weight: 400;
   color: #A18A68;
 }
+.ProductBox .ProductBox_content h4 span {
+  color: #707070;
+  font-size: 14px;
+  font-weight: 600;
+}
 
 .Page404 {
   display: -webkit-box;

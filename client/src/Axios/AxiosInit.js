@@ -13,6 +13,23 @@ AxiosInit.interceptors.request.use((config) => {
     return config;
 })
 
+export const AuthLogin = async (requestData) => {
+    const response = await toast.promise(
+        AxiosInit.post('auth/jwt/create/', requestData),
+        {
+            pending: 'Checking',
+            success: "You're Logged",
+            error: 'Incorect username or password'
+        }
+    )
+
+    try {
+        return response
+    } catch (err) {
+        return response
+    }
+}
+
 export const GetProductList = async () => {
     const response = await AxiosInit.get('shop/')
 

@@ -23,6 +23,8 @@ router.register('review-list', ShopProductOnlyReadViewSet, basename='reviewList'
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
     path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/login/verify/', TokenVerifyView.as_view(), name='token_verify'),

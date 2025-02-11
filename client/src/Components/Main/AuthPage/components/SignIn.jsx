@@ -1,35 +1,36 @@
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
+import { AuthLogin } from '../../../../Axios/AxiosInit';
 
 export const SignIn = () => {
     const {register, handleSubmit, formState: { errors }} = useForm();
     
     const RequiredErrorMSG = 'This field is required !'
-    const EmailRegax = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-    const FormSumbit = (event) => {
-        console.log(event);
+    const OnSubmit = async (inputeData) => {
+        await AuthLogin({
+            'username': inputeData.username,
+            'password': inputeData.password
+        })
+        .then((res) => {
+            localStorage.setItem('token', res.data.access)
+            localStorage.setItem('token_ref', res.data.refresh)
+        })
     }
 
     return (
         <>
-            <form className='AuthPage_SingIn' onSubmit={handleSubmit(FormSumbit)}>
+            <form className='AuthPage_SingIn' onSubmit={handleSubmit(OnSubmit)}>
                 <section className='AuthPage_SingIn_inputs'>
                     <section>
-                        <input {...register("email", {
+                        <input {...register("username", {
                                 required: RequiredErrorMSG,
-                                pattern: EmailRegax
                             })} 
-                                type='email' 
-                                name='email' 
-                                placeholder='Email'
+                                type='text' 
+                                name='username' 
+                                placeholder='Username'
                         />
-                        {
-                            errors.email ? 
-                            <span>{errors.email.message}</span>
-                            :
-                            null
-                        }
+                        <span>{errors.username?.message}</span>
                     </section>
 
                     <section>
@@ -41,12 +42,7 @@ export const SignIn = () => {
                                 name='password' 
                                 placeholder='Password'
                         />
-                        {
-                            errors.password ?
-                            <span>{errors.password.message}</span>
-                            :
-                            null
-                        }
+                        <span>{errors.password?.message}</span>
                     </section>
 
                 </section>
