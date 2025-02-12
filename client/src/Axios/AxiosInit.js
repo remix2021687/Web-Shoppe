@@ -19,7 +19,7 @@ export const AuthLogin = async (requestData) => {
         {
             pending: 'Checking',
             success: "You're Logged",
-            error: 'Incorect username or password'
+            error: 'Incorrect username or password'
         }
     )
 
