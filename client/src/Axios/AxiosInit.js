@@ -30,6 +30,16 @@ export const AuthLogin = async (requestData) => {
     }
 }
 
+export const CheckStatusServer = async () => {
+    const response = await AxiosInit.get('status/')
+
+    try {
+        return response
+    } catch (err) {
+        return response
+    }
+}
+
 export const GetProductList = async () => {
     const response = await AxiosInit.get('shop/')
 

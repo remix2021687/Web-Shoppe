@@ -563,6 +563,63 @@ main {
   color: white;
 }
 
+.NonConntect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+.NonConntect .NonConntect_icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+}
+.NonConntect .NonConntect_icons img {
+  width: 280px;
+}
+.NonConntect .NonConntect_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+.NonConntect .NonConntect_header h1 {
+  font-size: 64px;
+  font-weight: 500;
+}
+.NonConntect .NonConntect_header h1 span {
+  color: #A18A68;
+}
+.NonConntect .NonConntect_header p {
+  font-size: 20px;
+  font-weight: 500;
+}
+.NonConntect .NonConntect_header p span {
+  color: #A18A68;
+}
+
 .LoadingFullScreen {
   display: -webkit-box;
   display: -ms-flexbox;

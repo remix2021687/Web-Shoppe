@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenVerifyView, TokenRefreshView, TokenObtainPairView
+from shop.views import StatusServer
 
 from api.shop.resourceview import (ShopProductViewSet, ShopProductReviewViewSet, ShopProductPostViewSet,
                                    ShopProductOnlyReadViewSet,
@@ -28,4 +29,5 @@ urlpatterns = [
     path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/login/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path('status/', StatusServer.as_view(), name='status_server'),
 ]
