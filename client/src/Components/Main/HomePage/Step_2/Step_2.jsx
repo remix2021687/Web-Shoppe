@@ -15,9 +15,6 @@ export const Step_2 = () => {
             
             setData(response)
         })
-        .catch((err) => {
-            console.warn(err);
-        })
     }, [])
 
     useEffect(() => {

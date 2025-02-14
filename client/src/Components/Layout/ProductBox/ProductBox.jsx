@@ -27,7 +27,7 @@ export const ProductBox = ({ProductId, Name, Price, Price_Sale, Sale, URL, Stock
                     <>
                         {
                             Sale > 0 ?
-                            <h4>$ {Price_Sale ? Price_Sale.toLocaleString(): '25,00'}</h4>
+                            <h4>$ {Price_Sale ? Price_Sale.toLocaleString(): '25,00'} <span>$ <del>{Price.toLocaleString()}</del></span></h4>
                             :
                             <h4>$ {Price ? Price.toLocaleString(): '25,00'}</h4>
                         }

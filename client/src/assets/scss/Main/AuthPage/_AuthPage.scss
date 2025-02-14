@@ -59,17 +59,28 @@
             flex-direction: column;
             gap: 46px;
 
-            input {
-                height: 39px;
-                border: none;
-                border-bottom: 1px solid #D8D8D8;
-                font-size: 16px;
-                outline: none;
-                                
-                &::placeholder {
-                    color: #707070;
+            section {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                input {
+                    height: 39px;
+                    border: none;
+                    border-bottom: 1px solid #D8D8D8;
+                    font-size: 16px;
+                    outline: none;
+                                    
+                    &::placeholder {
+                        color: #707070;
+                    }
+                }
+    
+                span {
+                    color: red;
                 }
             }
+
             
         }
 
@@ -84,12 +95,42 @@
                 position: relative;
                 height: 53px;
                 background-color: black;
-                border: 1px solid black;
+                border: 3px solid black;
                 border-radius: 4px;
-                color: white;
-                font-size: 16px;
-                font-weight: 600;
                 cursor: pointer;
+                overflow: hidden;
+
+                &:hover {
+                    span {
+                        color: black;
+                    }
+                    &::before {
+                        transform: scale(1);
+                    }
+                }
+                
+                span {
+                    position: relative;
+                    z-index: 3;
+                    color: white;
+                    font-size: 18px;
+                    font-weight: 600;
+                    transition: 0.5s ease;
+                }
+                
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: 2;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: white;
+                    border-radius: 2px;
+                    transform: scale(0);
+                    transition: 0.5s ease;
+                }
             }
 
             a {color: black;}

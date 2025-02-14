@@ -1,6 +1,11 @@
 import { NavLink } from 'react-router-dom'
+import { useEffect } from 'react'
 
 export const Page404 = () => {
+    useEffect(() => {
+        document.title = 'SHOPPE | Page not Found'
+    }, [])
+    
     return (
         <section className="Page404">
             <section className='Page404_header'>
