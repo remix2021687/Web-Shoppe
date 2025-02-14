@@ -56,7 +56,7 @@ export const SignIn = () => {
                         }}
                         whileTap={{scale: 0.9}}
                     >
-                        SIGN IN
+                        <span>SIGN IN</span>
                     </motion.button>
                     <a href='#'>Have you forgotten your password?</a>
                 </section>

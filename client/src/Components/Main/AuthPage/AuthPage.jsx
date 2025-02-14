@@ -8,8 +8,8 @@ export const AuthPage = () => {
     const [formState, setFromState] = useState('Sign In');
 
     useEffect(() => {
-        document.title = 'SHOPPE | Auth'
-    }, [])
+        document.title = `SHOPPE | ${formState}`
+    }, [formState])
 
 
     return (

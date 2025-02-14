@@ -30,6 +30,16 @@ export const AuthLogin = async (requestData) => {
     }
 }
 
+export const AuthRegister = async (requestData) => {
+    const response = await AxiosInit.post('auth/register/', requestData)
+
+    try {
+        return response
+    } catch (err) {
+        return response
+    }
+}
+
 export const CheckStatusServer = async () => {
     const response = await AxiosInit.get('status/')
 

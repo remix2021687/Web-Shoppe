@@ -24,8 +24,6 @@ export const NonConntect = () => {
         <section className="NonConntect">
             <motion.section 
                 className="NonConntect_icons"
-                drag
-                dragConstraints={{left: 0, right: 300}}
             >
                 <GlobeSimpleX size={90} color="#A18A68"/>
                 <img src={assets.Layout.RootLayout.Header.Logo} alt="logo"/>

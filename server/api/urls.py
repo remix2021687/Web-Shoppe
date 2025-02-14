@@ -4,6 +4,7 @@ from rest_framework import routers
 from rest_framework_simplejwt.views import TokenVerifyView, TokenRefreshView, TokenObtainPairView
 from shop.views import StatusServer
 
+from api.auth.resourceview import Register
 from api.shop.resourceview import (ShopProductViewSet, ShopProductReviewViewSet, ShopProductPostViewSet,
                                    ShopProductOnlyReadViewSet,
                                    ShopProductPriceListViewSet, ShopListViewSet, ShopProductListViewSetPagination,
@@ -29,5 +30,6 @@ urlpatterns = [
     path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/login/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path('auth/register/', Register.as_view(), name='register'),
     path('status/', StatusServer.as_view(), name='status_server'),
 ]

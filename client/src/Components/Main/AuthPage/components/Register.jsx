@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
+import { AuthRegister } from '../../../../Axios/AxiosInit';
 
 export const Register = () => {
     const {register, handleSubmit, getValues, formState: {errors}} = useForm();
     const RequiredErrorMSG = 'This field is required !'
     const EmailRegax = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-    const onSubmit = (event) => {
-        console.log(event)
+    const onSubmit = (data) => {
+        AuthRegister(data)
     }
 
     return (
@@ -52,6 +53,21 @@ export const Register = () => {
                         <span>{errors.email?.message}</span>
                     </section>
                     <section>
+                        <input 
+                            {...register('username', {
+                                required: RequiredErrorMSG,
+                                minLength: {
+                                    value: 5,
+                                    message: 'Username is small'
+                                }
+                            })}
+                            type='text' 
+                            name='username' 
+                            placeholder='Username' 
+                        />
+                        <span>{errors.email?.message}</span>
+                    </section>
+                    <section>
                         <input
                             {...register('password', {
                                 required: RequiredErrorMSG,
@@ -76,8 +92,8 @@ export const Register = () => {
                                 }
                             })}
                             type='password' 
-                            name='retry_password' 
-                            placeholder='Retry Password' 
+                            name='confirm_password' 
+                            placeholder='Confirm Password' 
                         />
                         <span>{errors.confirm_password?.message}</span>
                     </section>
@@ -93,7 +109,7 @@ export const Register = () => {
                             duration: 0.3
                         }}
                         whileTap={{scale: 0.9}}
-                    >Register</motion.button>
+                    ><span>Register</span></motion.button>
                 </section>
             </form>
         </>
