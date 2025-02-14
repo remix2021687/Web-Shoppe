@@ -1,0 +1,43 @@
+.NonConntect {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    .NonConntect_icons {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        img {
+            width: 280px;
+        }
+    }
+
+    .NonConntect_header {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        h1 {
+            font-size: 64px;
+            font-weight: 500;
+
+            span {
+                color: #A18A68;
+            }
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: 500;
+
+            span {
+                color: #A18A68;
+            }
+        }
+    }
+}

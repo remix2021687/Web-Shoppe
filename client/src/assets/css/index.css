@@ -487,6 +487,11 @@ main {
   font-weight: 400;
   color: #A18A68;
 }
+.ProductBox .ProductBox_content h4 span {
+  color: #707070;
+  font-size: 14px;
+  font-weight: 600;
+}
 
 .Page404 {
   display: -webkit-box;
@@ -556,6 +561,63 @@ main {
   width: 18%;
   background-color: black;
   color: white;
+}
+
+.NonConntect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+.NonConntect .NonConntect_icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+}
+.NonConntect .NonConntect_icons img {
+  width: 280px;
+}
+.NonConntect .NonConntect_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+.NonConntect .NonConntect_header h1 {
+  font-size: 64px;
+  font-weight: 500;
+}
+.NonConntect .NonConntect_header h1 span {
+  color: #A18A68;
+}
+.NonConntect .NonConntect_header p {
+  font-size: 20px;
+  font-weight: 500;
+}
+.NonConntect .NonConntect_header p span {
+  color: #A18A68;
 }
 
 .LoadingFullScreen {
@@ -664,27 +726,40 @@ main {
           flex-direction: column;
   gap: 46px;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+}
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input {
   height: 39px;
   border: none;
   border-bottom: 1px solid #D8D8D8;
   font-size: 16px;
   outline: none;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input::-webkit-input-placeholder {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input::-webkit-input-placeholder {
   color: #707070;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input::-moz-placeholder {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input::-moz-placeholder {
   color: #707070;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input:-ms-input-placeholder {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input:-ms-input-placeholder {
   color: #707070;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input::-ms-input-placeholder {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input::-ms-input-placeholder {
   color: #707070;
 }
-.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs input::placeholder {
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section input::placeholder {
   color: #707070;
+}
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_inputs section span {
+  color: red;
 }
 .AuthPage .AuthPage_SingIn .AuthPage_SingIn_footer {
   display: -webkit-box;
@@ -704,12 +779,41 @@ main {
   position: relative;
   height: 53px;
   background-color: black;
-  border: 1px solid black;
+  border: 3px solid black;
   border-radius: 4px;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
   cursor: pointer;
+  overflow: hidden;
+}
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_footer button:hover span {
+  color: black;
+}
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_footer button:hover::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_footer button span {
+  position: relative;
+  z-index: 3;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.AuthPage .AuthPage_SingIn .AuthPage_SingIn_footer button::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 2px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 .AuthPage .AuthPage_SingIn .AuthPage_SingIn_footer a {
   color: black;
