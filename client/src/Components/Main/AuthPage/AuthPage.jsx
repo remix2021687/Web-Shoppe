@@ -1,15 +1,23 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Register } from './components/Register';
 import { SignIn } from './components/SignIn';
 import { ToastContainer } from 'react-toastify';
 
 export const AuthPage = () => {
     const [formState, setFromState] = useState('Sign In');
-
+    const navigate = useNavigate();
     useEffect(() => {
         document.title = `SHOPPE | ${formState}`
     }, [formState])
+
+
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            navigate('/profile/fr')
+        }
+    })
 
 
     return (
