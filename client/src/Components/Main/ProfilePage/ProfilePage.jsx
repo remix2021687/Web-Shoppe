@@ -2,6 +2,7 @@ import { useState, useEffect} from "react"
 import { Dashboard } from "./components/Dashboard"
 import { Orders } from "./components/Orders"
 import { Downloads } from "./components/Downloads"
+import { Addresses } from "./components/Addresses/Addresses"
 
 export const ProfilePage = () => {
     useEffect(() => {
@@ -53,6 +54,9 @@ export const ProfilePage = () => {
 
                     case "Downloads":
                         return <Downloads />
+
+                    case "Addresses":
+                        return <Addresses />
 
                     default: 
                         return <Dashboard />

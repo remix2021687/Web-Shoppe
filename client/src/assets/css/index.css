@@ -1379,6 +1379,144 @@ main {
   font-weight: 600;
   color: #A18A68;
 }
+.ProfilePage .Addresses {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.ProfilePage .Addresses h4 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 45px;
+}
+.ProfilePage .Addresses .Addresses_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 24px;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling h2, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping h2 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling .Addresses_Biling_unselect, .ProfilePage .Addresses .Addresses_content .Addresses_Biling .Addresses_Shipping_unselect, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping .Addresses_Biling_unselect, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping .Addresses_Shipping_unselect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 14px;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling .Addresses_Biling_unselect button, .ProfilePage .Addresses .Addresses_content .Addresses_Biling .Addresses_Shipping_unselect button, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping .Addresses_Biling_unselect button, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping .Addresses_Shipping_unselect button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #B4A186;
+  cursor: pointer;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling > button, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping > button {
+  position: relative;
+  height: 53px;
+  background-color: black;
+  border: 3px solid black;
+  border-radius: 4px;
+  width: 40%;
+  cursor: pointer;
+  overflow: hidden;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling > button:hover span, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping > button:hover span {
+  color: black;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling > button:hover::before, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping > button:hover::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling > button span, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping > button span {
+  position: relative;
+  z-index: 3;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling > button::before, .ProfilePage .Addresses .Addresses_content .Addresses_Shipping > button::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 2px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 64px;
+  gap: 37px;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling_form input {
+  height: 40px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #707070;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling_form section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 40px;
+}
+.ProfilePage .Addresses .Addresses_content .Addresses_Biling_form section input[type=text] {
+  height: 40px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #707070;
+}
 
 .ProductPage {
   display: -webkit-box;

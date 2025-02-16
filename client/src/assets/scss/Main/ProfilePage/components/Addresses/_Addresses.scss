@@ -1,0 +1,89 @@
+.Addresses {
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 45px;
+    }
+
+    .Addresses_content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 80%;
+
+        .Addresses_Biling, .Addresses_Shipping {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            h2 {
+                font-size: 20px;
+                font-weight: 500;
+            }
+            
+            .Addresses_Biling_unselect, .Addresses_Shipping_unselect {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+
+                button {
+                    background: none;
+                    border: none;
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: #B4A186;
+                    cursor: pointer;
+                }
+            }
+
+            & > button {
+                position: relative;
+                height: 53px;
+                background-color: black;
+                border: 3px solid black;
+                border-radius: 4px;
+                width: 40%;
+                cursor: pointer;
+                overflow: hidden;
+        
+                &:hover {
+                    span {
+                        color: black;
+                    }
+                    &::before {
+                        transform: scale(1);
+                    }
+                }
+                
+                span {
+                    position: relative;
+                    z-index: 3;
+                    color: white;
+                    font-size: 14px;
+                    font-weight: 600;
+                    transition: 0.5s ease;
+                }
+                
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: 2;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: white;
+                    border-radius: 2px;
+                    transform: scale(0);
+                    transition: 0.5s ease;
+                }
+            }
+        }
+
+        @import './components/Biling';
+    }
+}
