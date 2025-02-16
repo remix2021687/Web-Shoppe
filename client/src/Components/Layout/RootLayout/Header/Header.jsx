@@ -98,9 +98,16 @@ export const Header = () => {
                             
                             <ShoppingCart size={NavigationIconSize} />
 
-                        <NavLink to={'/auth'}>
-                            <User size={NavigationIconSize} color="black" />
-                        </NavLink>
+                        {
+                            localStorage.getItem('token') ?
+                            <NavLink to={'/profile/fr'}>
+                                <User size={NavigationIconSize} color="black" weight="fill" />
+                            </NavLink>
+                            :
+                            <NavLink to={'/auth'}>
+                                <User size={NavigationIconSize} color="black" />
+                            </NavLink>
+                        }
                     </section>
                 </section>
 
